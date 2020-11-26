@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Python,Python学习,Python3,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#6 Python数据类型及运算前文讲述了Python的输入输出以及变量的相关知识点，本节将探讨Python的数据类型以及数据之间的运算方式！">
+<meta name="keywords" content="Python,Python学习,Python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python数据类型及运算">
+<meta property="og:url" content="https://minutesheep.github.io/2019/12/28/Python数据类型及运算/index.html">
+<meta property="og:site_name" content="T N T">
+<meta property="og:description" content="#6 Python数据类型及运算前文讲述了Python的输入输出以及变量的相关知识点，本节将探讨Python的数据类型以及数据之间的运算方式！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://minutesheep.github.io/2019/12/28/Python数据类型及运算/three%27.png">
+<meta property="og:updated_time" content="2020-11-26T14:22:23.878Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python数据类型及运算">
+<meta name="twitter:description" content="#6 Python数据类型及运算前文讲述了Python的输入输出以及变量的相关知识点，本节将探讨Python的数据类型以及数据之间的运算方式！">
+<meta name="twitter:image" content="https://minutesheep.github.io/2019/12/28/Python数据类型及运算/three%27.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://minutesheep.github.io/2019/12/28/Python数据类型及运算/">
+
+
+
+
+
+  <title>Python数据类型及运算 | T N T</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">T N T</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">美食博主</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-history"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2019/12/28/Python数据类型及运算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minute Sheep">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T N T">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python数据类型及运算</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-28T10:40:17+08:00">
+                2019-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-26T22:22:23+08:00">
+                2020-11-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/28/Python数据类型及运算/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/28/Python数据类型及运算/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/28/Python数据类型及运算/" class="leancloud_visitors" data-flag-title="Python数据类型及运算">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="6-Python数据类型及运算"><a href="#6-Python数据类型及运算" class="headerlink" title="#6 Python数据类型及运算"></a>#6 Python数据类型及运算</h2><p>前文讲述了Python的输入输出以及变量的相关知识点，本节将探讨Python的数据类型以及数据之间的运算方式！</p>
+<a id="more"></a>
+
+<h3 id="一、Python数据类型"><a href="#一、Python数据类型" class="headerlink" title="一、Python数据类型"></a>一、Python数据类型</h3><p>上一节弄清了变量，其实变量所指向的值是有自己独特的数据类型的，这些数据类型可能代表不同的数据，在Python中，主要有以下几种数据类型：</p>
+<h4 id="整形（int）"><a href="#整形（int）" class="headerlink" title="整形（int）"></a>整形（int）</h4><p>在计算机中，整数的位数其实是有范围的，并没有我们想象的那样拥有无限的位数，而且，在不同的机器上整数的位数可能不同，例如:</p>
+<p>32位系统：整数的位数就是32位，寻址范围为：-2^31  ~  2^31-1 ，即-2147483648 ~ 2147483647</p>
+<p>64位系统：整数的位数就是64位，寻址范围为：-2^63 ~ 2^63-1 ，即-9223372036854775808 ~ 9223372036854775807</p>
+<h4 id="长整形（long）"><a href="#长整形（long）" class="headerlink" title="长整形（long）"></a>长整形（long）</h4><p>在Python中，长整形整数并没有指定位数，也就是说，长整形整数可以无限大，但是由于机器本身的限制，往往并不能无限大，到一定范围也就不行了。</p>
+<h4 id="浮点型（float）"><a href="#浮点型（float）" class="headerlink" title="浮点型（float）"></a>浮点型（float）</h4><p>上面两种数据类型都是整数，但在实际并不可能全是整数，还有小数啊，于是浮点型便应运而生，说白了浮点型就是小数，并且可以使用科学计数，在计算机中，科学计数的倍数10用e代替，如：5.21x10^5 就写成 5.21e9，也可以写成521e7</p>
+<h4 id="复数（complex）"><a href="#复数（complex）" class="headerlink" title="复数（complex）"></a>复数（complex）</h4><p>上面三种数据类型组合起来是实数，其实科学计算中常常用到复数，在Python中，存在复数的数据类型，一般形式为：x+yj，式中x，y都是实数，例如：5+6j</p>
+<h4 id="布尔值（True、False）"><a href="#布尔值（True、False）" class="headerlink" title="布尔值（True、False）"></a>布尔值（True、False）</h4><p>布尔值就俩：真、假，Python中用True、False表示，一定要注意首字母大写，Python中是区分大小写的，一定要注意。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">77</span>]: <span class="number">5</span>==<span class="number">6</span></span><br><span class="line">Out[<span class="number">77</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">78</span>]: <span class="number">3</span>&gt;<span class="number">2</span></span><br><span class="line">Out[<span class="number">78</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">79</span>]: <span class="literal">True</span> == <span class="literal">True</span></span><br><span class="line">Out[<span class="number">79</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">80</span>]: <span class="literal">True</span> == <span class="literal">False</span></span><br><span class="line">Out[<span class="number">80</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="空值（None）"><a href="#空值（None）" class="headerlink" title="空值（None）"></a>空值（None）</h4><p>空值就一个：None，这个空值是很有趣的，None不可以理解为0，因为0不是空值，就好像温度是0摄氏度一样，0摄氏度是有温度的(￣▽￣)”</p>
+<h4 id="字符串（str）"><a href="#字符串（str）" class="headerlink" title="字符串（str）"></a>字符串（str）</h4><p>字符串可能是编写Python中用到的最多的数据类型，只要是用引号引起来的就是字符串。Python中是不区分单引号、双引号和三引号的，他们是相同的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">81</span>]: <span class="string">'Hello,world!'</span></span><br><span class="line">Out[<span class="number">81</span>]: <span class="string">'Hello,world!'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">82</span>]: <span class="string">"Hello,world!"</span></span><br><span class="line">Out[<span class="number">82</span>]: <span class="string">'Hello,world!'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">83</span>]: <span class="string">'''Hello,world'''</span></span><br><span class="line">Out[<span class="number">83</span>]: <span class="string">'Hello,world'</span></span><br></pre></td></tr></table></figure>
+
+<p>肯定有萌新会问，搞这么多幺蛾子干啥，统一用一个不就完了，我就默默笑笑不说话：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">84</span>]: <span class="string">'i'</span>m MinuteSheep<span class="string">'</span></span><br><span class="line"><span class="string">  File "&lt;ipython-input-84-a2a810ee38cb&gt;", line 1</span></span><br><span class="line"><span class="string">    '</span>i<span class="string">'m MinuteSheep'</span></span><br><span class="line">       ^</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+
+<p>看！报错了竟然，为什么呢？因为Python会自动匹配最近的符号与之闭合，所以就会出现上面的情况，做如下修改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">85</span>]: <span class="string">"i'm MinuteSheep"</span></span><br><span class="line">Out[<span class="number">85</span>]: <span class="string">"i'm MinuteSheep"</span></span><br></pre></td></tr></table></figure>
+
+<p>（萌新：你个糟老头子坏得很╰（‵□′）╯）</p>
+<p>同样的，三引号用于多行，或者内容符号混乱的情况：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">87</span>]: <span class="string">'''i'm MinuteSheep,i said:"i'm the best man in the world!"'''</span></span><br><span class="line">Out[<span class="number">87</span>]: <span class="string">'i\'m MinuteSheep,i said:"i\'m the best man in the world!"'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">In [<span class="number">86</span>]: <span class="string">'''</span></span><br><span class="line"><span class="string">    ...: i'm MinuteSheep,</span></span><br><span class="line"><span class="string">    ...: i said:</span></span><br><span class="line"><span class="string">    ...: "i'm the best man in the world!"</span></span><br><span class="line"><span class="string">    ...: '''</span></span><br><span class="line">Out[<span class="number">86</span>]: <span class="string">'\ni\'m MinuteSheep,\ni said:\n"i\'m the best man in the world!"\n'</span></span><br></pre></td></tr></table></figure>
+
+<p>完美解决，还记得\n是什么吗，是换行意思的啦，同样你会发现i’m变成了i&#39;m，这其实是转义的显示，转义以后会讲到的啦</p>
+<p>又有萌新出来作妖了，你上一节不是说三引号是多行注释吗，这一节怎么变成了字符串啦？</p>
+<p>这个问题问的好！看我的解释，有图有真相：</p>
+<p><img src="three'.png" alt></p>
+<p>直接三引号内容，是注释，只要将三引号内容赋给变量，就是字符串</p>
+<p>字符串还有很多方法，之后会专门有一小节详细的讲解字符串的方法。</p>
+<h4 id="列表（list）"><a href="#列表（list）" class="headerlink" title="列表（list）"></a>列表（list）</h4><p>对于列表，萌新可能会很陌生，你可以暂时把它理解为一维数组，列表的在Python中的使用次数也是相当多的，是除字符串以外必须掌握的一种数据类型。来看看列表长啥样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">88</span>]: [<span class="string">'MinuteSheep'</span>, <span class="string">'LiMing'</span>, <span class="string">'123'</span>, <span class="number">123</span>]</span><br><span class="line">Out[<span class="number">88</span>]: [<span class="string">'MinuteSheep'</span>, <span class="string">'LiMing'</span>, <span class="string">'123'</span>, <span class="number">123</span>]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，被一对方括号括起来的数据就是列表，刘表里面可以又其他数据类型，上面的列表包括：字符串和整型。当然，列表可以包含列表，称为列表的嵌套：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">89</span>]: [<span class="string">'MinuteSheep'</span>, [<span class="string">'LiMing'</span>, <span class="number">123</span>]]</span><br><span class="line">Out[<span class="number">89</span>]: [<span class="string">'MinuteSheep'</span>, [<span class="string">'LiMing'</span>, <span class="number">123</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>关于列表，还有好多具体的方法，这里不一一介绍，之后也会有专门的一小节讲解列表方法。</p>
+<h4 id="元组（tuple）"><a href="#元组（tuple）" class="headerlink" title="元组（tuple）"></a>元组（tuple）</h4><p>元组可能就更陌生了，元组其实是不可变列表，列表用一队方括号括起来，元组则用一对圆括号括起来，列表是可以被操作的（比如增、删、改、查），但是元组不行，元组不可被更改，来看看元组长啥样哇：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">90</span>]: (<span class="string">'MinuteSheep'</span>,<span class="string">'LiMing'</span>,<span class="number">123</span>)</span><br><span class="line">Out[<span class="number">90</span>]: (<span class="string">'MinuteSheep'</span>, <span class="string">'LiMing'</span>, <span class="number">123</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="字典（dict）"><a href="#字典（dict）" class="headerlink" title="字典（dict）"></a>字典（dict）</h4><p>字典是Python的一种非常强大的数据类型，通过键值对的形式将数据保存下来，提高了数据增、删、改、查的速度，通常作为数据存储的格式，也来看看字典长啥样哇：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">91</span>]: &#123;<span class="string">'name'</span>: <span class="string">'MinuteSheep'</span>, <span class="string">'gender'</span> : <span class="string">'male'</span>, <span class="string">'age'</span>: <span class="number">99</span>&#125;</span><br><span class="line">Out[<span class="number">91</span>]: &#123;<span class="string">'age'</span>: <span class="number">99</span>, <span class="string">'gender'</span>: <span class="string">'male'</span>, <span class="string">'name'</span>: <span class="string">'MinuteSheep'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，字典是用一对花括号括起来的，并且以 ‘key’ : ‘value’ 的形式存储，同样，字典里面可以包含其他数据类型，上面的字典包括：字符串、整型。当然，字典也可以嵌套：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">92</span>]: &#123;<span class="string">'name'</span> : <span class="string">'MinuteSheep'</span>, <span class="string">'age'</span>: &#123;<span class="string">'young'</span> : <span class="number">15</span>, <span class="string">'old'</span> : <span class="number">99</span>&#125;&#125;</span><br><span class="line">Out[<span class="number">92</span>]: &#123;<span class="string">'age'</span>: &#123;<span class="string">'old'</span>: <span class="number">99</span>, <span class="string">'young'</span>: <span class="number">15</span>&#125;, <span class="string">'name'</span>: <span class="string">'MinuteSheep'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>字典也会有专门的一节去讲解它的方法。</p>
+<h3 id="二、Python数据运算"><a href="#二、Python数据运算" class="headerlink" title="二、Python数据运算"></a>二、Python数据运算</h3><p>说完了Python的数据类型，就该数据运算了，养兵千日，用在一时嘛</p>
+<h4 id="算数运算"><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h4><p><strong>加 +</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">93</span>]: <span class="number">1</span>+<span class="number">2</span></span><br><span class="line">Out[<span class="number">93</span>]: <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>减 -</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">95</span>]: <span class="number">1</span><span class="number">-2</span></span><br><span class="line">Out[<span class="number">95</span>]: <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><em>乘 *</em></strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">96</span>]: <span class="number">1</span>*<span class="number">2</span></span><br><span class="line">Out[<span class="number">96</span>]: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>除 /</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">97</span>]: <span class="number">5</span>/<span class="number">2</span></span><br><span class="line">Out[<span class="number">97</span>]: <span class="number">2.5</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>取模 %  （就是取余数）</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">98</span>]: <span class="number">5</span>%<span class="number">2</span></span><br><span class="line">Out[<span class="number">98</span>]: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>取整 //</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">99</span>]: <span class="number">5</span>//<span class="number">2</span></span><br><span class="line">Out[<span class="number">99</span>]: <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>幂 **</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">100</span>]: <span class="number">5</span>**<span class="number">2</span></span><br><span class="line">Out[<span class="number">100</span>]: <span class="number">25</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="赋值运算"><a href="#赋值运算" class="headerlink" title="赋值运算"></a>赋值运算</h4><p>简单赋值 =</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">102</span>]: a=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">103</span>]: b=<span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">104</span>]: c=a+b</span><br><span class="line"></span><br><span class="line">In [<span class="number">105</span>]: c</span><br><span class="line">Out[<span class="number">105</span>]: <span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<p>加法赋值 +=   （b+=a，相当于b=b+a）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">106</span>]: a=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">107</span>]: b=<span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">108</span>]: b+=a</span><br><span class="line"></span><br><span class="line">In [<span class="number">109</span>]: b</span><br><span class="line">Out[<span class="number">109</span>]: <span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<p>减法赋值 -=   （b-=a，相当于b=b-a）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">111</span>]: a=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">112</span>]: b=<span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">113</span>]: b-=a</span><br><span class="line"></span><br><span class="line">In [<span class="number">114</span>]: b</span><br><span class="line">Out[<span class="number">114</span>]: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>乘法赋值 *=   （b*=a，相当于b=b*a）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">n [<span class="number">115</span>]: a=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">116</span>]: b=<span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">117</span>]: b*=a</span><br><span class="line"></span><br><span class="line">In [<span class="number">118</span>]: b</span><br><span class="line">Out[<span class="number">118</span>]: <span class="number">30</span></span><br></pre></td></tr></table></figure>
+
+<p>除法赋值 /=   （b/=a，相当于b=b/a）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">119</span>]: a=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">120</span>]: b=<span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">121</span>]: b/=a</span><br><span class="line"></span><br><span class="line">In [<span class="number">122</span>]: b</span><br><span class="line">Out[<span class="number">122</span>]: <span class="number">1.2</span></span><br></pre></td></tr></table></figure>
+
+<p>取模赋值 %=   （b%=a，相当于b=b%a）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">123</span>]: a=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">124</span>]: b=<span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">125</span>]: b%=a</span><br><span class="line"></span><br><span class="line">In [<span class="number">126</span>]: b</span><br><span class="line">Out[<span class="number">126</span>]: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>取整赋值 //=   （b//=a，相当于b=b//a）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">127</span>]: a=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">128</span>]: b=<span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">129</span>]: b//=a</span><br><span class="line"></span><br><span class="line">In [<span class="number">130</span>]: b</span><br><span class="line">Out[<span class="number">130</span>]: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>幂赋值 **=   （b<strong>=a，相当于b=b</strong>a）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">131</span>]: a=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">132</span>]: b=<span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">133</span>]: b**=a</span><br><span class="line"></span><br><span class="line">In [<span class="number">134</span>]: b</span><br><span class="line">Out[<span class="number">134</span>]: <span class="number">7776</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="比较运算"><a href="#比较运算" class="headerlink" title="比较运算"></a>比较运算</h4><p>测试相等 ==</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">136</span>]: <span class="number">1</span>==<span class="number">1</span></span><br><span class="line">Out[<span class="number">136</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">137</span>]: <span class="number">1</span>==<span class="number">2</span></span><br><span class="line">Out[<span class="number">137</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>不等于 !=</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">144</span>]: <span class="number">1</span>!=<span class="number">1</span></span><br><span class="line">Out[<span class="number">144</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">145</span>]: <span class="number">1</span>!=<span class="number">2</span></span><br><span class="line">Out[<span class="number">145</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>大于 &gt;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">146</span>]: <span class="number">1</span>&gt;<span class="number">1</span></span><br><span class="line">Out[<span class="number">146</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">147</span>]: <span class="number">2</span>&gt;<span class="number">1</span></span><br><span class="line">Out[<span class="number">147</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>大于等于 &gt;=</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">149</span>]: <span class="number">1</span>&gt;=<span class="number">1</span></span><br><span class="line">Out[<span class="number">149</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">150</span>]: <span class="number">2</span>&gt;=<span class="number">1</span></span><br><span class="line">Out[<span class="number">150</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>小于 &lt;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">151</span>]: <span class="number">6</span>&lt;<span class="number">6</span></span><br><span class="line">Out[<span class="number">151</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">152</span>]: <span class="number">6</span>&lt;<span class="number">7</span></span><br><span class="line">Out[<span class="number">152</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>小于等于 &lt;=</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">153</span>]: <span class="number">6</span>&lt;=<span class="number">6</span></span><br><span class="line">Out[<span class="number">153</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">154</span>]: <span class="number">6</span>&lt;=<span class="number">7</span></span><br><span class="line">Out[<span class="number">154</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><p>布尔’与’ and   (有假为假，全真为真）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">156</span>]: <span class="literal">True</span> <span class="keyword">and</span> <span class="literal">False</span></span><br><span class="line">Out[<span class="number">156</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">157</span>]: <span class="literal">True</span> <span class="keyword">and</span> <span class="literal">True</span></span><br><span class="line">Out[<span class="number">157</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">158</span>]: <span class="literal">False</span> <span class="keyword">and</span> <span class="literal">False</span></span><br><span class="line">Out[<span class="number">158</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>布尔’或’ or   (有真为真，全假为假）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">159</span>]: <span class="literal">True</span> <span class="keyword">or</span> <span class="literal">True</span></span><br><span class="line">Out[<span class="number">159</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">160</span>]: <span class="literal">True</span> <span class="keyword">or</span> <span class="literal">False</span></span><br><span class="line">Out[<span class="number">160</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">161</span>]: <span class="literal">False</span> <span class="keyword">and</span> <span class="literal">False</span></span><br><span class="line">Out[<span class="number">161</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>布尔’非’ not   （取相反）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">162</span>]: <span class="keyword">not</span> <span class="literal">True</span></span><br><span class="line">Out[<span class="number">162</span>]: <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">163</span>]: <span class="keyword">not</span> <span class="literal">False</span></span><br><span class="line">Out[<span class="number">163</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="身份运算"><a href="#身份运算" class="headerlink" title="身份运算"></a>身份运算</h4><p>判断两个标识符是否引用自同一个对象 is</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">167</span>]: a=b=<span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">168</span>]: a <span class="keyword">is</span> b</span><br><span class="line">Out[<span class="number">168</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">169</span>]: a=<span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">170</span>]: b=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">171</span>]: a <span class="keyword">is</span> b</span><br><span class="line">Out[<span class="number">171</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>判断两个标识符是否引用自不同对象 is not</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">177</span>]: a=<span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">178</span>]: b=<span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">179</span>]: a <span class="keyword">is</span> <span class="keyword">not</span> b</span><br><span class="line">Out[<span class="number">179</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>== 与 is 的区别：</p>
+<p>看到这里，很多小伙伴已经晕了，== 和 is 好像一样啊，看起来一样，其实是不一样的，来看下面的这段代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">180</span>]: a = <span class="number">600</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">181</span>]: b = <span class="number">600</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">182</span>]: a == b</span><br><span class="line">Out[<span class="number">182</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">183</span>]: a <span class="keyword">is</span> b</span><br><span class="line">Out[<span class="number">183</span>]: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+
+<p>其实啊，== 比较的是值，is比较的地址，让我们用 id() 这个函数查看一下变量的地址：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">184</span>]: id(a)</span><br><span class="line">Out[<span class="number">184</span>]: <span class="number">2155434581648</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">185</span>]: id(b)</span><br><span class="line">Out[<span class="number">185</span>]: <span class="number">2155434581904</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，a和b俩个变量的值虽然相同，但地址却不一样，所以使用 == 和 is 的结果自然就不一样。那我们再来看一段代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">187</span>]: a = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">188</span>]: b = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">189</span>]: a == b</span><br><span class="line">Out[<span class="number">189</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">190</span>]: a <span class="keyword">is</span> b</span><br><span class="line">Out[<span class="number">190</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">191</span>]: id(a)</span><br><span class="line">Out[<span class="number">191</span>]: <span class="number">1529742064</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">192</span>]: id(b)</span><br><span class="line">Out[<span class="number">192</span>]: <span class="number">1529742064</span></span><br></pre></td></tr></table></figure>
+
+<p>萌新是不是莫不着头脑了，用600的时候 is 输出False，用10的时候怎么地址一样了啊，（快回头，有鬼~）其实啊，Python有一个叫做小整数对象池的东西，只要是[-5, 256]之间的整数都会使用同一份地址，这下萌新明白了哇。</p>
+<h4 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h4><p><strong>重点说明：位运算针对的是二进制数</strong></p>
+<p>按位与 &amp;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">193</span>]: a = <span class="number">15</span>   <span class="comment"># 15 = 0000 1111</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">194</span>]: b = <span class="number">30</span>   <span class="comment"># 30 = 0001 1110</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">195</span>]: c = a&amp;b  <span class="comment"># 14 = 0000 1110</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">196</span>]: c</span><br><span class="line">Out[<span class="number">196</span>]: <span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+<p>按位或 |</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">193</span>]: a = <span class="number">15</span>   <span class="comment"># 15 = 0000 1111</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">194</span>]: b = <span class="number">30</span>   <span class="comment"># 30 = 0001 1110</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">197</span>]: c = a|b  <span class="comment"># 31 = 0001 1111</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">198</span>]: c</span><br><span class="line">Out[<span class="number">198</span>]: <span class="number">31</span></span><br></pre></td></tr></table></figure>
+
+<p>按位异或 ^</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">193</span>]: a = <span class="number">15</span>   <span class="comment"># 15 = 0000 1111</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">194</span>]: b = <span class="number">30</span>   <span class="comment"># 30 = 0001 1110</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">200</span>]: c = a^b  <span class="comment"># 17 = 0001 0001</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">201</span>]: c</span><br><span class="line">Out[<span class="number">201</span>]: <span class="number">17</span></span><br></pre></td></tr></table></figure>
+
+<p>按位取反 ~</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">210</span>]: a = <span class="number">60</span>   <span class="comment"># 60 = 0011 1100</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">211</span>]: c = ~a  <span class="comment"># -61 = 1100 0011</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">212</span>]: c</span><br><span class="line">Out[<span class="number">212</span>]: <span class="number">-61</span></span><br></pre></td></tr></table></figure>
+
+<p>左移 &lt;&lt;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">213</span>]: a = <span class="number">15</span>   <span class="comment"># 15 = 0000 1111</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">214</span>]: c = a&lt;&lt;<span class="number">2</span> <span class="comment"># 60 = 0011 1100</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">215</span>]: c</span><br><span class="line">Out[<span class="number">215</span>]: <span class="number">60</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#左移后面要加位数</span></span><br></pre></td></tr></table></figure>
+
+<p>右移 &gt;&gt;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">213</span>]: a = <span class="number">15</span>     <span class="comment"># 15 = 0000 1111</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">218</span>]: c = a&gt;&gt;<span class="number">2</span>    <span class="comment"># 3 = 0000 0011</span></span><br><span class="line"> </span><br><span class="line">In [<span class="number">219</span>]: c</span><br><span class="line">Out[<span class="number">219</span>]: <span class="number">3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#右移后面要加位数</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Python运算符优先级（从高到底依次排列）"><a href="#Python运算符优先级（从高到底依次排列）" class="headerlink" title="Python运算符优先级（从高到底依次排列）"></a>Python运算符优先级（从高到底依次排列）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">**                 <span class="comment"># 指数 (最高优先级)</span></span><br><span class="line">~ + -              <span class="comment"># 按位翻转, 一元加号和减号 (最后两个的方法名为 +@ 和 -@)</span></span><br><span class="line">* / % //           <span class="comment"># 乘，除，取模和取整除</span></span><br><span class="line">+ -                <span class="comment"># 加法减法</span></span><br><span class="line">&gt;&gt; &lt;&lt;              <span class="comment"># 右移，左移运算符</span></span><br><span class="line">&amp;                  <span class="comment"># 位 'AND'</span></span><br><span class="line">^ |                <span class="comment"># 位运算符</span></span><br><span class="line">&lt;= &lt; &gt; &gt;=          <span class="comment"># 比较运算符</span></span><br><span class="line">&lt;&gt; == !=           <span class="comment"># 等于运算符</span></span><br><span class="line">= %= /= //= -= += *= **=    <span class="comment"># 赋值运算符</span></span><br><span class="line"><span class="keyword">is</span> <span class="keyword">is</span> <span class="keyword">not</span>          <span class="comment"># 身份运算符</span></span><br><span class="line"><span class="keyword">in</span> <span class="keyword">not</span> <span class="keyword">in</span>          <span class="comment"># 成员运算符</span></span><br><span class="line"><span class="keyword">not</span> <span class="keyword">and</span> <span class="keyword">or</span>         <span class="comment"># 逻辑运算符</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Minute Sheep
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://minutesheep.github.io/2019/12/28/Python数据类型及运算/" title="Python数据类型及运算">https://minutesheep.github.io/2019/12/28/Python数据类型及运算/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Python学习/" rel="tag"># Python学习</a>
+          
+            <a href="/tags/Python3/" rel="tag"># Python3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/27/Python变量与输入输出/" rel="next" title="Python变量与输入输出">
+                <i class="fa fa-chevron-left"></i> Python变量与输入输出
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/28/Python顺序、条件、循环语句/" rel="prev" title="Python顺序、条件、循环语句">
+                Python顺序、条件、循环语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Minute Sheep">
+            
+              <p class="site-author-name" itemprop="name">Minute Sheep</p>
+              <p class="site-description motion-element" itemprop="description">不忘初心，方得始终！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minutesheep" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:minutesheep@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Python数据类型及运算"><span class="nav-number">1.</span> <span class="nav-text">#6 Python数据类型及运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Python数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">一、Python数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#整形（int）"><span class="nav-number">1.1.1.</span> <span class="nav-text">整形（int）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#长整形（long）"><span class="nav-number">1.1.2.</span> <span class="nav-text">长整形（long）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浮点型（float）"><span class="nav-number">1.1.3.</span> <span class="nav-text">浮点型（float）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复数（complex）"><span class="nav-number">1.1.4.</span> <span class="nav-text">复数（complex）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔值（True、False）"><span class="nav-number">1.1.5.</span> <span class="nav-text">布尔值（True、False）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空值（None）"><span class="nav-number">1.1.6.</span> <span class="nav-text">空值（None）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串（str）"><span class="nav-number">1.1.7.</span> <span class="nav-text">字符串（str）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表（list）"><span class="nav-number">1.1.8.</span> <span class="nav-text">列表（list）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元组（tuple）"><span class="nav-number">1.1.9.</span> <span class="nav-text">元组（tuple）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典（dict）"><span class="nav-number">1.1.10.</span> <span class="nav-text">字典（dict）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Python数据运算"><span class="nav-number">1.2.</span> <span class="nav-text">二、Python数据运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算数运算"><span class="nav-number">1.2.1.</span> <span class="nav-text">算数运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算"><span class="nav-number">1.2.2.</span> <span class="nav-text">赋值运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比较运算"><span class="nav-number">1.2.3.</span> <span class="nav-text">比较运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算"><span class="nav-number">1.2.4.</span> <span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#身份运算"><span class="nav-number">1.2.5.</span> <span class="nav-text">身份运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位运算"><span class="nav-number">1.2.6.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python运算符优先级（从高到底依次排列）"><span class="nav-number">1.2.7.</span> <span class="nav-text">Python运算符优先级（从高到底依次排列）</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minute Sheep</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">125.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz',
+        appKey: 'GYxLGdpsNWNARbafoQDJAa0j',
+        placeholder: 'Wonderful writing, supports a wave👍',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz", "GYxLGdpsNWNARbafoQDJAa0j");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

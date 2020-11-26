@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Python,Python学习,Python3,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#13 让代码变得Pythonic在学习Python的过程中，肯定听说过这么一个词：Pythonic，它的意思是让你的代码很Python！">
+<meta name="keywords" content="Python,Python学习,Python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="让代码变得Pythonic">
+<meta property="og:url" content="https://minutesheep.github.io/2020/01/03/让代码变得Pythonic/index.html">
+<meta property="og:site_name" content="T N T">
+<meta property="og:description" content="#13 让代码变得Pythonic在学习Python的过程中，肯定听说过这么一个词：Pythonic，它的意思是让你的代码很Python！">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-11-26T14:22:24.034Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="让代码变得Pythonic">
+<meta name="twitter:description" content="#13 让代码变得Pythonic在学习Python的过程中，肯定听说过这么一个词：Pythonic，它的意思是让你的代码很Python！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://minutesheep.github.io/2020/01/03/让代码变得Pythonic/">
+
+
+
+
+
+  <title>让代码变得Pythonic | T N T</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">T N T</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">美食博主</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-history"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2020/01/03/让代码变得Pythonic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minute Sheep">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T N T">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">让代码变得Pythonic</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-03T00:01:12+08:00">
+                2020-01-03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-26T22:22:24+08:00">
+                2020-11-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/01/03/让代码变得Pythonic/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/03/让代码变得Pythonic/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/01/03/让代码变得Pythonic/" class="leancloud_visitors" data-flag-title="让代码变得Pythonic">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="13-让代码变得Pythonic"><a href="#13-让代码变得Pythonic" class="headerlink" title="#13 让代码变得Pythonic"></a>#13 让代码变得Pythonic</h2><p>在学习Python的过程中，肯定听说过这么一个词：Pythonic，它的意思是让你的代码很Python！</p>
+<a id="more"></a>
+
+<h3 id="一、列表生成式"><a href="#一、列表生成式" class="headerlink" title="一、列表生成式"></a>一、列表生成式</h3><p>前面有一节专门讲解了Python的列表，其灵活的使用方法一定让你陶醉其中。当然，也也知道怎么初始化一个列表，比如现在要生成 [0,1,2,3,4] 这样一个列表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: list(range(<span class="number">5</span>))</span><br><span class="line">Out[<span class="number">1</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+
+<p>现在要将此列表的每个元素平方，要怎么办呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">In [<span class="number">9</span>]: a</span><br><span class="line">Out[<span class="number">9</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: b = []</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: <span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    ...:     b.append(i**<span class="number">2</span>)</span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: b</span><br><span class="line">Out[<span class="number">12</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 for 循环遍历每一个元素，之后将结果保存在新的列表里</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法二</span></span><br><span class="line">In [<span class="number">13</span>]: a</span><br><span class="line">Out[<span class="number">13</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: <span class="keyword">for</span> index,i <span class="keyword">in</span> enumerate(a):</span><br><span class="line">    ...:     a[index] **=<span class="number">2</span></span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: a</span><br><span class="line">Out[<span class="number">15</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用内置函数 enumerate() 将可迭代对象返回其索引和相应的值，这种方法直接改变原有列表的元素</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法三</span></span><br><span class="line">In [<span class="number">15</span>]: a</span><br><span class="line">Out[<span class="number">15</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: func = <span class="keyword">lambda</span> x:x**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: a = map(func,a)</span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: a</span><br><span class="line">Out[<span class="number">19</span>]: &lt;map at <span class="number">0x21bbb7a30b8</span>&gt;</span><br><span class="line"></span><br><span class="line">In [<span class="number">20</span>]: <span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">    ...:     print(i)</span><br><span class="line">    ...:</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="number">81</span></span><br><span class="line"><span class="number">256</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用内置函数 map() 也可以实现,map(函数，可迭代对象)，将可迭代对象的每一个元素传入函数并返回结果</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#方法四：使用更加Pythonic的方法：列表生成式</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">22</span>]: a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">In [<span class="number">23</span>]: a</span><br><span class="line">Out[<span class="number">23</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以看到生成一个列表就是如此简单</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">24</span>]: a = [i\*\*<span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line"></span><br><span class="line">In [<span class="number">25</span>]: a</span><br><span class="line">Out[<span class="number">25</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以看到列表生成式很方便，很好用，这该死的无处安放的魅力啊</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">26</span>]: a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>) <span class="keyword">if</span> i%<span class="number">2</span> == <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">27</span>]: a</span><br><span class="line">Out[<span class="number">27</span>]: [<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列表生成式还可以加入 if 判断</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">28</span>]: [p + q <span class="keyword">for</span> p <span class="keyword">in</span> range(<span class="number">3</span>) <span class="keyword">for</span> q <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line">Out[<span class="number">28</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用两层循环实现全排列</span></span><br><span class="line"><span class="comment"># 0+0 0+1 0+2 0+3 0+4 1+0 1+1 1+2 1+3 1+4 2+0 2+1 2+2 2+3 2+4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、生成器"><a href="#二、生成器" class="headerlink" title="二、生成器"></a>二、生成器</h3><p>列表生成式很实用，但是有一个致命的缺点，就是不能创建大数据量的列表，数据量太大时会导致计算机内存不够用，同时，如果创建的大数据量列表被使用的元素很少的话，那么就会造成存储空间的大量浪费，那有没有一种方法，可以不提前生成列表，而是在使用列表的时候生成一个列表，换句话说就是：边循环边计算，这就是生成器—— generator。生成器在需要的时候才产生结果，不是立即产生结果，生成器效率高，节省CPU生成器只能遍历一次，是一个特殊的迭代器。</p>
+<h4 id="生成器表达式"><a href="#生成器表达式" class="headerlink" title="生成器表达式"></a>生成器表达式</h4><p>类似于列表生成式，只不过将方括号 [] 改变为圆括号 ()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">29</span>]: l = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>)]</span><br><span class="line"></span><br><span class="line">In [<span class="number">30</span>]: l</span><br><span class="line">Out[<span class="number">30</span>]: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">31</span>]: g = (i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">In [<span class="number">32</span>]: g</span><br><span class="line">Out[<span class="number">32</span>]: &lt;generator object &lt;genexpr&gt; at <span class="number">0x0000021BBBB16E08</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以看到 l 是列表，而 g 是一个generator</span></span><br></pre></td></tr></table></figure>
+
+<p>如何获得生成器的元素呢？使用next()方法可以获取一个元素：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">33</span>]: next(g)</span><br><span class="line">Out[<span class="number">33</span>]: <span class="number">0</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">34</span>]: next(g)</span><br><span class="line">Out[<span class="number">34</span>]: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">35</span>]: next(g)</span><br><span class="line">Out[<span class="number">35</span>]: <span class="number">2</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">36</span>]: next(g)</span><br><span class="line">Out[<span class="number">36</span>]: <span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">37</span>]: next(g)</span><br><span class="line">Out[<span class="number">37</span>]: <span class="number">4</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">38</span>]: next(g)</span><br><span class="line">Out[<span class="number">38</span>]: <span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">39</span>]: next(g)</span><br><span class="line">Out[<span class="number">39</span>]: <span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">40</span>]: next(g)</span><br><span class="line">Out[<span class="number">40</span>]: <span class="number">7</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">41</span>]: next(g)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">StopIteration                             Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input<span class="number">-41</span>-e734f8aca5ac&gt; <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">----&gt; 1 next(g)</span><br><span class="line"></span><br><span class="line">StopIteration:</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以看到当生成器没有元素可以取的时候，会抛出StopIteration异常</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到上面的代码总司不停的手动使用next()获取下一个元素，很烦~，在Python中其实不经常使用next()，而是用for循环的方法迭代生成器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">43</span>]: g = (i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">In [<span class="number">45</span>]: <span class="keyword">for</span> p <span class="keyword">in</span> g:</span><br><span class="line">    ...:     print(p)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure>
+
+<p>创建一个生成器以后，基本上不会使用next()方法，而是使用for循环，迭代完成以后不会抛出StopIteration异常。</p>
+<h4 id="生成器函数"><a href="#生成器函数" class="headerlink" title="生成器函数"></a>生成器函数</h4><p>将函数返回时的关键字return改为yield。函数将每次返回一个结果，之后挂起，再次调用时，继续从挂起的位置执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">46</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">()</span>:</span></span><br><span class="line">    ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">    ...:     print num to screen</span></span><br><span class="line"><span class="string">    ...:     '''</span></span><br><span class="line">    ...:     a = <span class="string">'No.1'</span></span><br><span class="line">    ...:     b = <span class="string">'No.2'</span></span><br><span class="line">    ...:     c = <span class="string">'No.3'</span></span><br><span class="line">    ...:     print(a)</span><br><span class="line">    ...:     <span class="keyword">yield</span> a</span><br><span class="line">    ...:     print(b)</span><br><span class="line">    ...:     <span class="keyword">yield</span> b</span><br><span class="line">    ...:     print(c)</span><br><span class="line">    ...:     <span class="keyword">yield</span> c</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">运行函数可以使用 next() ，当然也不常用，<span class="keyword">for</span>循环才是generator的真爱：</span><br><span class="line"></span><br><span class="line">In [<span class="number">46</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">()</span>:</span></span><br><span class="line">    ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">    ...:     print num to screen</span></span><br><span class="line"><span class="string">    ...:     '''</span></span><br><span class="line">    ...:     a = <span class="string">'No.1'</span></span><br><span class="line">    ...:     b = <span class="string">'No.2'</span></span><br><span class="line">    ...:     c = <span class="string">'No.3'</span></span><br><span class="line">    ...:     print(a)</span><br><span class="line">    ...:     <span class="keyword">yield</span> a</span><br><span class="line">    ...:     print(b)</span><br><span class="line">    ...:     <span class="keyword">yield</span> b</span><br><span class="line">    ...:     print(c)</span><br><span class="line">    ...:     <span class="keyword">yield</span> c</span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">52</span>]: a = print_num()</span><br><span class="line"></span><br><span class="line">In [<span class="number">53</span>]: next(a)</span><br><span class="line">No<span class="number">.1</span></span><br><span class="line">Out[<span class="number">53</span>]: <span class="string">'No.1'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">54</span>]: next(a)</span><br><span class="line">No<span class="number">.2</span></span><br><span class="line">Out[<span class="number">54</span>]: <span class="string">'No.2'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">55</span>]: next(a)</span><br><span class="line">No<span class="number">.3</span></span><br><span class="line">Out[<span class="number">55</span>]: <span class="string">'No.3'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">56</span>]: next(a)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">StopIteration                             Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input<span class="number">-56</span><span class="number">-15841</span>f3f11d4&gt; <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">----&gt; 1 next(a)</span><br><span class="line"></span><br><span class="line">StopIteration:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 菲波那切数列</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Fib</span><span class="params">(max)</span>:</span></span><br><span class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; max:</span><br><span class="line">        <span class="keyword">yield</span> b</span><br><span class="line">        a, b = b, a + b   <span class="comment"># 还记得这里的交换变量方法吗？</span></span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'到头了！！！！'</span></span><br><span class="line"></span><br><span class="line">  In [<span class="number">61</span>]: f = Fib(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">  In [<span class="number">62</span>]: <span class="keyword">for</span> p <span class="keyword">in</span> f:</span><br><span class="line">  ...: print(p)</span><br><span class="line">  <span class="number">1</span></span><br><span class="line">  <span class="number">1</span></span><br><span class="line">  <span class="number">2</span></span><br><span class="line">  <span class="number">3</span></span><br><span class="line">  <span class="number">5</span></span><br><span class="line">  <span class="number">8</span></span><br><span class="line">  <span class="number">13</span></span><br><span class="line">  <span class="number">21</span></span><br><span class="line">  <span class="number">34</span></span><br><span class="line">  <span class="number">55</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">  <span class="comment"># for循环才是generator的真爱</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三、迭代器"><a href="#三、迭代器" class="headerlink" title="三、迭代器"></a>三、迭代器</h3><p>在Python中，list、string、tuple、dict都是可以使用for循环进行遍历的，现在又多了一类generator。这些可以使用for循环的对象称为可迭代对象。迭代器是用来帮助我们记录每次迭代的位置，而可迭代对象使用内置函数iter()是可以转换为迭代器的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">63</span>]: a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]      <span class="comment"># 创建一个新列表</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">64</span>]: print(a)         <span class="comment"># 可以看到a是列表</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]  </span><br><span class="line"></span><br><span class="line">In [<span class="number">65</span>]: i = iter(a)      <span class="comment"># 将其变为迭代器</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">67</span>]: print(i)         <span class="comment"># 可以看到i为迭代器</span></span><br><span class="line">&lt;list_iterator object at <span class="number">0x0000021BBCE00240</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>获取迭代器中的元素可以使用内置函数next()，但不经常使用，经常使用的是for循环：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">68</span>]: i</span><br><span class="line">Out[<span class="number">68</span>]: &lt;list_iterator at <span class="number">0x21bbce00240</span>&gt;</span><br><span class="line"></span><br><span class="line">In [<span class="number">70</span>]: <span class="keyword">for</span> p <span class="keyword">in</span> i:</span><br><span class="line">    ...:     print(p)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p>补充：对于列表、字符串、元组、字典等数据类型，在使用for循环时，在后台for语句对这些对象调用iter()函数，之后使用next()逐个访问每一个元素，直到遇到StopIteration异常，迭代结束。</p>
+<p>在Python中，可以使用 isinstance() 判断一个对象是否为可迭代对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">71</span>]: <span class="keyword">from</span> collections <span class="keyword">import</span> Iterable   <span class="comment"># 导入Iterable模块，之后会讲</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">72</span>]: isinstance([],Iterable)</span><br><span class="line">Out[<span class="number">72</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">73</span>]: isinstance((),Iterable)</span><br><span class="line">Out[<span class="number">73</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">74</span>]: isinstance(&#123;&#125;,Iterable)</span><br><span class="line">Out[<span class="number">74</span>]: <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">75</span>]: isinstance(<span class="string">''</span>,Iterable)</span><br><span class="line">Out[<span class="number">75</span>]: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="四、装饰器"><a href="#四、装饰器" class="headerlink" title="四、装饰器"></a>四、装饰器</h3><p>装饰器是什么呢？来举个例子就明白了：有一个长发飘飘的漂亮女明星，被邀出演尼姑，肯定不会把头发剃光了吧，怎么办呢，聪明的你一定想到戴个头套就行。是的，在Python中，长发飘飘的女明星就是源代码，头套就是装饰器。转时期的本质就是在不改变函数原有代码并且不改变原有函数的调用方式的基础上给函数加上新的功能，听起来很迷人，用起来一样有趣，让你的代码一下子就提高档次了。</p>
+<h4 id="过程No-1"><a href="#过程No-1" class="headerlink" title="过程No.1"></a>过程No.1</h4><p>现在有一个 tell_name() 函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'I am MinuteSheep'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>要求记录它的执行时间，对原有函数改写，这样来实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time    <span class="comment"># 引入time模块，这是一个时间模块，以后会讲到</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">()</span>:</span></span><br><span class="line">    start_time = time.time()  <span class="comment"># 获取现在的时间</span></span><br><span class="line">    print(<span class="string">'I am MinuteSheep'</span>)</span><br><span class="line">    time.sleep(<span class="number">2</span>)  <span class="comment"># 为了体现执行时间，让程序等两秒</span></span><br><span class="line">    end_time = time.time()  <span class="comment"># 获取现在的时间</span></span><br><span class="line">    print(<span class="string">'执行时间为：'</span>,end_time - start_time)</span><br><span class="line"></span><br><span class="line">tell_name()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">  I am MinuteSheep</span><br><span class="line">  执行时间为： <span class="number">2.001427173614502</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="过程No-2"><a href="#过程No-2" class="headerlink" title="过程No.2"></a>过程No.2</h4><p>现在又100个函数需要计算其执行时间，总不能改写100个函数的源代码吧，怎么办呢？还记的高阶函数吗，可以将函数当作变量传给函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time    <span class="comment"># 引入time模块，这是一个时间模块，以后会讲到</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'I am MinuteSheep'</span>)</span><br><span class="line">    time.sleep(<span class="number">2</span>)  <span class="comment"># 为了体现执行时间，让程序等两秒</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Time</span><span class="params">(func)</span>:</span>  <span class="comment"># 使用高阶函数</span></span><br><span class="line">    start_time = time.time()</span><br><span class="line">    func()</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    print(<span class="string">'执行时间为：'</span>, end_time - start_time)</span><br><span class="line"></span><br><span class="line">Time(tell_name)   <span class="comment"># 调用方式发生改变</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">  I am MinuteSheep</span><br><span class="line">  执行时间为： <span class="number">2.00026535987854</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码似乎实现了这个功能，也没有修改原函数的代码，但是却改变了它的调用方式，如果一个程序中有上百条调用，都要改的话还是很麻烦</p>
+<h4 id="过程No-3"><a href="#过程No-3" class="headerlink" title="过程No.3"></a>过程No.3</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time    <span class="comment"># 引入time模块，这是一个时间模块，以后会讲到</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'I am MinuteSheep'</span>)</span><br><span class="line">    time.sleep(<span class="number">2</span>)  <span class="comment"># 为了体现执行时间，让程序等两秒</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Time</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">()</span>:</span>    <span class="comment"># 使用函数的嵌套</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        func()</span><br><span class="line">        end_time = time.time()</span><br><span class="line">        print(<span class="string">'执行时间为：'</span>, end_time - start_time)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tell_name = Time(tell_name)   <span class="comment"># 相当于 tell_name = wrapper</span></span><br><span class="line">tell_name()                            <span class="comment"># 相当于执行 wrapper()</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码已经基本实现了这个功能，但是每次都要写两条调用语句才行，很烦</p>
+<h4 id="过程No-4"><a href="#过程No-4" class="headerlink" title="过程No.4"></a>过程No.4</h4><p>在Python中，为了克服上述问题，出现了一个叫做语法糖的语句，所以装饰器又叫做语法糖，在函数定义之前使用@语法糖可增加相应的功能</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time    <span class="comment"># 引入time模块，这是一个时间模块，以后会讲到</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Time</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">()</span>:</span>    <span class="comment"># 使用函数的嵌套</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        func()</span><br><span class="line">        end_time = time.time()</span><br><span class="line">        print(<span class="string">'执行时间为：'</span>, end_time - start_time)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Time   # 这就是装饰器，也叫语法糖</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'I am MinuteSheep'</span>)</span><br><span class="line">    time.sleep(<span class="number">2</span>)  <span class="comment"># 为了体现执行时间，让程序等两秒</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tell_name()  <span class="comment"># 相当于执行 wrapper()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">  I am MinuteSheep</span><br><span class="line">  执行时间为： <span class="number">2.000563621520996</span></span><br></pre></td></tr></table></figure>
+
+<p>上面代码实现了一个最简单的装饰器。</p>
+<h4 id="过程No-5"><a href="#过程No-5" class="headerlink" title="过程No.5"></a>过程No.5</h4><p>但是，又有新的问题出现了，如果被装饰函数有参数怎么办，这么办：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time    <span class="comment"># 引入time模块，这是一个时间模块，以后会讲到</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Time</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(name)</span>:</span>    <span class="comment"># 使用函数的嵌套</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        func(name)</span><br><span class="line">        end_time = time.time()</span><br><span class="line">        print(<span class="string">'执行时间为：'</span>, end_time - start_time)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Time</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">'I am'</span>,name)</span><br><span class="line">    time.sleep(<span class="number">2</span>)  <span class="comment"># 为了体现执行时间，让程序等两秒</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tell_name(<span class="string">'MS'</span>)  <span class="comment"># 相当于执行 wrapper('MS')</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">  I am MS</span><br><span class="line">  执行时间为： <span class="number">2.0003795623779297</span></span><br></pre></td></tr></table></figure>
+
+<p>看起来不错</p>
+<h4 id="过程No-6"><a href="#过程No-6" class="headerlink" title="过程No.6"></a>过程No.6</h4><p>上面代码实现了装饰有一个参数函数的功能，但是，装饰器被应用与不同的函数，谁能知道这个函数有没有参数，有几个参数，为了实现通用性，这么办：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time    <span class="comment"># 引入time模块，这是一个时间模块，以后会讲到</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Time</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args,**kwargs)</span>:</span>    <span class="comment"># 通过非固定参数实现各种参数的通用装饰器</span></span><br><span class="line">        start_time = time.time()</span><br><span class="line">        func(*args, **kwargs)</span><br><span class="line">        end_time = time.time()</span><br><span class="line">        print(<span class="string">'执行时间为：'</span>, end_time - start_time)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Time</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">'I am'</span>, name)</span><br><span class="line">    time.sleep(<span class="number">2</span>)  <span class="comment"># 为了体现执行时间，让程序等两秒</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Time</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    c = a + b</span><br><span class="line">    print(c)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tell_name(<span class="string">'MS'</span>)  </span><br><span class="line">add(<span class="number">5</span>, <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">  I am MS</span><br><span class="line">  执行时间为： <span class="number">2.00108003616333</span></span><br><span class="line">  <span class="number">11</span></span><br><span class="line">  执行时间为： <span class="number">0.0004711151123046875</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="过程No-7"><a href="#过程No-7" class="headerlink" title="过程No.7"></a>过程No.7</h4><p>上面的过程中装饰器没有参数，其实装饰器时可以带参数的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time    <span class="comment"># 引入time模块，这是一个时间模块，以后会讲到</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Time</span><span class="params">(num)</span>:</span>   <span class="comment"># 使用两层嵌套实现带参数的装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> num == <span class="number">1</span>:</span><br><span class="line">                start_time = time.time()</span><br><span class="line">                func(*args, **kwargs)</span><br><span class="line">                end_time = time.time()</span><br><span class="line">                print(<span class="string">'执行时间为：'</span>, end_time - start_time)</span><br><span class="line">            <span class="keyword">elif</span> num == <span class="number">0</span>:</span><br><span class="line">                func(args, **kwargs)</span><br><span class="line">                print(<span class="string">'不需要计算时间'</span>)</span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Time(num=1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">'I am'</span>, name)</span><br><span class="line">    time.sleep(<span class="number">2</span>)  <span class="comment"># 为了体现执行时间，让程序等两秒</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Time(num=0)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    c = a + b</span><br><span class="line">    print(c)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tell_name(<span class="string">'MS'</span>)</span><br><span class="line">add(<span class="number">5</span>, <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">  I am MS</span><br><span class="line">  执行时间为： <span class="number">2.0000314712524414</span></span><br><span class="line">  <span class="number">11</span></span><br><span class="line">  不需要计算时间</span><br></pre></td></tr></table></figure>
+
+<h4 id="过程No-8"><a href="#过程No-8" class="headerlink" title="过程No.8"></a>过程No.8</h4><p>一个函数可以使用多个装饰器，装饰器运行顺序从里到外：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@a</span></span><br><span class="line"><span class="meta">@b </span></span><br><span class="line"><span class="meta">@c  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 先运行c，再运行b，最后运行a</span></span><br></pre></td></tr></table></figure>
+
+<p>以上就是装饰器99%的功能，还有一种叫做类装饰器，等记录完Python面向对象的知识后再补充，拜拜~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Minute Sheep
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://minutesheep.github.io/2020/01/03/让代码变得Pythonic/" title="让代码变得Pythonic">https://minutesheep.github.io/2020/01/03/让代码变得Pythonic/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Python学习/" rel="tag"># Python学习</a>
+          
+            <a href="/tags/Python3/" rel="tag"># Python3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/31/Python函数/" rel="next" title=" Python函数">
+                <i class="fa fa-chevron-left"></i>  Python函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/03/Python模块/" rel="prev" title="Python模块">
+                Python模块 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Minute Sheep">
+            
+              <p class="site-author-name" itemprop="name">Minute Sheep</p>
+              <p class="site-description motion-element" itemprop="description">不忘初心，方得始终！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minutesheep" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:minutesheep@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#13-让代码变得Pythonic"><span class="nav-number">1.</span> <span class="nav-text">#13 让代码变得Pythonic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、列表生成式"><span class="nav-number">1.1.</span> <span class="nav-text">一、列表生成式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、生成器"><span class="nav-number">1.2.</span> <span class="nav-text">二、生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器表达式"><span class="nav-number">1.2.1.</span> <span class="nav-text">生成器表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">生成器函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、迭代器"><span class="nav-number">1.3.</span> <span class="nav-text">三、迭代器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、装饰器"><span class="nav-number">1.4.</span> <span class="nav-text">四、装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#过程No-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">过程No.1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程No-2"><span class="nav-number">1.4.2.</span> <span class="nav-text">过程No.2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程No-3"><span class="nav-number">1.4.3.</span> <span class="nav-text">过程No.3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程No-4"><span class="nav-number">1.4.4.</span> <span class="nav-text">过程No.4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程No-5"><span class="nav-number">1.4.5.</span> <span class="nav-text">过程No.5</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程No-6"><span class="nav-number">1.4.6.</span> <span class="nav-text">过程No.6</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程No-7"><span class="nav-number">1.4.7.</span> <span class="nav-text">过程No.7</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#过程No-8"><span class="nav-number">1.4.8.</span> <span class="nav-text">过程No.8</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minute Sheep</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">125.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz',
+        appKey: 'GYxLGdpsNWNARbafoQDJAa0j',
+        placeholder: 'Wonderful writing, supports a wave👍',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz", "GYxLGdpsNWNARbafoQDJAa0j");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

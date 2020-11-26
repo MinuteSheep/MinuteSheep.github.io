@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Python,Python学习,Python3,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#1 初识Python要说现在最时髦的编程语言是什么，那么一定是Python无疑了。让我们来一起来领略其风采吧！">
+<meta name="keywords" content="Python,Python学习,Python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识Python">
+<meta property="og:url" content="https://minutesheep.github.io/2019/10/25/初识Python/index.html">
+<meta property="og:site_name" content="T N T">
+<meta property="og:description" content="#1 初识Python要说现在最时髦的编程语言是什么，那么一定是Python无疑了。让我们来一起来领略其风采吧！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://minutesheep.github.io/2019/10/25/初识Python/top.png">
+<meta property="og:updated_time" content="2020-11-26T14:22:23.943Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识Python">
+<meta name="twitter:description" content="#1 初识Python要说现在最时髦的编程语言是什么，那么一定是Python无疑了。让我们来一起来领略其风采吧！">
+<meta name="twitter:image" content="https://minutesheep.github.io/2019/10/25/初识Python/top.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://minutesheep.github.io/2019/10/25/初识Python/">
+
+
+
+
+
+  <title>初识Python | T N T</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">T N T</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">美食博主</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-history"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2019/10/25/初识Python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minute Sheep">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T N T">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初识Python</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-25T00:12:36+08:00">
+                2019-10-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-26T22:22:23+08:00">
+                2020-11-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/25/初识Python/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/10/25/初识Python/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/25/初识Python/" class="leancloud_visitors" data-flag-title="初识Python">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-初识Python"><a href="#1-初识Python" class="headerlink" title="#1 初识Python"></a>#1 初识Python</h2><p>要说现在最时髦的编程语言是什么，那么一定是Python无疑了。让我们来一起来领略其风采吧！</p>
+<a id="more"></a>
+
+<h3 id="一、Python介绍"><a href="#一、Python介绍" class="headerlink" title="一、Python介绍"></a>一、Python介绍</h3><p>Python的创始人为吉多·范罗苏姆（Guido van Rossum），被大家称为“龟叔”，他在1989年圣诞节期间，为了在阿姆斯特丹打发时间，决定编写一门新的编程语言，作为ABC语言的继承。<em>（看看人家，再看看自己，哎，不说了，心痛）</em></p>
+<p>如果你听说过TIOBE排行榜，那么你就能得到编程语言的大致流行程度，根据最新的TIOBE排行榜，Python赶超C++占据第三，仅次于Java和C，可见Python的流行程度。</p>
+<p><img src="top.png" alt></p>
+<h3 id="二、Python擅长领域"><a href="#二、Python擅长领域" class="headerlink" title="二、Python擅长领域"></a>二、Python擅长领域</h3><p>Python可应用于众多领域，最为擅长的有Web应用开发，自动化运维，网络爬虫，数据分析，科学计算，人工智能，同时Python是一门胶水语言。</p>
+<h4 id="Web应用开发："><a href="#Web应用开发：" class="headerlink" title="Web应用开发："></a><strong>Web应用开发：</strong></h4><p>在大数据、人工智能为人所熟知之前，Python就已经在Web开发领域被广泛应用，产生了Flask、Django、Tornado等Web开发框架，众多大型网站均为Python开发：</p>
+<ul>
+<li>YouTube</li>
+<li>Quora</li>
+<li>Reddit</li>
+<li>Instagram</li>
+<li>Facebook</li>
+<li>Dropbox</li>
+<li>Google</li>
+<li>NASA</li>
+<li>BT</li>
+<li>豆瓣</li>
+<li>知乎
+当然Python不仅应用于网站，很多APP和游戏的服务器也同样使用Python实现</li>
+</ul>
+<h4 id="自动化运维："><a href="#自动化运维：" class="headerlink" title="自动化运维："></a>自动化运维：</h4><p>在自动化运维领域，Python是必须要掌握的技能，因其灵活的功能和丰富的类库使其成为运维工程师的首选语言。Linux系统内置Python，就足以见其在运维领域的地位。</p>
+<h4 id="网络爬虫："><a href="#网络爬虫：" class="headerlink" title="网络爬虫："></a>网络爬虫：</h4><p>网络爬虫可能是萌新学习Python时最感兴趣的，爬虫可以将网站上的任何内容爬取下来，供自己分析使用。对于数据公司来说，爬虫和反爬虫技术都是其赖以生存的重要保障，尽管很多语言都可以写爬虫，但Python绝对是首选，其灵活的爬取能力和丰富的类库，使得爬虫工程师工作起来的心应手。世界上最大的爬虫公司莫属Google了，Google一直在力推Python，就连Python创始人“龟叔”也在Google工作七年，可见Python的爬虫能力有多强。</p>
+<h4 id="数据分析："><a href="#数据分析：" class="headerlink" title="数据分析："></a>数据分析：</h4><p>使用爬虫爬取海量数据之后，就要对数据进行清洗、展示、分析、存储，这方面Python做的也是很棒的，拥有极其丰富的类库可供使用，让数据分析事半功倍。</p>
+<h4 id="科学计算："><a href="#科学计算：" class="headerlink" title="科学计算："></a>科学计算：</h4><p>要说科学计算，大家第一想到的恐怕就是Matlab了，的确，Matlab在科学计算领域有着不可取代的地位，但是Python的出现，可能要取代Matlab成为科学计算的领头羊。Python在科学计算方面拥有极为丰富的类库，这些类库在数学、物理、生物、地理、化学、建筑、武器等领域发挥着重要作用。NASA也早已把Python作为主要的开发语言，可见Python在科学计算领域的优势与i前途。</p>
+<h4 id="人工智能："><a href="#人工智能：" class="headerlink" title="人工智能："></a>人工智能：</h4><p>要说现在最火的方向是什么，绝对是AI没错了，AI最重要的无非不过机器学习、神经网络、深度学习等方面，而Python在数据挖掘、机器学习、神经网络、深度学习等方面都是主流的编程语言，现在Python无疑已成为AI领域的必修语言。</p>
+<h4 id="胶水语言："><a href="#胶水语言：" class="headerlink" title="胶水语言："></a>胶水语言：</h4><p>对于Python萌新来说，最担心的可能就是Python会不会和我之前学过的语言有冲突，这一点无需担心。Python简洁、灵活、通用，几乎可以和任何语言、设备、平台、场景连接，因此被称为胶水语言。</p>
+<p>除了上面提到的领域以外，Python在其它领域也发挥着不可磨灭的作用，金融离不开Python、游戏离不开Python、桌面应用离不开Python，总之一句话概括就:</p>
+<p><font size="9"><strong>人生苦短，我用Python</strong></font></p>
+<h3 id="三、Python缺点"><a href="#三、Python缺点" class="headerlink" title="三、Python缺点"></a>三、Python缺点</h3><p>Python有着上面众多优点，并且每一个优点看起来都是那么的诱人，这也是Python流行的主要原因。但是任何一门编程语言都有缺点，Python也不例外，Python的缺点主要有以下几个：</p>
+<ul>
+<li><strong>Python的运行速度慢</strong>：这是Python的主要缺点，和c相比非常慢，因为Python是解释型语言，代码在执行时会一行一行的翻译成机器码，这个过程非常耗时。但这并不是一个很严重的问题，一般情况下，我们不会那Python和C/C++去比较，因为用户根本感觉不到这个时间，执行一个C/C++程序可能需要2.001秒，执行一个同样的Python程序需要2.1秒，用户能感觉到2.001秒和2.1秒的区别吗？显然不能。如果Python的运行速度确实影响到了你，那么你可以将Python和C结合使用，将占用运行速度的那一块代码用C编写，以提高整体效率。</li>
+<li><strong>PythonGIL锁限制并发</strong>：Python的另一个大问题就是对多处理器支持不太好。GIL（Global Interpreter Lock）指全局解释器锁，当Python的默认解释器要执行时，都需要先去申请这个锁，这意味着试图通多多线程扩展应用程序时，总是被这个锁限制。如果用户需要多并发，可以使用多进程的架构来实现，也可以选择不同的Python来实现多并发。</li>
+<li><strong>Python版本不兼容</strong>：几乎所有的软件更新迭代时，总会向后兼容，比如word2016可以打开word2013的文件，如果不能做到向后兼容的话，很大概率会被用户无情的抛弃。但是在Python中，一个很大的吐槽点就是Python3和Python2不能互相兼容，大量的Python工程师都为此头疼。萌新肯定有这样的疑问，学习Python2还是Python3，这里我的建议是学习Python3，Python2已经宣布只会维护到2020年，而且大量的类库已经不支持Python2了，同时官方建议学习Python3.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Minute Sheep
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://minutesheep.github.io/2019/10/25/初识Python/" title="初识Python">https://minutesheep.github.io/2019/10/25/初识Python/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Python学习/" rel="tag"># Python学习</a>
+          
+            <a href="/tags/Python3/" rel="tag"># Python3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/24/meng_huitou/" rel="next" title="猛回头">
+                <i class="fa fa-chevron-left"></i> 猛回头
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/27/安装Python/" rel="prev" title="安装Python">
+                安装Python <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Minute Sheep">
+            
+              <p class="site-author-name" itemprop="name">Minute Sheep</p>
+              <p class="site-description motion-element" itemprop="description">不忘初心，方得始终！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minutesheep" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:minutesheep@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-初识Python"><span class="nav-number">1.</span> <span class="nav-text">#1 初识Python</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Python介绍"><span class="nav-number">1.1.</span> <span class="nav-text">一、Python介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Python擅长领域"><span class="nav-number">1.2.</span> <span class="nav-text">二、Python擅长领域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Web应用开发："><span class="nav-number">1.2.1.</span> <span class="nav-text">Web应用开发：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动化运维："><span class="nav-number">1.2.2.</span> <span class="nav-text">自动化运维：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络爬虫："><span class="nav-number">1.2.3.</span> <span class="nav-text">网络爬虫：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据分析："><span class="nav-number">1.2.4.</span> <span class="nav-text">数据分析：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#科学计算："><span class="nav-number">1.2.5.</span> <span class="nav-text">科学计算：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#人工智能："><span class="nav-number">1.2.6.</span> <span class="nav-text">人工智能：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#胶水语言："><span class="nav-number">1.2.7.</span> <span class="nav-text">胶水语言：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Python缺点"><span class="nav-number">1.3.</span> <span class="nav-text">三、Python缺点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minute Sheep</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">125.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz',
+        appKey: 'GYxLGdpsNWNARbafoQDJAa0j',
+        placeholder: 'Wonderful writing, supports a wave👍',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz", "GYxLGdpsNWNARbafoQDJAa0j");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

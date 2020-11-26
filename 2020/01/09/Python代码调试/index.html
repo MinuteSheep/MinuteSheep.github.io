@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Python,Python学习,Python3,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#7 Python代码调试Python已经学了这么久了，你现在已经长大了，该学会自己调试代码了！相信大家在编写程序过程中会遇到大量的错误信息，我也不例外的啦～遇到这些问题该怎么解决呢？使用最多的方法就是使用print打印中间变量了哇，关于这种方法怎么说呢～low！！！这一节将记录Python中一项很重要的技能：Debug（代码调试），Here We Go！">
+<meta name="keywords" content="Python,Python学习,Python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python代码调试">
+<meta property="og:url" content="https://minutesheep.github.io/2020/01/09/Python代码调试/index.html">
+<meta property="og:site_name" content="T N T">
+<meta property="og:description" content="#7 Python代码调试Python已经学了这么久了，你现在已经长大了，该学会自己调试代码了！相信大家在编写程序过程中会遇到大量的错误信息，我也不例外的啦～遇到这些问题该怎么解决呢？使用最多的方法就是使用print打印中间变量了哇，关于这种方法怎么说呢～low！！！这一节将记录Python中一项很重要的技能：Debug（代码调试），Here We Go！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/n0.png">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/n1.png">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/n2.png">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/p0.png">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/!0.png">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/l0.png">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/s0.png">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/s1.png">
+<meta property="og:updated_time" content="2020-11-26T14:22:23.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python代码调试">
+<meta name="twitter:description" content="#7 Python代码调试Python已经学了这么久了，你现在已经长大了，该学会自己调试代码了！相信大家在编写程序过程中会遇到大量的错误信息，我也不例外的啦～遇到这些问题该怎么解决呢？使用最多的方法就是使用print打印中间变量了哇，关于这种方法怎么说呢～low！！！这一节将记录Python中一项很重要的技能：Debug（代码调试），Here We Go！">
+<meta name="twitter:image" content="https://minutesheep.github.io/2020/01/09/Python代码调试/n0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://minutesheep.github.io/2020/01/09/Python代码调试/">
+
+
+
+
+
+  <title>Python代码调试 | T N T</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">T N T</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">美食博主</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-history"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2020/01/09/Python代码调试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minute Sheep">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T N T">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python代码调试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-09T16:47:19+08:00">
+                2020-01-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-26T22:22:23+08:00">
+                2020-11-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Python进阶</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/01/09/Python代码调试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/09/Python代码调试/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/01/09/Python代码调试/" class="leancloud_visitors" data-flag-title="Python代码调试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  3.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="7-Python代码调试"><a href="#7-Python代码调试" class="headerlink" title="#7 Python代码调试"></a>#7 Python代码调试</h2><p>Python已经学了这么久了，你现在已经长大了，该学会自己调试代码了！相信大家在编写程序过程中会遇到大量的错误信息，我也不例外的啦～遇到这些问题该怎么解决呢？使用最多的方法就是使用print打印中间变量了哇，关于这种方法怎么说呢～low！！！这一节将记录Python中一项很重要的技能：Debug（代码调试），Here We Go！</p>
+<a id="more"></a>
+
+<h3 id="一、代码调试概述"><a href="#一、代码调试概述" class="headerlink" title="一、代码调试概述"></a>一、代码调试概述</h3><p>一个程序员在编写项目的时候，敲代码其实并不会占用太多的时间，占用时间的其实是敲代码之前（整个项目的思路和框架）和敲代码之后（调试代码）。调试代码这个过程是最让人烦心的事情了，真的是烦到脱发～于是有一项过硬的Debug技巧将会减缓掉头发的速度。Debug的方法有很多，最常用的就是：打印中间变量（print）、使用日志模块（logging）、使用代码调试模块（pdb或ipdb）。接下来将会一一讲解</p>
+<h3 id="二、Debug方法一：print函数"><a href="#二、Debug方法一：print函数" class="headerlink" title="二、Debug方法一：print函数"></a>二、Debug方法一：print函数</h3><h4 id="print方法适用情景"><a href="#print方法适用情景" class="headerlink" title="print方法适用情景"></a>print方法适用情景</h4><p>在程序报错或者结果与预期不符合时，在源代码中直接使用print函数打印中间变量进行检查。</p>
+<h4 id="print方法例子"><a href="#print方法例子" class="headerlink" title="print方法例子"></a>print方法例子</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">从下列段落中提取出所有数字，并输出</span></span><br><span class="line"><span class="string">本例结果应该是：49737</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = <span class="string">''' JAKARTA, Indonesia—Flag carrier Garuda Indonesia said it is seeking to cancel an order for 49 Boeing Co. 737 MAX jets, saying passengers have lost confidence in the aircraft following two deadly crashes in recent months.  '''</span></span><br><span class="line"></span><br><span class="line">pattern = re.compile(<span class="string">'\d'</span>)</span><br><span class="line"></span><br><span class="line">result = re.findall(pattern, test)</span><br><span class="line"></span><br><span class="line">print(result[<span class="number">0</span>] + result[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line"><span class="number">49</span></span><br></pre></td></tr></table></figure>
+
+<p>题目要求输出49737，但是自己的程序却只输出了49，这是怎么回事呢？</p>
+<p>那就使用print打印一下result这个变量的内容哇，于是，在第13行代码中加入 <code>print(result)</code> ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">从下列段落中提取出所有数字，并输出</span></span><br><span class="line"><span class="string">本例结果应该是：49737</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = <span class="string">''' JAKARTA, Indonesia—Flag carrier Garuda Indonesia said it is seeking to cancel an order for 49 Boeing Co. 737 MAX jets, saying passengers have lost confidence in the aircraft following two deadly crashes in recent months.  '''</span></span><br><span class="line"></span><br><span class="line">pattern = re.compile(<span class="string">'\d'</span>)</span><br><span class="line"></span><br><span class="line">result = re.findall(pattern, test)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line">print(result[<span class="number">0</span>] + result[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">[<span class="string">'4'</span>, <span class="string">'9'</span>, <span class="string">'7'</span>, <span class="string">'3'</span>, <span class="string">'7'</span>]</span><br><span class="line"><span class="number">49</span></span><br></pre></td></tr></table></figure>
+
+<p>这时就会发现原来是result变量有误，预期result效果为[‘49’, ‘737’]</p>
+<p>于是回过头去检查pattern，发现是pattern的锅，应将pattern改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pattern = re.compile(<span class="string">'\d+'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>于是整个程序变为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">从下列段落中提取出所有数字，并输出</span></span><br><span class="line"><span class="string">本例结果应该是：49737</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = <span class="string">''' JAKARTA, Indonesia—Flag carrier Garuda Indonesia said it is seeking to cancel an order for 49 Boeing Co. 737 MAX jets, saying passengers have lost confidence in the aircraft following two deadly crashes in recent months.  '''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pattern = re.compile('\d')</span></span><br><span class="line">pattern = re.compile(<span class="string">'\d+'</span>)</span><br><span class="line"></span><br><span class="line">result = re.findall(pattern, test)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line">print(result[<span class="number">0</span>] + result[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">[<span class="string">'49'</span>, <span class="string">'737'</span>]</span><br><span class="line"><span class="number">49737</span></span><br></pre></td></tr></table></figure>
+
+<p>结果与预期一样，最后再将 <code>print(result)</code> 这一行删除，整个程序就完工了。</p>
+<h4 id="print方法优缺点"><a href="#print方法优缺点" class="headerlink" title="print方法优缺点"></a>print方法优缺点</h4><p>优点：</p>
+<ul>
+<li><p>理解和操作方便简单，上手难度低</p>
+</li>
+<li><p>在编写程序中可以一步一步检查中间变量是否符合预期
+缺点：</p>
+</li>
+<li><p>直接入侵源代码，如果操作失误可能会造成不可挽救的后果</p>
+</li>
+<li><p>调试完成后需要将这些print行删除掉或者注释掉，否则会造成整个程序运行结果复杂，同时太多print函数的出现会严重拖慢运行速度</p>
+</li>
+</ul>
+<h3 id="三、Debug方法二：logging模块"><a href="#三、Debug方法二：logging模块" class="headerlink" title="三、Debug方法二：logging模块"></a>三、Debug方法二：logging模块</h3><h4 id="日志概述"><a href="#日志概述" class="headerlink" title="日志概述"></a>日志概述</h4><p>日志是个什么鬼呢？感觉好像日记的样子哎～日志其实和日记是有很大差别的，日志是用来追踪程序运行过程中发生的事情，将这些事情按照一定的格式写入特定的文件中，以后可以通过分析日志，让管理者更加方便地了解整个程序的的运行情况，尤其是了解到程序的健康状态（优秀的日志分析者甚至可以通过日志分析出开发者的操作习惯和兴趣爱好），最后根据这些结果为程序打上合适的补丁。</p>
+<h4 id="日志作用"><a href="#日志作用" class="headerlink" title="日志作用"></a>日志作用</h4><ul>
+<li>代码调试</li>
+<li>记录程序的运行状况</li>
+<li>为程序打补丁提供支撑</li>
+</ul>
+<h4 id="日志等级"><a href="#日志等级" class="headerlink" title="日志等级"></a>日志等级</h4><p>在讲Python日志方法之前，先来了解一下日志中最重要的等级制度：</p>
+<p><strong>通常日志分为5个等级：DEBUG, INFO, WARNING, ERROR, CRITICAL</strong></p>
+<p>日常编程过程中应该见过WARNING和ERROR吧，一个是警告，一个是错误</p>
+<p>从这些单词的英文释义就可以知道每个等级的权重了，DEBUG等级最小，CRITICAL等级最大</p>
+<p>还有更详细的等级分法：DEBUG, INFO, NOTICE, WARNING, ERROR, CRITICAL, ALERT, EMERGENCY</p>
+<h4 id="logging模块简介"><a href="#logging模块简介" class="headerlink" title="logging模块简介"></a>logging模块简介</h4><p>Python中用来记录日志的模块为：logging，这是一个内置标准库</p>
+<p>logging模块的日志等级有5个：DEBUG, INFO, WARNING, ERROR, CRITICAL，另外，logging模块支持用户自定义其他等级，但这并不推荐，因为自定义的等级通常会造成等级混乱，极其容易和他人开发的程序冲突。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">日志等级                                等级说明</span><br><span class="line">DEBUG                       详细信息，通常仅在诊断问题时才有意义</span><br><span class="line">INFO                        详细程度仅次于DEBUG,确认事情按预期工作。</span><br><span class="line">WARNING                     表示发生了意外情况，或表明在不久的将来出现了一些问题,但该软件仍在按预期工作。</span><br><span class="line">ERROR                       由于更严重的问题，该软件无法执行某些功能。</span><br><span class="line">CRITICAL                    严重错误，表明程序本身可能无法继续运行。</span><br></pre></td></tr></table></figure>
+
+<h4 id="logging模块使用方法"><a href="#logging模块使用方法" class="headerlink" title="logging模块使用方法"></a>logging模块使用方法</h4><h5 id="日志基本使用方法"><a href="#日志基本使用方法" class="headerlink" title="日志基本使用方法"></a>日志基本使用方法</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line">logging.debug(<span class="string">'My level is debug'</span>)</span><br><span class="line">logging.info(<span class="string">'My level is info'</span>)</span><br><span class="line">logging.warning(<span class="string">'My level is warning'</span>)</span><br><span class="line">logging.error(<span class="string">'My level is error'</span>)</span><br><span class="line">logging.critical(<span class="string">'My level is critical'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>上述代码就是5种不同级别日志的使用方法，运行一下看看结果如何：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">WARNING:root:My level <span class="keyword">is</span> warning</span><br><span class="line">ERROR:root:My level <span class="keyword">is</span> error</span><br><span class="line">CRITICAL:root:My level <span class="keyword">is</span> critical</span><br></pre></td></tr></table></figure>
+
+<p>这时一定在疑惑，明明是五个等级啊，怎么只输出了后三个等级的内容</p>
+<p>logging模块虽然有5的等级，但是他的默认最小等级是WARNING，也就是说，logging模块会自动忽略WARNING以下的等级，那怎么才能输出5个等级的内容呢？</p>
+<p>需要在所有输出语句之前配置日志，看例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line">logging.basicConfig(level=logging.DEBUG)   <span class="comment"># 配置日志</span></span><br><span class="line"></span><br><span class="line">logging.debug(<span class="string">'My level is debug'</span>)</span><br><span class="line">logging.info(<span class="string">'My level is info'</span>)</span><br><span class="line">logging.warning(<span class="string">'My level is warning'</span>)</span><br><span class="line">logging.error(<span class="string">'My level is error'</span>)</span><br><span class="line">logging.critical(<span class="string">'My level is critical'</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行结果：</span></span><br><span class="line">DEBUG:root:My level <span class="keyword">is</span> debug</span><br><span class="line">INFO:root:My level <span class="keyword">is</span> info</span><br><span class="line">WARNING:root:My level <span class="keyword">is</span> warning</span><br><span class="line">ERROR:root:My level <span class="keyword">is</span> error</span><br><span class="line">CRITICAL:root:My level <span class="keyword">is</span> critical</span><br></pre></td></tr></table></figure>
+
+<p>那么问题来了， <code>logging.basicConfig</code> 是个什么鬼呢？这个其实就是日志的配置函数，可以配置日志等级、日志输出文件、日志文件的打开模式（默认是追加）、日志格式、日期格式等，这些选项对应的参数分别为：level、filename 、filemode、format、datefmt，举个例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line">logging.basicConfig(level=logging.DEBUG, filename=<span class="string">'test.log'</span>)</span><br><span class="line"></span><br><span class="line">logging.debug(<span class="string">'My level is debug'</span>)</span><br><span class="line">logging.warning(<span class="string">'My level is warning'</span>)</span><br><span class="line">logging.error(<span class="string">'My level is error'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行之后会发现屏幕并没有日志信息，而是在当前目录下生成一个文件名为‘test.log’的日志文件，打开看一下这个文件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DEBUG:root:My level <span class="keyword">is</span> debug</span><br><span class="line">WARNING:root:My level <span class="keyword">is</span> warning</span><br><span class="line">ERROR:root:My level <span class="keyword">is</span> error</span><br></pre></td></tr></table></figure>
+
+<p>可以看到已经将日志写入到指定文件了，这样就可以将日志保存下来供以后分析利用了。</p>
+<p>有的小伙伴会说，自己能不能修改日志的输出格式呢？比如想要加入时间，完全没有问题，这就要使用format参数了，关于format参数的使用，在下面罗列了一张表格供大家参考：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">使用格式                             概述</span><br><span class="line">%(asctime)s                    日志发生时间</span><br><span class="line">%(created)f                    日志发生时间戳</span><br><span class="line">%(relativeCreated)d            日志发生时间相对于logging模块加载时间的相对毫秒</span><br><span class="line">%(msecs)d                      日志发生时间的毫秒部分</span><br><span class="line">%(levelname)s                  日志发生的文字等级（debug、info、warning、error、critical）</span><br><span class="line">%(levelno)s                    日志发生的数字等级（<span class="number">10</span>、<span class="number">20</span>、<span class="number">30</span>、<span class="number">40</span>、<span class="number">50</span>）</span><br><span class="line">%(name)s                       日志记录器名称（默认是root）</span><br><span class="line">%(message)s                    日志文本内容</span><br><span class="line">%(pathname)s                   调用日志的源代码的绝对路径</span><br><span class="line">%(filename)s                   pathname的文件名部分，包括后缀名</span><br><span class="line">%(module)s                     filename的文件名部分，不包含后缀名</span><br><span class="line">%(lineno)d                     调用日志的源代码的行数</span><br><span class="line">%(funcName)s                   调用日志的函数名</span><br><span class="line">%(process)d                    进程号</span><br><span class="line">%(prscessName)s                进程名</span><br><span class="line">%(thread)d                     线程号</span><br><span class="line">%(thread)s                     线程名</span><br></pre></td></tr></table></figure>
+
+<p>举个例子： </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"></span><br><span class="line">LOG_FORMAT = <span class="string">'%(asctime)s - %(levelname)s - %(name)s - %(message)s'</span></span><br><span class="line">logging.basicConfig(level=logging.DEBUG, filename=<span class="string">'test.log'</span>, format = LOG_FORMAT)</span><br><span class="line"></span><br><span class="line">logging.debug(<span class="string">'My level is debug'</span>)</span><br><span class="line">logging.warning(<span class="string">'My level is warning'</span>)</span><br><span class="line">logging.error(<span class="string">'My level is error'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>查看‘test.log’：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DEBUG:root:My level is debug</span><br><span class="line">WARNING:root:My level is warning</span><br><span class="line">ERROR:root:My level is error</span><br><span class="line">2019-03-24 10:52:46,093 - DEBUG - root - My level is debug</span><br><span class="line">2019-03-24 10:52:46,094 - WARNING - root - My level is warning</span><br><span class="line">2019-03-24 10:52:46,094 - ERROR - root - My level is error</span><br></pre></td></tr></table></figure>
+
+<p>可以看到日志输出格式明显发生了改变</p>
+<p><font color="red">注意：打开文件模式默认为追加</font></p>
+<p>如果想要改变时间的输出格式，需要使用datefmt参数，要注意datefmt参数要在format参数里有时间的前提下才会生效，这里就不在举例了，关于时间的格式可以参考time模块时的讲解</p>
+<h5 id="日志高级使用方法"><a href="#日志高级使用方法" class="headerlink" title="日志高级使用方法"></a>日志高级使用方法</h5><p>以后再介绍哇，基本的使用方法已经可以满足使用了，高级使用方法比较复杂，以后再更新</p>
+<h3 id="四、Debug方法三：pdb模块和ipdb模块"><a href="#四、Debug方法三：pdb模块和ipdb模块" class="headerlink" title="四、Debug方法三：pdb模块和ipdb模块"></a>四、Debug方法三：pdb模块和ipdb模块</h3><h4 id="pdb和ipdb概述"><a href="#pdb和ipdb概述" class="headerlink" title="pdb和ipdb概述"></a>pdb和ipdb概述</h4><p>pdb是Python内置的Debug模块，但是其功能不够强大，于是便有了第三方模块ipdb的出现；它们两个的关系就好像python和ipython的关系。</p>
+<p>ipdb调试代码是比print函数更加高级和灵活的方式，应当熟练应用ipdb的使用方式，并且取代print这种low方法🐔🚄</p>
+<p>ipdb不需要入侵源代码，可以按步执行，可以打断点，可以在程序运行时查看变量值，可以在程序运行时修改变量值，盘它！</p>
+<h4 id="ipdb安装"><a href="#ipdb安装" class="headerlink" title="ipdb安装"></a>ipdb安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install ipdb</span><br></pre></td></tr></table></figure>
+
+<h4 id="ipdb的使用"><a href="#ipdb的使用" class="headerlink" title="ipdb的使用"></a>ipdb的使用</h4><p>学习ipdb，心中要有一张表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">命令                       说明</span><br><span class="line">next或n                   执行下一行</span><br><span class="line">exit或q                   终止程序并退出</span><br><span class="line">p或pp                     打印变量</span><br><span class="line">!                         修改变量</span><br><span class="line">list或l                   查看当前程序代码</span><br><span class="line">break或b                  设置断点</span><br><span class="line">continue或c               继续执行程序直到遇到断点</span><br><span class="line">step或s                   进入函数</span><br><span class="line">return或r                 在函数中使用，执行代码直到遇到断点或者函数结束</span><br><span class="line">help                      帮助</span><br></pre></td></tr></table></figure>
+
+<p>使用ipdb时，可以在代码内部提前导入ipdb模块，但这通常是不现实的；通常采取的方法是这样的，在命令行输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m ipdb xxx.py</span><br></pre></td></tr></table></figure>
+
+<p>输入以上命令后，便会进入ipdb的debug交互模式，接下来开始举例（多图警告）： </p>
+<p><strong>案例代码：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># This is a test for ipdb</span></span><br><span class="line"><span class="comment"># Author: MinuteSheep&lt;minutesheep@163.com&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_p_time</span><span class="params">()</span>:</span></span><br><span class="line">    present_time = time.asctime()</span><br><span class="line">    <span class="keyword">return</span> present_time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = <span class="number">123</span></span><br><span class="line">b = <span class="number">456</span></span><br><span class="line"></span><br><span class="line">c = a + b</span><br><span class="line"></span><br><span class="line">print(c)</span><br><span class="line"></span><br><span class="line">present_time = get_p_time()</span><br><span class="line"></span><br><span class="line">print(present_time)</span><br></pre></td></tr></table></figure>
+
+<p><strong>案例1: 使用n</strong>
+在命令输入 <code>python -m ipdb 4.py</code> 后，会出现如下交互模式： </p>
+<p><img src="n0.png" alt></p>
+<p>聪明的你已经发现代码一进入就执行到了第4行，其实这也很好理解，前面3行都是注释嘛，对代码的执行并没有实际作用，ipdb遇到注释语句会自动跳过的</p>
+<p>接下来输入一个n，让那个代码继续执行一行： </p>
+<p><img src="n1.png" alt></p>
+<p>可以看到返回的结果在动态的运行，多输入几次看看效果哇： </p>
+<p><img src="n2.png" alt></p>
+<p>执行多次n后，程序按照预计的顺序执行</p>
+<p>注意：执行到18行遇到print(c)，但是并没有立即返回结果，那是因为箭头位置是指将要执行这一行了，本次并不会执行，所有下一步才输出c的值579</p>
+<p>注意：程序执行到第8行代码时，遇到定义函数，这时在执行下一行时，代码会跳过函数部分，直接来到13行</p>
+<p><strong>案例2: 使用exit或q</strong></p>
+<p>输入exit或q便会直接退出🙈</p>
+<p><strong>案例3: p或pp</strong></p>
+<p><img src="p0.png" alt></p>
+<p>上面图片中可以看到使用p或pp打印变量的值</p>
+<p><strong>案例4: 使用!</strong></p>
+<p><img src="!0.png" alt></p>
+<p>由上图可知：想要修改变量需要在变量前面加一个!</p>
+<p><strong>案例5: 使用list或l</strong></p>
+<p><img src="l0.png" alt></p>
+<p>当你调试代码过程中忘记了程序执行到哪里了的时候，可以使用l来查看一下，效果如上图</p>
+<p><strong>案例6: 使用step或s</strong></p>
+<p><img src="s0.png" alt></p>
+<p>当遇到执行函数时，默认会在后台执行完函数并且指向下一行代码，但是按照我们的思维，当遇到执行函数时，需要返回头去看看函数时怎么运行的，想要看看代码在函数中时如何一步一步运行的，使用s即可： </p>
+<p><img src="s1.png" alt></p>
+<p>ipdb基本使用方法就这些，还有一点关于断点的使用，下次补充更新🙉</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Minute Sheep
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://minutesheep.github.io/2020/01/09/Python代码调试/" title="Python代码调试">https://minutesheep.github.io/2020/01/09/Python代码调试/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Python学习/" rel="tag"># Python学习</a>
+          
+            <a href="/tags/Python3/" rel="tag"># Python3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/08/ipdb模块源代码解读/" rel="next" title="ipdb模块源代码解读">
+                <i class="fa fa-chevron-left"></i> ipdb模块源代码解读
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/12/1-Git前生今世/" rel="prev" title="#1 Git前生今世">
+                #1 Git前生今世 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Minute Sheep">
+            
+              <p class="site-author-name" itemprop="name">Minute Sheep</p>
+              <p class="site-description motion-element" itemprop="description">不忘初心，方得始终！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minutesheep" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:minutesheep@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Python代码调试"><span class="nav-number">1.</span> <span class="nav-text">#7 Python代码调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、代码调试概述"><span class="nav-number">1.1.</span> <span class="nav-text">一、代码调试概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Debug方法一：print函数"><span class="nav-number">1.2.</span> <span class="nav-text">二、Debug方法一：print函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#print方法适用情景"><span class="nav-number">1.2.1.</span> <span class="nav-text">print方法适用情景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#print方法例子"><span class="nav-number">1.2.2.</span> <span class="nav-text">print方法例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#print方法优缺点"><span class="nav-number">1.2.3.</span> <span class="nav-text">print方法优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Debug方法二：logging模块"><span class="nav-number">1.3.</span> <span class="nav-text">三、Debug方法二：logging模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#日志概述"><span class="nav-number">1.3.1.</span> <span class="nav-text">日志概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志作用"><span class="nav-number">1.3.2.</span> <span class="nav-text">日志作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志等级"><span class="nav-number">1.3.3.</span> <span class="nav-text">日志等级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#logging模块简介"><span class="nav-number">1.3.4.</span> <span class="nav-text">logging模块简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#logging模块使用方法"><span class="nav-number">1.3.5.</span> <span class="nav-text">logging模块使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#日志基本使用方法"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">日志基本使用方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日志高级使用方法"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">日志高级使用方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Debug方法三：pdb模块和ipdb模块"><span class="nav-number">1.4.</span> <span class="nav-text">四、Debug方法三：pdb模块和ipdb模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pdb和ipdb概述"><span class="nav-number">1.4.1.</span> <span class="nav-text">pdb和ipdb概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ipdb安装"><span class="nav-number">1.4.2.</span> <span class="nav-text">ipdb安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ipdb的使用"><span class="nav-number">1.4.3.</span> <span class="nav-text">ipdb的使用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minute Sheep</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">125.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz',
+        appKey: 'GYxLGdpsNWNARbafoQDJAa0j',
+        placeholder: 'Wonderful writing, supports a wave👍',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz", "GYxLGdpsNWNARbafoQDJAa0j");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>

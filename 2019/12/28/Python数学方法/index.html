@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Python,Python学习,Python3,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#8 Python数学方法前几节了解了Python的不同数据类型，有小伙伴会问，不同的数据类型之间是否可以相互转换？肯定是可以的，本篇博文主要记录数字类型的转换，其他类型的相互转换会在下几节记录，Here we go！">
+<meta name="keywords" content="Python,Python学习,Python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python数学方法 ">
+<meta property="og:url" content="https://minutesheep.github.io/2019/12/28/Python数学方法/index.html">
+<meta property="og:site_name" content="T N T">
+<meta property="og:description" content="#8 Python数学方法前几节了解了Python的不同数据类型，有小伙伴会问，不同的数据类型之间是否可以相互转换？肯定是可以的，本篇博文主要记录数字类型的转换，其他类型的相互转换会在下几节记录，Here we go！">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-11-26T14:22:23.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python数学方法 ">
+<meta name="twitter:description" content="#8 Python数学方法前几节了解了Python的不同数据类型，有小伙伴会问，不同的数据类型之间是否可以相互转换？肯定是可以的，本篇博文主要记录数字类型的转换，其他类型的相互转换会在下几节记录，Here we go！">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://minutesheep.github.io/2019/12/28/Python数学方法/">
+
+
+
+
+
+  <title>Python数学方法  | T N T</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">T N T</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">美食博主</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-history"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2019/12/28/Python数学方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minute Sheep">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T N T">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python数学方法 </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-28T17:53:28+08:00">
+                2019-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-26T22:22:23+08:00">
+                2020-11-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/28/Python数学方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/28/Python数学方法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/28/Python数学方法/" class="leancloud_visitors" data-flag-title="Python数学方法 ">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="8-Python数学方法"><a href="#8-Python数学方法" class="headerlink" title="#8 Python数学方法"></a>#8 Python数学方法</h2><p>前几节了解了Python的不同数据类型，有小伙伴会问，不同的数据类型之间是否可以相互转换？肯定是可以的，本篇博文主要记录数字类型的转换，其他类型的相互转换会在下几节记录，Here we go！</p>
+<a id="more"></a>
+
+<h3 id="一、Python数字类型转换"><a href="#一、Python数字类型转换" class="headerlink" title="一、Python数字类型转换"></a>一、Python数字类型转换</h3><p>通过前几节，我们知道Python数字的数据类型有：整型、长整型、浮点型、和复数，它们之间是如何转换的呢？亦或者它们是如何转换为其他数据类型呢？先来看所有的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int(x [,base ])                        <span class="comment"># 将 x 转换为一个整数  </span></span><br><span class="line">float(x )                              <span class="comment"># 将 x 转换到一个浮点数  </span></span><br><span class="line">complex(real [,imag ])                 <span class="comment"># 创建一个复数  </span></span><br><span class="line">str(x )                                <span class="comment"># 将对象 x 转换为字符串  </span></span><br><span class="line">repr(x )                               <span class="comment"># 将对象 x 转换为表达式字符串  </span></span><br><span class="line">eval(str )                             <span class="comment"># 用来计算在字符串中的有效Python表达式,并返回一个对象  </span></span><br><span class="line">tuple(s )                              <span class="comment"># 将序列 s 转换为一个元组  </span></span><br><span class="line">list(s )                               <span class="comment"># 将序列 s 转换为一个列表  </span></span><br><span class="line">chr(x )                                <span class="comment"># 将一个整数转换为一个字符  </span></span><br><span class="line">ord(x )                                <span class="comment"># 将一个字符转换为它的整数值  </span></span><br><span class="line">hex(x )                                <span class="comment"># 将一个整数转换为一个十六进制字符串  </span></span><br><span class="line">oct(x )                                <span class="comment"># 将一个整数转换为一个八进制字符串  </span></span><br><span class="line">bin(x)                                 <span class="comment"># 将一个整数转换为一个二进制字符串</span></span><br></pre></td></tr></table></figure>
+
+<p>我们先来申明一个变量<code>num1=6</code>, 之后用<code>type()</code> 函数查看其数据类型，任何数据类型都可以用此函数查看：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">103</span>]: num1 = <span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">104</span>]: type(num1)</span><br><span class="line">Out[<span class="number">104</span>]: int</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 num1 默认是 int 类型的，再来创建<code>num2=6.6</code>,再次查看其数据类型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">105</span>]: num2 = <span class="number">6.6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">106</span>]: type(num2)</span><br><span class="line">Out[<span class="number">106</span>]: float</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 num2 默认是 float 类型的，也就是说，当在Python中创建一个整数的时候，默认的数据类型为 int ，创建一个小数的时候，默认的数据类型是 float ，创建完后想要修改其数据类型就要用到上面的类型转换函数了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int --&gt; float</span></span><br><span class="line">In [<span class="number">110</span>]: float(num1)</span><br><span class="line">Out[<span class="number">110</span>]: <span class="number">6.0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># float --&gt; int</span></span><br><span class="line">In [<span class="number">114</span>]: int(<span class="number">6.6</span>)</span><br><span class="line">Out[<span class="number">114</span>]: <span class="number">6</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">115</span>]: int(<span class="number">-5.5</span>)</span><br><span class="line">Out[<span class="number">115</span>]: <span class="number">-5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># int函数会把小数位全部抹去，保留整数部分</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建复数</span></span><br><span class="line">In [<span class="number">116</span>]: complex(<span class="number">5</span>,<span class="number">8</span>)</span><br><span class="line">Out[<span class="number">116</span>]: (<span class="number">5</span>+<span class="number">8j</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># complex(实部，虚部),虚部可以省略</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">数字 --&gt; 字符串</span><br><span class="line">In [<span class="number">117</span>]: str(<span class="number">5</span>)</span><br><span class="line">Out[<span class="number">117</span>]: <span class="string">'5'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">118</span>]: str(<span class="number">6.6</span>)</span><br><span class="line">Out[<span class="number">118</span>]: <span class="string">'6.6'</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字符串 --&gt; 有效表达式</span></span><br><span class="line">In [<span class="number">123</span>]: s = <span class="string">'print("Hello,world!")'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">124</span>]: s</span><br><span class="line">Out[<span class="number">124</span>]: <span class="string">'print("Hello,world!")'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">125</span>]: eval(s)</span><br><span class="line">Hello,world!</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以看到将字符串执行了</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list --&gt; tupe</span></span><br><span class="line">In [<span class="number">130</span>]: tuple([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">Out[<span class="number">130</span>]: (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 整数 --&gt; 字符</span></span><br><span class="line">In [<span class="number">139</span>]: chr(<span class="number">56</span>)</span><br><span class="line">Out[<span class="number">139</span>]: <span class="string">'8'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里涉及ASC码的内容</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字符 --&gt; 整数</span></span><br><span class="line">In [<span class="number">142</span>]: ord(<span class="string">'8'</span>)</span><br><span class="line">Out[<span class="number">142</span>]: <span class="number">56</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里涉及ASC码的内容</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 整数 --&gt; 十六进制</span></span><br><span class="line">In [<span class="number">143</span>]: hex(<span class="number">15</span>)</span><br><span class="line">Out[<span class="number">143</span>]: <span class="string">'0xf'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 十六进制的数以 0x 开头</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 整数 --&gt; 八进制</span></span><br><span class="line">In [<span class="number">144</span>]: oct(<span class="number">20</span>)</span><br><span class="line">Out[<span class="number">144</span>]: <span class="string">'0o24'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 八进制以 0o 开头</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 整数 --&gt; 二进制</span></span><br><span class="line">In [<span class="number">145</span>]: bin(<span class="number">5</span>)</span><br><span class="line">Out[<span class="number">145</span>]: <span class="string">'0b101'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 二进制以 0b 开头</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、Python数学方法"><a href="#二、Python数学方法" class="headerlink" title="二、Python数学方法"></a>二、Python数学方法</h3><p>说起数学方法，肯定不再是简单的加减乘除乘方等基础运算了，数学方法更多是取绝对值、指数运算、对数运算、幂运算，开方运算以及三角函数等，这些方法涉及到的领域也是相当广阔，这部分也是非常重要的，每个人都应该熟练应用，尤其是想要去做数据方面工作的小伙伴。</p>
+<h4 id="math模块和cmath模块"><a href="#math模块和cmath模块" class="headerlink" title="math模块和cmath模块"></a>math模块和cmath模块</h4><p>Python中大量的数学方法并没有在内置函数中，而是在两个模块中，在使用数学方法之前，必须在Python程序中根据需要导入math模块或者cmath模块。math模块的对象主要是实数，cmath模块主要面向复数，二者包含的方法基本一致，根据实际使用需求导入即可，导入方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br></pre></td></tr></table></figure>
+
+<p>回车以后如何没有任何报错信息就证明导入成功了，关于模块的详细概念会在之后的一节专门讲到，这里就先导入使用，不去做太多的解释。</p>
+<p>导入以后，可以查看其帮助信息，还记得 help() 函数吗：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">146</span>]: <span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">In [<span class="number">147</span>]: help(math)</span><br><span class="line">Help on built-<span class="keyword">in</span> module math:</span><br><span class="line"></span><br><span class="line">NAME</span><br><span class="line">    math</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">    This module <span class="keyword">is</span> always available.  It provides access to the</span><br><span class="line">    mathematical functions defined by the C standard.</span><br><span class="line"></span><br><span class="line">FUNCTIONS</span><br><span class="line">    acos(...)</span><br><span class="line">        acos(x)</span><br><span class="line"></span><br><span class="line">        Return the arc cosine (measured <span class="keyword">in</span> radians) of x.</span><br><span class="line"></span><br><span class="line">    acosh(...)</span><br><span class="line">        acosh(x)</span><br><span class="line"></span><br><span class="line">        Return the inverse hyperbolic cosine of x.</span><br><span class="line"></span><br><span class="line">    asin(...)</span><br><span class="line">        asin(x)</span><br><span class="line"></span><br><span class="line">        Return the arc sine (measured <span class="keyword">in</span> radians) of x.</span><br><span class="line"></span><br><span class="line">-- More  --</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 math 模块的帮助信息很全很复杂，一页都展示不完（— More —)，可以按空格健翻页或者回车键翻一行，Q键退出；如果只是想要快速查看其包含的方法，可以用 dir() 函数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">148</span>]: dir(math)</span><br><span class="line">Out[<span class="number">148</span>]:</span><br><span class="line">[<span class="string">'__doc__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan'</span>, <span class="string">'atan2'</span>, <span class="string">'atanh'</span>, <span class="string">'ceil'</span>, <span class="string">'copysign'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'degrees'</span>, <span class="string">'e'</span>, <span class="string">'erf'</span>, <span class="string">'erfc'</span>, <span class="string">'exp'</span>, <span class="string">'expm1'</span>, <span class="string">'fabs'</span>, <span class="string">'factorial'</span>, <span class="string">'floor'</span>, <span class="string">'fmod'</span>, <span class="string">'frexp'</span>, <span class="string">'fsum'</span>, <span class="string">'gamma'</span>, <span class="string">'gcd'</span>, <span class="string">'hypot'</span>, <span class="string">'inf'</span>, <span class="string">'isclose'</span>, <span class="string">'isfinite'</span>, <span class="string">'isinf'</span>, <span class="string">'isnan'</span>, <span class="string">'ldexp'</span>, <span class="string">'lgamma'</span>, <span class="string">'log'</span>, <span class="string">'log10'</span>, <span class="string">'log1p'</span>, <span class="string">'log2'</span>, <span class="string">'modf'</span>, <span class="string">'nan'</span>, <span class="string">'pi'</span>, <span class="string">'pow'</span>, <span class="string">'radians'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>, <span class="string">'trunc'</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">149</span>]: <span class="keyword">import</span> cmath</span><br><span class="line"></span><br><span class="line">In [<span class="number">150</span>]: dir(cmath)</span><br><span class="line">Out[<span class="number">150</span>]:</span><br><span class="line">[<span class="string">'__doc__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan'</span>, <span class="string">'atanh'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'e'</span>, <span class="string">'exp'</span>, <span class="string">'isclose'</span>, <span class="string">'isfinite'</span>, <span class="string">'isinf'</span>, <span class="string">'isnan'</span>, <span class="string">'log'</span>, <span class="string">'log10'</span>, <span class="string">'phase'</span>, <span class="string">'pi'</span>, <span class="string">'polar'</span>, <span class="string">'rect'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到math模块和cmath模块都有大量的方法，并且二者方法基本上一样，接下来，以math模块为例，详细的介绍其包含的方法</p>
+<p>想要查看模块里面具体方法的帮助信息时，可以用 help() 函数查看：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">173</span>]: help(math.exp)   <span class="comment"># 注意是 math.exp， 不是 math.exp()</span></span><br><span class="line">Help on built-<span class="keyword">in</span> function exp <span class="keyword">in</span> module math:</span><br><span class="line"></span><br><span class="line">exp(...)</span><br><span class="line">    exp(x)</span><br><span class="line"></span><br><span class="line">    Return e raised to the power of x.</span><br></pre></td></tr></table></figure>
+
+<p><font color="red">注意：查看具体方法时，只写方法名称即可，不要加括号，否则会报错！</font></p>
+<h4 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">abs(x)             <span class="comment"># 返回数字的绝对值，如abs(-10) 返回 10</span></span><br><span class="line">math.ceil(x)       <span class="comment"># 返回数字的上入整数，如math.ceil(4.1) 返回 5</span></span><br><span class="line">cmp(x, y)          <span class="comment"># 如果 x &lt; y 返回 -1, 如果 x == y 返回 0, 如果 x &gt; y 返回 1</span></span><br><span class="line">math.exp(x)        <span class="comment"># 返回e的x次幂(ex),如math.exp(1) 返回2.718281828459045</span></span><br><span class="line">math.fabs(x)       <span class="comment"># 返回数字的绝对值，如math.fabs(-10) 返回10.0</span></span><br><span class="line">math.floor(x)      <span class="comment"># 返回数字的下舍整数，如math.floor(4.9)返回 4</span></span><br><span class="line">math.log(x)        <span class="comment"># 如math.log(math.e)返回1.0,math.log(100,10)返回2.0</span></span><br><span class="line">math.log10(x)      <span class="comment"># 返回以10为基数的x的对数，如math.log10(100)返回 2.0</span></span><br><span class="line">max(x1, x2,...)    <span class="comment"># 返回给定参数的最大值，参数可以为序列。</span></span><br><span class="line">min(x1, x2,...)    <span class="comment"># 返回给定参数的最小值，参数可以为序列。</span></span><br><span class="line">math.modf(x)       <span class="comment"># 返回x的整数部分与小数部分，两部分的数值符号与x相同，整数部分以浮点型表示。</span></span><br><span class="line">math.pow(x, y)     <span class="comment"># x**y 运算后的值。</span></span><br><span class="line">round(x [,n])      <span class="comment"># 返回浮点数x的四舍五入值，如给出n值，则代表舍入到小数点后的位数。</span></span><br><span class="line">math.sqrt(x)       <span class="comment"># 返回数字x的平方根</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，上面有些方法是直接写出的，如 abs(x) ，而有一些方法前面有 math. ，如 math.exp(x)，这其实是有原因的，直接写出的表示是系统内置函数，不用导入任何模块就可以使用，而加前缀的表示这个方法是这个模块里面的，必须加前缀，否者会报错，任何模块里面的方法都要加上这个模块的前缀，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">159</span>]: <span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line">In [<span class="number">160</span>]: exp(<span class="number">2</span>)</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">NameError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input<span class="number">-160</span><span class="number">-840</span>a487878a2&gt; <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">----&gt; 1 exp(2)</span><br><span class="line"></span><br><span class="line">NameError: name <span class="string">'exp'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined   <span class="comment"># 不加前缀表示这个方法没有被定义</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">161</span>]: math.exp(<span class="number">2</span>)                  <span class="comment"># 加上前缀就可以正常使用了</span></span><br><span class="line">Out[<span class="number">161</span>]: <span class="number">7.38905609893065</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的方法就不一一举例了，要注意<code>round(x)</code>,这个函数执行原理是：<font color="red">四舍六入五凑偶</font>，小数位为5的时候要看前一位，前一位是偶数就舍弃，是奇数就进一</p>
+<h4 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">math.acos(x)         <span class="comment"># 返回x的反余弦弧度值。</span></span><br><span class="line">math.asin(x)         <span class="comment"># 返回x的反正弦弧度值。</span></span><br><span class="line">math.atan(x)         <span class="comment"># 返回x的反正切弧度值。</span></span><br><span class="line">math.atan2(y, x)     <span class="comment"># 返回给定的 X 及 Y 坐标值的反正切值。</span></span><br><span class="line">math.cos(x)          <span class="comment"># 返回x的弧度的余弦值。</span></span><br><span class="line">math.hypot(x, y)     <span class="comment"># 返回欧几里德范数 math.sqrt(x*x + y*y)。</span></span><br><span class="line">math.sin(x)          <span class="comment"># 返回的x弧度的正弦值。</span></span><br><span class="line">math.tan(x)          <span class="comment"># 返回x弧度的正切值。</span></span><br><span class="line">math.degrees(x)      <span class="comment"># 将弧度转换为角度,如math.degrees(math.pi/2) ， 返回90.0</span></span><br><span class="line">math.radians(x)      <span class="comment"># 将角度转换为弧度</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到涉及三角函数的方法都在 math 模块里面</p>
+<h4 id="数字常量"><a href="#数字常量" class="headerlink" title="数字常量"></a>数字常量</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">math.pi    <span class="comment"># 数学常量 pi（圆周率，一般以π来表示）</span></span><br><span class="line">math.e     <span class="comment"># 数学常量 e，e即自然常数（自然常数）。</span></span><br></pre></td></tr></table></figure>
+
+<p>两个最常见的数字常量，圆周率 pi 和自然常数 e 也在 math 模块里面</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">164</span>]: math.pi</span><br><span class="line">Out[<span class="number">164</span>]: <span class="number">3.141592653589793</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">165</span>]: math.e</span><br><span class="line">Out[<span class="number">165</span>]: <span class="number">2.718281828459045</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="随机数函数"><a href="#随机数函数" class="headerlink" title="随机数函数"></a>随机数函数</h4><p>随机函数常作为随机数发生器使用，大量领域会用到随机数，Python的随机数基本上都在 random模块中，具体方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">171</span>]: <span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">In [<span class="number">172</span>]: dir(random)</span><br><span class="line">Out[<span class="number">172</span>]:</span><br><span class="line">[<span class="string">'BPF'</span>, <span class="string">'LOG4'</span>, <span class="string">'NV_MAGICCONST'</span>, <span class="string">'RECIP_BPF'</span>, <span class="string">'Random'</span>, <span class="string">'SG_MAGICCONST'</span>, <span class="string">'SystemRandom'</span>, <span class="string">'TWOPI'</span>, <span class="string">'_BuiltinMethodType'</span>, <span class="string">'_MethodType'</span>, <span class="string">'_Sequence'</span>, <span class="string">'_Set'</span>, <span class="string">'__all__'</span>, <span class="string">'__builtins__'</span>, <span class="string">'__cached__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__file__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>, <span class="string">'_acos'</span>, <span class="string">'_ceil'</span>, <span class="string">'_cos'</span>, <span class="string">'_e'</span>, <span class="string">'_exp'</span>, <span class="string">'_inst'</span>, <span class="string">'_log'</span>, <span class="string">'_pi'</span>, <span class="string">'_random'</span>, <span class="string">'_sha512'</span>, <span class="string">'_sin'</span>, <span class="string">'_sqrt'</span>, <span class="string">'_test'</span>, <span class="string">'_test_generator'</span>, <span class="string">'_urandom'</span>, <span class="string">'_warn'</span>, <span class="string">'betavariate'</span>, <span class="string">'choice'</span>, <span class="string">'expovariate'</span>, <span class="string">'gammavariate'</span>, <span class="string">'gauss'</span>, <span class="string">'getrandbits'</span>, <span class="string">'getstate'</span>, <span class="string">'lognormvariate'</span>, <span class="string">'normalvariate'</span>, <span class="string">'paretovariate'</span>, <span class="string">'randint'</span>, <span class="string">'random'</span>, <span class="string">'randrange'</span>, <span class="string">'sample'</span>, <span class="string">'seed'</span>, <span class="string">'setstate'</span>, <span class="string">'shuffle'</span>, <span class="string">'triangular'</span>, <span class="string">'uniform'</span>, <span class="string">'vonmisesvariate'</span>, <span class="string">'weibullvariate'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>其主要函数功能：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">random.choice(seq)                          <span class="comment"># 从序列的元素中随机挑选一个元素，比如random.choice(range(10))，从0到9中随机挑选一个整数。</span></span><br><span class="line">random.randrange ([start,] stop [,step])    <span class="comment"># 从指定范围内，按指定基数递增的集合中获取一个随机数，基数缺省值为1</span></span><br><span class="line">random.random()                             <span class="comment"># 随机生成下一个实数，它在[0,1)范围内。</span></span><br><span class="line">random.seed([x])                            <span class="comment"># 改变随机数生成器的种子seed。如果你不了解其原理，你不必特别去设定seed，Python会帮你选择seed。</span></span><br><span class="line">random.shuffle(lst)                         <span class="comment"># 将序列的所有元素随机排序</span></span><br><span class="line">random.uniform(x, y)                        <span class="comment"># 随机生成下一个实数，它在[x,y]范围内。</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Minute Sheep
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://minutesheep.github.io/2019/12/28/Python数学方法/" title="Python数学方法 ">https://minutesheep.github.io/2019/12/28/Python数学方法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Python学习/" rel="tag"># Python学习</a>
+          
+            <a href="/tags/Python3/" rel="tag"># Python3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/28/grub-rescue救援模式的处理/" rel="next" title="grub rescue救援模式的处理">
+                <i class="fa fa-chevron-left"></i> grub rescue救援模式的处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/29/2019最新Kali可用国内源更新sources-list/" rel="prev" title="2019最新Kali可用国内源更新sources.list">
+                2019最新Kali可用国内源更新sources.list <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Minute Sheep">
+            
+              <p class="site-author-name" itemprop="name">Minute Sheep</p>
+              <p class="site-description motion-element" itemprop="description">不忘初心，方得始终！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minutesheep" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:minutesheep@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Python数学方法"><span class="nav-number">1.</span> <span class="nav-text">#8 Python数学方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Python数字类型转换"><span class="nav-number">1.1.</span> <span class="nav-text">一、Python数字类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Python数学方法"><span class="nav-number">1.2.</span> <span class="nav-text">二、Python数学方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#math模块和cmath模块"><span class="nav-number">1.2.1.</span> <span class="nav-text">math模块和cmath模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数学函数"><span class="nav-number">1.2.2.</span> <span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三角函数"><span class="nav-number">1.2.3.</span> <span class="nav-text">三角函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字常量"><span class="nav-number">1.2.4.</span> <span class="nav-text">数字常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机数函数"><span class="nav-number">1.2.5.</span> <span class="nav-text">随机数函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minute Sheep</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">125.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz',
+        appKey: 'GYxLGdpsNWNARbafoQDJAa0j',
+        placeholder: 'Wonderful writing, supports a wave👍',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz", "GYxLGdpsNWNARbafoQDJAa0j");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
