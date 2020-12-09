@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Python,Python学习,Python3,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#12 Python函数矩形的面积 S = ab，只要知道任一矩形的的长和宽，就可以带入上式求得面积。这样有什么好处呢？一个公式，适用于全部矩形，一个公式，重复利用，减少了大脑的记忆负担。像这类用变量代替不变量的思想在数学中称为函数，Python中，也有类似的思想！">
+<meta name="keywords" content="Python,Python学习,Python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" Python函数">
+<meta property="og:url" content="https://minutesheep.github.io/2019/12/31/Python函数/index.html">
+<meta property="og:site_name" content="T N T">
+<meta property="og:description" content="#12 Python函数矩形的面积 S = ab，只要知道任一矩形的的长和宽，就可以带入上式求得面积。这样有什么好处呢？一个公式，适用于全部矩形，一个公式，重复利用，减少了大脑的记忆负担。像这类用变量代替不变量的思想在数学中称为函数，Python中，也有类似的思想！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://minutesheep.github.io/2019/12/31/Python函数/question.png">
+<meta property="og:image" content="https://minutesheep.github.io/2019/12/31/Python函数/built-in-function.png">
+<meta property="og:updated_time" content="2020-11-26T14:22:23.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" Python函数">
+<meta name="twitter:description" content="#12 Python函数矩形的面积 S = ab，只要知道任一矩形的的长和宽，就可以带入上式求得面积。这样有什么好处呢？一个公式，适用于全部矩形，一个公式，重复利用，减少了大脑的记忆负担。像这类用变量代替不变量的思想在数学中称为函数，Python中，也有类似的思想！">
+<meta name="twitter:image" content="https://minutesheep.github.io/2019/12/31/Python函数/question.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://minutesheep.github.io/2019/12/31/Python函数/">
+
+
+
+
+
+  <title> Python函数 | T N T</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">T N T</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">美食博主</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-history"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2019/12/31/Python函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minute Sheep">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T N T">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"> Python函数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-31T18:49:56+08:00">
+                2019-12-31
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-26T22:22:23+08:00">
+                2020-11-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Python基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/31/Python函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/12/31/Python函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/31/Python函数/" class="leancloud_visitors" data-flag-title=" Python函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="12-Python函数"><a href="#12-Python函数" class="headerlink" title="#12 Python函数"></a>#12 Python函数</h2><p>矩形的面积 S = ab，只要知道任一矩形的的长和宽，就可以带入上式求得面积。这样有什么好处呢？一个公式，适用于全部矩形，一个公式，重复利用，减少了大脑的记忆负担。像这类用变量代替不变量的思想在数学中称为函数，Python中，也有类似的思想！</p>
+<a id="more"></a>
+
+<h3 id="一、什么是函数"><a href="#一、什么是函数" class="headerlink" title="一、什么是函数"></a>一、什么是函数</h3><p>在数学中，函数是指输入集合与输出集合存在一种特定的映射关系，这种映射关系可以被广泛使用。在Python中，函数是指将一定量的代码块使用一个指定的函数名通过特有的语法封装起来的代码块。</p>
+<p><strong>函数优点：</strong></p>
+<ul>
+<li>大大减少重复代码</li>
+<li>可以重复使用</li>
+<li>程序具有扩展性</li>
+</ul>
+<p>程序代码结构性提高</p>
+<h3 id="二、函数初始化"><a href="#二、函数初始化" class="headerlink" title="二、函数初始化"></a>二、函数初始化</h3><p>现在是不是觉得函数特🐮，来一起看看如何定义一个函数吧：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span>         <span class="comment"># func是函数名，可随意更改</span></span><br><span class="line">   ...:     print(<span class="string">'A'</span>)      <span class="comment"># 函数的内容</span></span><br><span class="line">   ...:     print(<span class="string">'B'</span>)</span><br><span class="line">   ...:     print(<span class="string">'C'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>看完上面定义方法，其实可以发现其定义语法规则：</p>
+<ul>
+<li>函数初始化以关键字 def 开头，之后接函数名和一对圆括号，再加一个冒号</li>
+<li>函数的内容使用缩进</li>
+</ul>
+<p>但是，这并不是一个标准的函数写法，标准的函数应当还有一个非常重要的部分，那就是函数的说明，放在函数名的下面，用三引号引起来，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">2</span>]: <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">   ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">   ...:     function's description      # 三引号将函数的说明引起来</span></span><br><span class="line"><span class="string">   ...:     '''</span></span><br><span class="line">   ...:     <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三、函数返回与调用"><a href="#三、函数返回与调用" class="headerlink" title="三、函数返回与调用"></a>三、函数返回与调用</h3><p><strong>函数的返回：</strong></p>
+<p>函数是可以将结果返回的，如果想要获取函数的执行结果，可以使用关键字 return 将其返回，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">3</span>]: <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">()</span>:</span></span><br><span class="line">   ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">   ...:     calculate a plus b</span></span><br><span class="line"><span class="string">   ...:     '''</span></span><br><span class="line">   ...:     a = <span class="number">5</span></span><br><span class="line">   ...:     b = <span class="number">6</span></span><br><span class="line">   ...:     c = a + b</span><br><span class="line">   ...:     <span class="keyword">return</span> c              <span class="comment"># 将结果c返回</span></span><br></pre></td></tr></table></figure>
+
+<p>函数在执行过程中一旦执行到return语句，就会结束函数，并返回</p>
+<p>函数中如果没有return语句，则默认执行完毕后返回 None</p>
+<p><strong>函数的调用：</strong></p>
+<p>一个函数定义完成后，必须要又相应的调用语句才能够执行，否则就和没写一样━━(￣ー￣|||━━，调用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">4</span>]: <span class="function"><span class="keyword">def</span> <span class="title">tell_name</span><span class="params">()</span>:</span></span><br><span class="line">   ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">   ...:     print your name</span></span><br><span class="line"><span class="string">   ...:     '''</span></span><br><span class="line">   ...:     print(<span class="string">'I am MinuteSheep'</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: tell_name()       <span class="comment"># 调用函数</span></span><br><span class="line">I am MinuteSheep</span><br></pre></td></tr></table></figure>
+
+<p><strong>函数的递归：</strong>在函数内部返回调用自己</p>
+<p>大家一定做过这种类型的题目：</p>
+<p><img src="question.png" alt></p>
+<p>解题步骤：f（20）=f（10）=f（5）= 5 + 3 = 8，可以看到，当x&gt;=10时，就是自己调用自己，这就是递归，Python代码可以这样写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">20</span>]: <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></span><br><span class="line">    ...:     <span class="keyword">if</span> x &lt; <span class="number">10</span>:</span><br><span class="line">    ...:         ans = x + <span class="number">3</span></span><br><span class="line">    ...:         print(ans)</span><br><span class="line">    ...:         <span class="keyword">return</span> ans</span><br><span class="line">    ...:     <span class="keyword">else</span>:</span><br><span class="line">    ...:         <span class="keyword">return</span> func(x/<span class="number">2</span>)    <span class="comment"># 递归调用自己</span></span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">21</span>]: func(<span class="number">20</span>)</span><br><span class="line"><span class="number">8.0</span></span><br><span class="line">Out[<span class="number">21</span>]: <span class="number">8.0</span></span><br></pre></td></tr></table></figure>
+
+<p>函数递归的规则：</p>
+<ul>
+<li>必须有一个明确的结束条件</li>
+<li>每次进入递归后，运算规模比上一次小（否则无限大，问题无法求解，内存会被占满）</li>
+</ul>
+<h3 id="四、函数参数"><a href="#四、函数参数" class="headerlink" title="四、函数参数"></a>四、函数参数</h3><p>在初始化函数时，可以令函数使用参数，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">6</span>]: <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x,y)</span>:</span>       <span class="comment"># 函数拥有参数时，将其写在括号里即可</span></span><br><span class="line">   ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">   ...:     calculate x plus y</span></span><br><span class="line"><span class="string">   ...:     '''</span></span><br><span class="line">   ...:     <span class="keyword">return</span> x + y    <span class="comment"># return语句可以返回计算式</span></span><br><span class="line"></span><br><span class="line">  In [<span class="number">7</span>]: add(<span class="number">1</span>,<span class="number">5</span>)            <span class="comment"># 带参数的调用方法</span></span><br><span class="line">  Out[<span class="number">7</span>]: <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>形参：</strong>只是一个名字，不占用真实内存空间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">6</span>]: <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x,y)</span>:</span>      <span class="comment"># x，y就是形参，只是一个名称而已，并不占用内存空间</span></span><br><span class="line">   ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">   ...:     calculate x plus y</span></span><br><span class="line"><span class="string">   ...:     '''</span></span><br><span class="line">   ...:     <span class="keyword">return</span> x + y</span><br></pre></td></tr></table></figure>
+
+<p><strong>实参：</strong>本质是一个变量，占用真实内存空间</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">7</span>]: add(<span class="number">1</span>,<span class="number">5</span>)           <span class="comment"># 1，5是实参，本质为 在调用函数时，将 x=1，y=5传给add函数，相当于两变量，占用内存资源</span></span><br><span class="line">Out[<span class="number">7</span>]: <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>按位置参数调用：</strong>按形参的位置调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">8</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">(a,b,c)</span>:</span></span><br><span class="line">  ...: <span class="string">'''</span></span><br><span class="line"><span class="string">  ...: print num of nums</span></span><br><span class="line"><span class="string">  ...: '''</span></span><br><span class="line">  ...: print(a)</span><br><span class="line">  ...: print(b)</span><br><span class="line">  ...: print(c)</span><br><span class="line"></span><br><span class="line">  In [<span class="number">9</span>]: print_num(<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">  <span class="number">1</span></span><br><span class="line">  <span class="number">3</span></span><br><span class="line">  <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以看到1和a对应，3和b对应，5和c对应，这就是按位置参数调用</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>按关键参数调用：</strong>调用函数时，直接参数赋值，而不按位置赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">8</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">(a,b,c)</span>:</span></span><br><span class="line">   ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">   ...:     print num of nums</span></span><br><span class="line"><span class="string">   ...:     '''</span></span><br><span class="line">   ...:     print(a)</span><br><span class="line">   ...:     print(b)</span><br><span class="line">   ...:     print(c)</span><br><span class="line">   ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: print_num(b=<span class="number">7</span>,a=<span class="number">1</span>,c=<span class="number">10</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接给变量赋值，必须指定是哪个参数</span></span><br></pre></td></tr></table></figure>
+
+<p><font color="red">注意：在调用时，位置参数可以和关键参数混合使用，但是位置参数一定在关键参数之前才行：</font></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">8</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">(a,b,c)</span>:</span></span><br><span class="line">   ...:     <span class="string">'''</span></span><br><span class="line"><span class="string">   ...:     print num of nums</span></span><br><span class="line"><span class="string">   ...:     '''</span></span><br><span class="line">   ...:     print(a)</span><br><span class="line">   ...:     print(b)</span><br><span class="line">   ...:     print(c)</span><br><span class="line">   ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: print_num(<span class="number">5</span>,c=<span class="number">1</span>,b=<span class="number">10</span>)    <span class="comment"># 混合使用方法</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: print_num(a=<span class="number">4</span>,<span class="number">6</span>,c=<span class="number">10</span>)   <span class="comment"># 混合使用时，位置参数必须要在关键参数之前，否则报错</span></span><br><span class="line">  File <span class="string">"&lt;ipython-input-13-99c9e145d0a7&gt;"</span>, line <span class="number">1</span></span><br><span class="line">    print_num(a=<span class="number">4</span>,<span class="number">6</span>,c=<span class="number">10</span>)</span><br><span class="line">                 ^</span><br><span class="line">SyntaxError: positional argument follows keyword argument</span><br></pre></td></tr></table></figure>
+
+<p><strong>默认参数：</strong>在初始化函数时，可以给形参指定默认值，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">14</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">(a,b,c=<span class="number">5</span>)</span>:</span>   <span class="comment"># 指定c的默认值为5</span></span><br><span class="line">    ...:     print(a)</span><br><span class="line">    ...:     print(b)</span><br><span class="line">    ...:     print(c)</span><br></pre></td></tr></table></figure>
+
+<p>在调用时，如果不需要改变c的值就可以省略不写，如果需要改变其值，调用时重新赋值即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">15</span>]: print_num(<span class="number">1</span>,<span class="number">2</span>)       <span class="comment"># 使用默认参数</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: print_num(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)     <span class="comment"># 按位置参数，令c=3</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: print_num(<span class="number">1</span>,<span class="number">2</span>,c=<span class="number">3</span>)   <span class="comment"># 按关键参数，令c=3</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>非固定参数：</strong>有时函数在初始化时不确定要传入参数的数量，这时就要使用非固定参数了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">22</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">(a,b,c)</span>:</span></span><br><span class="line">    ...:     print(a,b,c)</span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">23</span>]: print_num(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)   <span class="comment"># 当参入的参数多于给定的参数时，会抛出异常</span></span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">TypeError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input<span class="number">-23</span>-a8e0af192084&gt; <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">----&gt; 1 print_num(1,2,3,4)</span><br><span class="line"></span><br><span class="line">TypeError: print_num() takes <span class="number">3</span> positional arguments but <span class="number">4</span> were given</span><br></pre></td></tr></table></figure>
+
+<p>*args：将传入的多余参数构造成一个元组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">26</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">(a,b,c,*args)</span>:</span></span><br><span class="line">    ...:     print(a,b,c)</span><br><span class="line">    ...:     print(args)</span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">27</span>]: print_num(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">0</span>)    <span class="comment"># 多余的参数变成元组保存下来</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>**kwargs：将传入的多余参数构造成一个字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">28</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">(a,b,c,**kwargs)</span>:</span></span><br><span class="line">    ...:     print(a,b,c)</span><br><span class="line">    ...:     print(kwargs)</span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">29</span>]: print_num(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,f=<span class="number">3</span>,g=<span class="number">45</span>,y=<span class="number">123</span>)     <span class="comment"># 将多余的参数构造成字典保存下来</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">&#123;<span class="string">'g'</span>: <span class="number">45</span>, <span class="string">'y'</span>: <span class="number">123</span>, <span class="string">'f'</span>: <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最完美的办法：<em>args和*</em>args一起使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">30</span>]: <span class="function"><span class="keyword">def</span> <span class="title">print_num</span><span class="params">(a,b,c,*args,**kwargs)</span>:</span></span><br><span class="line">    ...:     print(a,b,c)</span><br><span class="line">    ...:     print(args)</span><br><span class="line">    ...:     print(kwargs)</span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">32</span>]: print_num(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,f=<span class="number">45</span>,g=<span class="number">23</span>,u=<span class="number">345</span>)</span><br><span class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">(<span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">&#123;<span class="string">'g'</span>: <span class="number">23</span>, <span class="string">'u'</span>: <span class="number">345</span>, <span class="string">'f'</span>: <span class="number">45</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、函数变量"><a href="#五、函数变量" class="headerlink" title="五、函数变量"></a>五、函数变量</h3><p>在Python中，有两种变量：全局变量和局部变量</p>
+<p><strong>全局变量：</strong>在整个程序中都可以访问的变量，分配在全局数据段，在程序开始运行的时候被加载，生存周期从程序开始到程序结束，也就是说，全局变量被定义在主程序中</p>
+<p><strong>局部变量：</strong>存在于某个函数或类中，只有在函数或类中才能够被访问，只分配在程序的堆栈中，生存周期从函数开始到函数结束，也就是说，局部变量被定义在子模块中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">quan_jv_bian_liang = <span class="number">555</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    jv_bu_bian_liang = <span class="number">666</span></span><br><span class="line">    ans = quan_jv_bian_liang + jv_bu_bian_liang</span><br><span class="line">    print(ans)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print(quan_jv_bian_liang)   <span class="comment"># 访问全局变量</span></span><br><span class="line"></span><br><span class="line">print(jv_bu_bian_liang)     <span class="comment"># 访问局部变量</span></span><br></pre></td></tr></table></figure>
+
+<p>上面程序的运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">E:\PythonProjects\跟着MS学Python&gt;python -u <span class="string">"e:\PythonProjects\跟着MS学Python\#12\1.py"</span></span><br><span class="line"><span class="number">555</span>                                  <span class="comment"># 全局变量能正确访问</span></span><br><span class="line">Traceback (most recent call last):   <span class="comment"># 局部变量不能够访问</span></span><br><span class="line">  File <span class="string">"e:\PythonProjects\跟着MS学Python\#12\1.py"</span>, line <span class="number">12</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    print(jv_bu_bian_liang)</span><br><span class="line">NameError: name <span class="string">'jv_bu_bian_liang'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+
+<p>继续修改程序，验证全局变量是否可以在函数中被访问：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">quan_jv_bian_liang = <span class="number">555</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    jv_bu_bian_liang = <span class="number">666</span></span><br><span class="line">    ans = quan_jv_bian_liang + jv_bu_bian_liang</span><br><span class="line">    print(ans)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">E:\PythonProjects\跟着MS学Python&gt;python -u <span class="string">"e:\PythonProjects\跟着MS学Python\#12\1.py"</span></span><br><span class="line"><span class="number">1221</span></span><br><span class="line"><span class="comment"># 可以看到全局变量在函数中可以被正确访问</span></span><br></pre></td></tr></table></figure>
+
+<p>继续修改程序，验证全局变量是否可以在函数内被修改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">quan_jv_bian_liang = <span class="number">555</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    jv_bu_bian_liang = <span class="number">666</span></span><br><span class="line">    quan_jv_bian_liang = <span class="number">777</span>    <span class="comment"># 修改全局变量的值</span></span><br><span class="line">    ans = quan_jv_bian_liang + jv_bu_bian_liang</span><br><span class="line">    print(ans)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line">print(quan_jv_bian_liang)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">E:\PythonProjects\跟着MS学Python&gt;python -u <span class="string">"e:\PythonProjects\跟着MS学Python\#12\1.py"</span></span><br><span class="line"><span class="number">1443</span>   <span class="comment"># 在函数内，全局变量被修改</span></span><br><span class="line"><span class="number">555</span>    <span class="comment"># 在主程序中，全局变量并没有被修改</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到在函数内并不能真正的修改全局变量，如果非要在函数内修改全局变量，也不是不可以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">quan_jv_bian_liang = <span class="number">555</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    jv_bu_bian_liang = <span class="number">666</span></span><br><span class="line">    <span class="keyword">global</span> quan_jv_bian_liang   <span class="comment"># 申明这是全局变量即可</span></span><br><span class="line">    quan_jv_bian_liang = <span class="number">777</span></span><br><span class="line">    ans = quan_jv_bian_liang + jv_bu_bian_liang</span><br><span class="line">    print(ans)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func()</span><br><span class="line">print(quan_jv_bian_liang)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行结果</span></span><br><span class="line">E:\PythonProjects\跟着MS学Python&gt;python -u <span class="string">"e:\PythonProjects\跟着MS学Python\#12\1.py"</span></span><br><span class="line"><span class="number">1443</span></span><br><span class="line"><span class="number">777</span>     <span class="comment"># 被正确更改</span></span><br><span class="line"><span class="comment"># 尽量不要在函数内更改全部变量，这样做可能会导致变量使用混乱，让自己使用变量出错</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="六、高阶函数"><a href="#六、高阶函数" class="headerlink" title="六、高阶函数"></a>六、高阶函数</h3><p>当函数的参数是函数时，这个函数被称为高阶函数=====(￣▽￣*)b</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">33</span>]: <span class="function"><span class="keyword">def</span> <span class="title">dunc</span><span class="params">(x)</span>:</span></span><br><span class="line">    ...:     <span class="keyword">return</span> x*x</span><br><span class="line">    ...:</span><br><span class="line"></span><br><span class="line">In [<span class="number">36</span>]: <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a,b,f)</span>:</span>        <span class="comment"># 将函数作为参数</span></span><br><span class="line">    ...:     print(f(a) + f(b))</span><br><span class="line"></span><br><span class="line">In [<span class="number">37</span>]: add(<span class="number">1</span>,<span class="number">2</span>,dunc)</span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="七、匿名函数"><a href="#七、匿名函数" class="headerlink" title="七、匿名函数"></a>七、匿名函数</h3><p>针对简单功能的函数，可以不显式的指定函数框架，使用匿名函数即简洁，又可以实现其功能：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">38</span>]: <span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(x)</span>:</span></span><br><span class="line">    ...:     <span class="keyword">return</span> x*x</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上面的函数使用下面的匿名函数代替：</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">39</span>]: func = <span class="keyword">lambda</span> x:x*x</span><br><span class="line"></span><br><span class="line">In [<span class="number">40</span>]: func(<span class="number">10</span>)</span><br><span class="line">Out[<span class="number">40</span>]: <span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到匿名函数的定义语法：<font color="red">函数名 = lambda 变量 : 函数体</font></p>
+<h3 id="八、内置函数"><a href="#八、内置函数" class="headerlink" title="八、内置函数"></a>八、内置函数</h3><p>在Python中，有许多内置函数可以直接供我们使用，之前的讲解其实已经接触很多了，现在来看看全部的内置函数：</p>
+<p><img src="built-in-function.png" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Minute Sheep
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://minutesheep.github.io/2019/12/31/Python函数/" title=" Python函数">https://minutesheep.github.io/2019/12/31/Python函数/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Python学习/" rel="tag"># Python学习</a>
+          
+            <a href="/tags/Python3/" rel="tag"># Python3</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/31/Python字典/" rel="next" title="Python字典">
+                <i class="fa fa-chevron-left"></i> Python字典
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/03/让代码变得Pythonic/" rel="prev" title="让代码变得Pythonic">
+                让代码变得Pythonic <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Minute Sheep">
+            
+              <p class="site-author-name" itemprop="name">Minute Sheep</p>
+              <p class="site-description motion-element" itemprop="description">不忘初心，方得始终！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minutesheep" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:minutesheep@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Python函数"><span class="nav-number">1.</span> <span class="nav-text">#12 Python函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是函数"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、函数初始化"><span class="nav-number">1.2.</span> <span class="nav-text">二、函数初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、函数返回与调用"><span class="nav-number">1.3.</span> <span class="nav-text">三、函数返回与调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、函数参数"><span class="nav-number">1.4.</span> <span class="nav-text">四、函数参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、函数变量"><span class="nav-number">1.5.</span> <span class="nav-text">五、函数变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、高阶函数"><span class="nav-number">1.6.</span> <span class="nav-text">六、高阶函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、匿名函数"><span class="nav-number">1.7.</span> <span class="nav-text">七、匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、内置函数"><span class="nav-number">1.8.</span> <span class="nav-text">八、内置函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minute Sheep</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">125.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz',
+        appKey: 'GYxLGdpsNWNARbafoQDJAa0j',
+        placeholder: 'Wonderful writing, supports a wave👍',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz", "GYxLGdpsNWNARbafoQDJAa0j");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Linux,ssh,非对称加密,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记录SSH 非对称加密身份验证，是目前使用较多的主机间连接方式">
+<meta name="keywords" content="Linux,ssh,非对称加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH">
+<meta property="og:url" content="https://minutesheep.github.io/2020/01/26/ssh/index.html">
+<meta property="og:site_name" content="T N T">
+<meta property="og:description" content="记录SSH 非对称加密身份验证，是目前使用较多的主机间连接方式">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://minutesheep.github.io/2020/01/26/ssh/cover.webp">
+<meta property="og:updated_time" content="2020-11-26T14:22:23.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSH">
+<meta name="twitter:description" content="记录SSH 非对称加密身份验证，是目前使用较多的主机间连接方式">
+<meta name="twitter:image" content="https://minutesheep.github.io/2020/01/26/ssh/cover.webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://minutesheep.github.io/2020/01/26/ssh/">
+
+
+
+
+
+  <title>SSH | T N T</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">T N T</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">美食博主</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-history"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2020/01/26/ssh/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minute Sheep">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T N T">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SSH</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-26T17:06:44+08:00">
+                2020-01-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-26T22:22:23+08:00">
+                2020-11-26
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NIP/" itemprop="url" rel="index">
+                    <span itemprop="name">NIP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/01/26/ssh/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/26/ssh/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/01/26/ssh/" class="leancloud_visitors" data-flag-title="SSH">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  3.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记录SSH 非对称加密身份验证，是目前使用较多的主机间连接方式</p>
+<img src="/2020/01/26/ssh/cover.webp">
+
+<a id="more"></a>
+
+<h1 id="SSH百科"><a href="#SSH百科" class="headerlink" title="SSH百科"></a>SSH百科</h1><p>Secure Shell（安全外壳协议，简称SSH）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。SSH通过在网络中建立安全隧道来实现SSH客户端与服务器之间的连接。虽然任何网络服务都可以通过SSH实现安全传输，SSH最常见的用途是远程登录系统，人们通常利用SSH来传输命令行界面和远程执行命令。</p>
+<p>SSH以非对称加密实现身份验证。身份验证有多种途径，例如其中一种方法是使用自动生成的公钥-私钥对来简单地加密网络连接，随后使用密码认证进行登录；另一种方法是人工生成一对公钥和私钥，通过生成的密钥进行认证，这样就可以在不输入密码的情况下登录。任何人都可以自行生成密钥。公钥需要放在待访问的电脑之中，而对应的私钥需要由用户自行保管。认证过程基于生成出来的私钥，但整个认证过程中私钥本身不会传输到网络中。</p>
+<h1 id="SSH相关命令"><a href="#SSH相关命令" class="headerlink" title="SSH相关命令"></a>SSH相关命令</h1><h2 id="生成钥匙对"><a href="#生成钥匙对" class="headerlink" title="生成钥匙对"></a>生成钥匙对</h2><p>使用<code>ssh-keygen</code>命令即可生成钥匙对</p>
+<h3 id="普通用户"><a href="#普通用户" class="headerlink" title="普通用户"></a>普通用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">[root ~]# ssh-keygen                                         # 命令</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (/root/.ssh/id_rsa):     # 输入钥匙对位置和名称，默认位置~/.ssh/.id_rsa，没有特殊要求回车即可</span><br><span class="line">Enter passphrase (empty for no passphrase):                  # 输入密码，默认为空，回车即可</span><br><span class="line">Enter same passphrase again:                                 # 再次输入刚刚密码</span><br><span class="line">Your identification has been saved in /root/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /root/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:WXeXTXqe31ROBDvhyvQg3GmG6LhvPlj3fN4lPsjhqzU root@instance-92souhhl</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|              o.o|</span><br><span class="line">|         o o o *o|</span><br><span class="line">|        . = O *.*|</span><br><span class="line">|       o o B = Bo|</span><br><span class="line">|      . S   o ..+|</span><br><span class="line">|       .. . .  .o|</span><br><span class="line">|      .o . =Eo. +|</span><br><span class="line">|      ..o  .*ooo.|</span><br><span class="line">|       oo....+o..|</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
+
+<p>按照上面的流程走过后，会在<code>~/.ssh/</code>目录下出现两个文件，分别是<code>id_rsa</code>和<code>id_rsa.pub</code></p>
+<p>这两个文件一个是私钥，一个是公钥，从名称上也能区别开，带有pub后缀的是公钥，没有后缀的私钥。</p>
+<p>之后将公钥放置到你想要连接的主机里，自己主机留着私钥，即可使用ssh连接了。公钥想当于锁子，私钥相当于钥匙，你把锁子给别人，你自己拿着钥匙，就可以轻易开启锁子了，这把锁子，也就是公钥，可以给许多个人，也就是许多台主机，钥匙也就是私钥一般不给别人，这样就可以做到自己的主机可以连接好多台主机。</p>
+<h3 id="为了安全和管理更方便"><a href="#为了安全和管理更方便" class="headerlink" title="为了安全和管理更方便"></a>为了安全和管理更方便</h3><p>上面的方式生成钥匙对简单快速，但是存在一些问题，当你需要连接的主机很多之后，你一直用默认的钥匙对，就会带来管理上的不方便，你的公钥分布于GitHub、云服务器、甚至是自己的虚拟机，如果想要定期更换钥匙对，就会带来极大的不方便，换了GitHub的钥匙对之后，其他的主机也要跟着换，应为你只有一个默认钥匙对；同时，只有一个默认钥匙对也是及其不安全的，当你的私钥泄漏后，那么你所有拥有公钥的主机都将敞开大门。因此，从这两个角度出发，必须为不同的主机或者不同类别的主机设置不同的钥匙对。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root ~]# ssh-keygen  -f ~/.ssh/baiduyun  -C &quot;百度云服务器&quot;         </span><br><span class="line"></span><br><span class="line">-f:指定文件位置，也可不加此参数，在命令提示中输入文件位置</span><br><span class="line">-C:备注信息</span><br></pre></td></tr></table></figure>
+
+<p>对于不同类型的主机，分别生成各自的钥匙对，既安全又方便管理</p>
+<h2 id="放置公钥"><a href="#放置公钥" class="headerlink" title="放置公钥"></a>放置公钥</h2><p>生成钥匙对后，就可以将公钥放置到需要连接的主机了，接下来称此主机为目标主机。</p>
+<h3 id="手工放置"><a href="#手工放置" class="headerlink" title="手工放置"></a>手工放置</h3><p>找到自己的公钥，将里面的内容全部复制，粘贴到目标主机的<code>~/.ssh/authorized_keys</code>文件中（如果目标主机更改过配置文件，那就另当别论）</p>
+<h3 id="使用命令放置"><a href="#使用命令放置" class="headerlink" title="使用命令放置"></a>使用命令放置</h3><p>手工放置操作起来有些繁琐，其实ssh提供了一条命令可以自动放置到目标主机，那就是<code>ssh-copy-id</code>,具体使用如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root ~]# ssh-copy-id -i ~/.ssh/baiduyun.pub user@ip  </span><br><span class="line"></span><br><span class="line">-i:指定公钥文件，如果不加此参数，将会把默认的公钥放置到目标主机中</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用SSH-连接"><a href="#使用SSH-连接" class="headerlink" title="使用SSH 连接"></a>使用SSH 连接</h2><h3 id="普通连接"><a href="#普通连接" class="headerlink" title="普通连接"></a>普通连接</h3><p>一切就绪后，就可以使用SSH 进行连接了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root ~]# ssh -i ~/.ssh/baiduyun user@ip  </span><br><span class="line"></span><br><span class="line">-i:指定私钥文件，如果不加此参数，将会使用默认的私钥</span><br></pre></td></tr></table></figure>
+
+<p>首次连接将会提示指纹信息,这步是严格的KEY 检查，输入<code>yes</code>即可连接成功，之后再使用ssh连接就可以直接连上了</p>
+<h3 id="通过代理连接"><a href="#通过代理连接" class="headerlink" title="通过代理连接"></a>通过代理连接</h3><p>配合使用nc命令连接远端主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root ~]# ssh -o ProxyCommand=&quot;nc -X 5 -x 127.0.0.1:1080 %h %p&quot; user@ip</span><br></pre></td></tr></table></figure>
+
+<p>也可将其写入<code>~/.ssh/config</code>文件中，不用每次输入这么长的命令</p>
+<h1 id="SSH-配置文件"><a href="#SSH-配置文件" class="headerlink" title="SSH 配置文件"></a>SSH 配置文件</h1><p>SSH 的配置文件有两个，一个是服务器的，另一个是客户端的，都在<code>/etc/ssh/</code> 目录下</p>
+<h2 id="服务器端配置文件-etc-ssh-sshd-config"><a href="#服务器端配置文件-etc-ssh-sshd-config" class="headerlink" title="服务器端配置文件 /etc/ssh/sshd_config"></a>服务器端配置文件 <code>/etc/ssh/sshd_config</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">#       $OpenBSD: sshd_config,v 1.100 2016/08/15 12:32:04 naddy Exp $</span><br><span class="line"></span><br><span class="line"># This is the sshd server system-wide configuration file.  See</span><br><span class="line"># sshd_config(5) for more information.</span><br><span class="line"></span><br><span class="line"># This sshd was compiled with PATH=/usr/local/bin:/usr/bin</span><br><span class="line"></span><br><span class="line"># The strategy used for options in the default sshd_config shipped with</span><br><span class="line"># OpenSSH is to specify options with their default value where</span><br><span class="line"># possible, but leave them commented.  Uncommented options override the</span><br><span class="line"># default value.</span><br><span class="line"></span><br><span class="line"># If you want to change the port on a SELinux system, you have to tell</span><br><span class="line"># SELinux about this change.</span><br><span class="line"># semanage port -a -t ssh_port_t -p tcp #PORTNUMBER</span><br><span class="line">#</span><br><span class="line">#Port 22                    服务器端默认端口为22，如果需要可以改为其他端口，更加安全</span><br><span class="line">#AddressFamily any</span><br><span class="line">#ListenAddress 0.0.0.0      服务器端档绑定的IP地址，如果有多个网卡或出现不同的IP地址，可以设置为其中的一块网卡，0.0.0.0表示全部</span><br><span class="line">#ListenAddress ::</span><br><span class="line"></span><br><span class="line">HostKey /etc/ssh/ssh_host_rsa_key    这四条是服务器端私钥档案</span><br><span class="line">#HostKey /etc/ssh/ssh_host_dsa_key</span><br><span class="line">HostKey /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line">HostKey /etc/ssh/ssh_host_ed25519_key</span><br><span class="line"></span><br><span class="line"># Ciphers and keying</span><br><span class="line">#RekeyLimit default none</span><br><span class="line"></span><br><span class="line"># Logging                  日志记录</span><br><span class="line">#SyslogFacility AUTH</span><br><span class="line">SyslogFacility AUTHPRIV    SyslogFacility用来设定在记录来自sshd的消息的时候，是否给出“facility code”</span><br><span class="line">#LogLevel INFO             日志级别为INFO</span><br><span class="line"></span><br><span class="line"># Authentication:</span><br><span class="line"></span><br><span class="line">#LoginGraceTime 2m         客户端用户认证时间，默认为120s，0为无限制</span><br><span class="line">PermitRootLogin yes        是否允许Root 用户通过ssh 登陆</span><br><span class="line">#StrictModes yes           StrictModes用来设置ssh在接收登录请求之前是否检查用户根目录和rhosts文件的权限和所有权，建议开启</span><br><span class="line">#MaxAuthTries 6            最大尝试次数，默认为6</span><br><span class="line">#MaxSessions 10            最大ssh 客户端连接个数，默认为10</span><br><span class="line"></span><br><span class="line">PubkeyAuthentication yes   PubkeyAuthentication用来设置是否开启公钥验证，如果使用公钥验证的方式登录时，则设置为yes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2</span><br><span class="line"># but this is overridden so installations will only check .ssh/authorized_keys</span><br><span class="line">#AuthorizedKeysFile     .ssh/authorized_keys   AuthorizedKeysFile用来设置公钥验证文件的路径，与PubkeyAuthentication配合使用,默认值是&quot;.ssh/authorized_keys&quot;</span><br><span class="line"></span><br><span class="line">#AuthorizedPrincipalsFile none</span><br><span class="line"></span><br><span class="line">#AuthorizedKeysCommand none</span><br><span class="line">#AuthorizedKeysCommandUser nobody</span><br><span class="line"></span><br><span class="line">下面这7行是关于首次连接添加到known_hosts文件的配置</span><br><span class="line"># For this to work you will also need host keys in /etc/ssh/ssh_known_hosts</span><br><span class="line">#HostbasedAuthentication no</span><br><span class="line"># Change to yes if you don&apos;t trust ~/.ssh/known_hosts for</span><br><span class="line"># HostbasedAuthentication</span><br><span class="line">#IgnoreUserKnownHosts no</span><br><span class="line"># Don&apos;t read the user&apos;s ~/.rhosts and ~/.shosts files</span><br><span class="line">#IgnoreRhosts yes</span><br><span class="line"></span><br><span class="line"># To disable tunneled clear text passwords, change to no here!</span><br><span class="line">#PasswordAuthentication yes     是否允许密码登陆，建议配置好ssh后关闭此选项</span><br><span class="line">#PermitEmptyPasswords no        是否允许空密码登陆</span><br><span class="line"></span><br><span class="line"># Change to no to disable s/key passwords</span><br><span class="line">#ChallengeResponseAuthentication yes   设置禁用s/key 密码</span><br><span class="line"></span><br><span class="line">下面6行关于Kerberos有关的设定</span><br><span class="line"># Kerberos options</span><br><span class="line">#KerberosAuthentication no</span><br><span class="line">#KerberosOrLocalPasswd yes</span><br><span class="line">#KerberosTicketCleanup yes</span><br><span class="line">#KerberosGetAFSToken no</span><br><span class="line">#KerberosUseKuserok yes</span><br><span class="line"></span><br><span class="line">下面6行关于GSSAPI有关的设定</span><br><span class="line"># GSSAPI options</span><br><span class="line">GSSAPIAuthentication yes</span><br><span class="line">GSSAPICleanupCredentials no</span><br><span class="line">#GSSAPIStrictAcceptorCheck yes</span><br><span class="line">#GSSAPIKeyExchange no</span><br><span class="line">#GSSAPIEnablek5users no</span><br><span class="line"></span><br><span class="line"># Set this to &apos;yes&apos; to enable PAM authentication, account processing,</span><br><span class="line"># and session processing. If this is enabled, PAM authentication will</span><br><span class="line"># be allowed through the ChallengeResponseAuthentication and</span><br><span class="line"># PasswordAuthentication.  Depending on your PAM configuration,</span><br><span class="line"># PAM authentication via ChallengeResponseAuthentication may bypass</span><br><span class="line"># the setting of &quot;PermitRootLogin without-password&quot;.</span><br><span class="line"># If you just want the PAM account and session checks to run without</span><br><span class="line"># PAM authentication, then enable this but set PasswordAuthentication</span><br><span class="line"># and ChallengeResponseAuthentication to &apos;no&apos;.</span><br><span class="line"># WARNING: &apos;UsePAM no&apos; is not supported in Red Hat Enterprise Linux and may cause several</span><br><span class="line"># problems.</span><br><span class="line">UsePAM yes</span><br><span class="line"></span><br><span class="line">#AllowAgentForwarding yes</span><br><span class="line">#AllowTcpForwarding yes</span><br><span class="line">#GatewayPorts no</span><br><span class="line">X11Forwarding yes          是否允许X11转发</span><br><span class="line">#X11DisplayOffset 10       指定X11 转发的第一个可用的显示区(display)数字。默认值是 10 </span><br><span class="line">#X11UseLocalhost yes</span><br><span class="line">#PermitTTY yes</span><br><span class="line">#PrintMotd yes            PrintMotd用来设置sshd是否在用户登录时显示“/etc/motd”中的信息，可以选在在“/etc/motd”中加入警告的信息</span><br><span class="line">#PrintLastLog yes         PrintLastLog 是否显示上次登录信息</span><br><span class="line">#TCPKeepAlive yes         是否持续连接，设置yes可以防止死连接,这种消息可以检测到死连接、连接不当关闭、客户端崩溃等异常。在这个情况下，任何一端死掉后， SSH 可以立刻知道，而不会有僵尸程序的发生！</span><br><span class="line">#UseLogin no              是否在交互式会话的登录过程中使用,如果开启此指令，那么X11Forwarding将会被禁止，因为login不知道如何处理 xauth cookies。需要注意的是，在SSH底下本来就不接受 login这个程序的登入，如果指UsePrivilegeSeparation ，那么它将在认证完成后被禁用。</span><br><span class="line">#UsePrivilegeSeparation sandbox      客户端权限</span><br><span class="line">#PermitUserEnvironment no</span><br><span class="line">#Compression delayed</span><br><span class="line">#ClientAliveInterval 0</span><br><span class="line">#ClientAliveCountMax 3</span><br><span class="line">#ShowPatchLevel no</span><br><span class="line">#UseDNS yes                         是否使用dns反向解析</span><br><span class="line">#PidFile /var/run/sshd.pid          进程号所在文件</span><br><span class="line">#MaxStartups 10:30:100              设置同时允许几个尚未登入的联机，当用户连上ssh但并未输入密码即为所谓的联机，而已经建立联机的不计算入内，这个设置可以防止恶意对服务器进行连接</span><br><span class="line">#PermitTunnel no</span><br><span class="line">#ChrootDirectory none</span><br><span class="line">#VersionAddendum none</span><br><span class="line"></span><br><span class="line"># no default banner path</span><br><span class="line">#Banner none</span><br><span class="line"></span><br><span class="line"># Accept locale-related environment variables</span><br><span class="line">AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES</span><br><span class="line">AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT</span><br><span class="line">AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE</span><br><span class="line">AcceptEnv XMODIFIERS</span><br><span class="line"></span><br><span class="line"># override default of no subsystems</span><br><span class="line">Subsystem       sftp    /usr/libexec/openssh/sftp-server</span><br><span class="line"></span><br><span class="line"># Example of overriding settings on a per-user basis</span><br><span class="line">#Match User anoncvs</span><br><span class="line">#       X11Forwarding no</span><br><span class="line">#       AllowTcpForwarding no</span><br><span class="line">#       PermitTTY no</span><br><span class="line">#       ForceCommand cvs server</span><br></pre></td></tr></table></figure>
+
+<p>配置文件需要改动的可能就是：是否Root用户登陆、是否开启RSA验证、是否持久连接、最大连接数、最大未登入连接数</p>
+<p>设置完成后，必须重启SSH服务以使更改生效：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root ~]# service sshd restart</span><br></pre></td></tr></table></figure>
+
+<h2 id="客户端系统配置文件-etc-ssh-ssh-config"><a href="#客户端系统配置文件-etc-ssh-ssh-config" class="headerlink" title="客户端系统配置文件 /etc/ssh/ssh_config"></a>客户端系统配置文件 <code>/etc/ssh/ssh_config</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#       $OpenBSD: ssh_config,v 1.30 2016/02/20 23:06:23 sobrado Exp $</span><br><span class="line"></span><br><span class="line"># This is the ssh client system-wide configuration file.  See</span><br><span class="line"># ssh_config(5) for more information.  This file provides defaults for</span><br><span class="line"># users, and the values can be changed in per-user configuration files</span><br><span class="line"># or on the command line.</span><br><span class="line"></span><br><span class="line"># Configuration data is parsed as follows:</span><br><span class="line">#  1. command line options</span><br><span class="line">#  2. user-specific file</span><br><span class="line">#  3. system-wide file</span><br><span class="line"># Any configuration value is only changed the first time it is set.</span><br><span class="line"># Thus, host-specific definitions should be at the beginning of the</span><br><span class="line"># configuration file, and defaults at the end.</span><br><span class="line"></span><br><span class="line"># Site-wide defaults for some commonly used options.  For a comprehensive</span><br><span class="line"># list of available options, their meanings and defaults, please see the</span><br><span class="line"># ssh_confg(5) man page.</span><br><span class="line"></span><br><span class="line"># Host *</span><br><span class="line">#   ForwardAgent no		连接是否经过验证代理（如果存在）转发给远程计算机</span><br><span class="line">#   ForwardX11 no		X11连接是否被自动重定向到安全的通道和显示集（DISPLAY set）</span><br><span class="line">#   RhostsRSAAuthentication no	是否使用基于rhosts的安全验证</span><br><span class="line">#   RSAAuthentication yes		是否使用RSA算法进行安全验证</span><br><span class="line">#   PasswordAuthentication yes	是否使用口令验证</span><br><span class="line">#   HostbasedAuthentication no	是否使用基于Host的安全验证</span><br><span class="line">#   GSSAPIAuthentication no</span><br><span class="line">#   GSSAPIDelegateCredentials no</span><br><span class="line">#   GSSAPIKeyExchange no</span><br><span class="line">#   GSSAPITrustDNS no</span><br><span class="line">#   BatchMode no				批处理模式，一般设为&quot;no&quot;；如果设为&quot;yes&quot;，交互式输入口令的提示将被禁止，这个选项对脚本文件和批处理任务十分有用</span><br><span class="line">#   CheckHostIP yes				设置ssh是否查看连接到服务器的主机的IP地址以防止DNS欺骗。建议设置为&quot;yes&quot;。</span><br><span class="line">#   AddressFamily any</span><br><span class="line">#   ConnectTimeout 0</span><br><span class="line">#   StrictHostKeyChecking ask	如果设为&quot;yes&quot;，ssh将不会自动把计算机的密匙加入&quot;$HOME/.ssh/known_hosts&quot;文件，且一旦计算机的密匙发生了变化，就拒绝连接</span><br><span class="line">#   IdentityFile ~/.ssh/identity	设置读取用户的RSA安全验证标识</span><br><span class="line">#   IdentityFile ~/.ssh/id_rsa</span><br><span class="line">#   IdentityFile ~/.ssh/id_dsa</span><br><span class="line">#   IdentityFile ~/.ssh/id_ecdsa</span><br><span class="line">#   IdentityFile ~/.ssh/id_ed25519</span><br><span class="line">#   Port 22</span><br><span class="line">#   Protocol 2</span><br><span class="line">#   Cipher 3des</span><br><span class="line">#   Ciphers aes128-ctr,aes192-ctr,aes256-ctr,arcfour256,arcfour128,aes128-cbc,3des-cbc</span><br><span class="line">#   MACs hmac-md5,hmac-sha1,umac-64@openssh.com,hmac-ripemd160</span><br><span class="line">#   EscapeChar ~</span><br><span class="line">#   Tunnel no</span><br><span class="line">#   TunnelDevice any:any</span><br><span class="line">#   PermitLocalCommand no</span><br><span class="line">#   VisualHostKey no</span><br><span class="line">#   ProxyCommand ssh -q -W %h:%p gateway.example.com</span><br><span class="line">#   RekeyLimit 1G 1h</span><br><span class="line">#</span><br><span class="line"># Uncomment this if you want to use .local domain</span><br><span class="line"># Host *.local</span><br><span class="line">#   CheckHostIP no</span><br><span class="line"></span><br><span class="line">Host *</span><br><span class="line">        GSSAPIAuthentication yes</span><br><span class="line"># If this option is set to yes then remote X11 clients will have full access</span><br><span class="line"># to the original X11 display. As virtually no X11 client supports the untrusted</span><br><span class="line"># mode correctly we set this to yes.</span><br><span class="line">        ForwardX11Trusted yes</span><br><span class="line"># Send locale-related environment variables</span><br><span class="line">        SendEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES</span><br><span class="line">        SendEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT</span><br><span class="line">        SendEnv LC_IDENTIFICATION LC_ALL LANGUAGE</span><br><span class="line">        SendEnv XMODIFIERSi</span><br></pre></td></tr></table></figure>
+
+<p>客户端配置文件通常只改动：RSA安全验证文件位置等</p>
+<h2 id="客户端用户配置文件-ssh-config"><a href="#客户端用户配置文件-ssh-config" class="headerlink" title="客户端用户配置文件 ~/.ssh/config"></a>客户端用户配置文件 <code>~/.ssh/config</code></h2><p>这个文件是客户端用户配置文件，需要自己生成，可以对不同域名指定密钥文件，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">HOST *</span><br><span class="line">    ServerAliveInterval 20</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Host github.com            指定GitHub的密钥文件</span><br><span class="line">    User MinuteSheep</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/github</span><br><span class="line"></span><br><span class="line">Host 111.22.33.44          指定百度云服务器的密钥文件</span><br><span class="line">    User root</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/baiduyun</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考资料</p>
+<p>[1] <a href="https://zh.wikipedia.org/wiki/Secure_Shell" target="_blank" rel="noopener">Secure Shell,wiki</a><br>[2] <a href="https://blog.csdn.net/Field_Yang/article/details/51568861" target="_blank" rel="noopener">SSH远程登录配置文件sshd_config详解,csdn</a><br>[3] <a href="https://blog.csdn.net/linghe301/article/details/8211305" target="_blank" rel="noopener">Linux启动或禁止SSH用户及IP的登录,csdn</a><br>[4] <a href="https://www.cnblogs.com/ilinuxer/p/5087452.html" target="_blank" rel="noopener">linux ssh_config和sshd_config配置文件，博客园</a>  </p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Minute Sheep
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://minutesheep.github.io/2020/01/26/ssh/" title="SSH">https://minutesheep.github.io/2020/01/26/ssh/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/ssh/" rel="tag"># ssh</a>
+          
+            <a href="/tags/非对称加密/" rel="tag"># 非对称加密</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/19/2-Add-Two-Numbers/" rel="next" title="#2 Add Two Numbers">
+                <i class="fa fa-chevron-left"></i> #2 Add Two Numbers
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/27/4-Git程序员篇/" rel="prev" title="#4 Git程序员基本篇">
+                #4 Git程序员基本篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Minute Sheep">
+            
+              <p class="site-author-name" itemprop="name">Minute Sheep</p>
+              <p class="site-description motion-element" itemprop="description">不忘初心，方得始终！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/minutesheep" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:minutesheep@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH百科"><span class="nav-number">1.</span> <span class="nav-text">SSH百科</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH相关命令"><span class="nav-number">2.</span> <span class="nav-text">SSH相关命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成钥匙对"><span class="nav-number">2.1.</span> <span class="nav-text">生成钥匙对</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通用户"><span class="nav-number">2.1.1.</span> <span class="nav-text">普通用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为了安全和管理更方便"><span class="nav-number">2.1.2.</span> <span class="nav-text">为了安全和管理更方便</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放置公钥"><span class="nav-number">2.2.</span> <span class="nav-text">放置公钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#手工放置"><span class="nav-number">2.2.1.</span> <span class="nav-text">手工放置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用命令放置"><span class="nav-number">2.2.2.</span> <span class="nav-text">使用命令放置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用SSH-连接"><span class="nav-number">2.3.</span> <span class="nav-text">使用SSH 连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通连接"><span class="nav-number">2.3.1.</span> <span class="nav-text">普通连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过代理连接"><span class="nav-number">2.3.2.</span> <span class="nav-text">通过代理连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-配置文件"><span class="nav-number">3.</span> <span class="nav-text">SSH 配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端配置文件-etc-ssh-sshd-config"><span class="nav-number">3.1.</span> <span class="nav-text">服务器端配置文件 /etc/ssh/sshd_config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端系统配置文件-etc-ssh-ssh-config"><span class="nav-number">3.2.</span> <span class="nav-text">客户端系统配置文件 /etc/ssh/ssh_config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端用户配置文件-ssh-config"><span class="nav-number">3.3.</span> <span class="nav-text">客户端用户配置文件 ~/.ssh/config</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Minute Sheep</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">125.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz',
+        appKey: 'GYxLGdpsNWNARbafoQDJAa0j',
+        placeholder: 'Wonderful writing, supports a wave👍',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ej111xcVmnSTKQJKXA5HOodu-gzGzoHsz", "GYxLGdpsNWNARbafoQDJAa0j");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
