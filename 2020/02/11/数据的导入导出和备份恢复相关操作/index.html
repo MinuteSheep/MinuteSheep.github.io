@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  275
+                  277
                 </span>
               
 
@@ -414,38 +414,25 @@
       
         <p>本节记录数据的导入导出和备份恢复相关操作</p>
 <img src="/2020/02/11/数据的导入导出和备份恢复相关操作/cover.jpg">
-
 <a id="more"></a>
-
-
-<h2 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h2><ol>
-<li>SELECT … FROM table INTO OUTFILE file<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; select * from student</span><br><span class="line">    -&gt; into outfile '~/mysqlBackup/studentbk.txt'</span><br><span class="line">    -&gt; fields terminated by ','         字段间隔符</span><br><span class="line">    -&gt; optionally enclosed by '"'       字符串包裹符</span><br><span class="line">    -&gt; lines terminated by '?';         行间隔符</span><br><span class="line">Query OK, 3 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="数据导出">数据导出</h2>
+<ol type="1">
+<li>SELECT ... FROM table INTO OUTFILE file <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; select * from student</span><br><span class="line">    -&gt; into outfile '~/mysqlBackup/studentbk.txt'</span><br><span class="line">    -&gt; fields terminated by ','         字段间隔符</span><br><span class="line">    -&gt; optionally enclosed by '"'       字符串包裹符</span><br><span class="line">    -&gt; lines terminated by '?';         行间隔符</span><br><span class="line">Query OK, 3 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><ol>
-<li>LOAD DATA INFILE file INTO TABLE table<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; load data infile '~/mysqlBackup/studentbk.txt'</span><br><span class="line">    -&gt; into table student</span><br><span class="line">    -&gt; fields terminated by ','</span><br><span class="line">    -&gt; optionally enclosed by '"'</span><br><span class="line">    -&gt; lines terminated by '?';</span><br><span class="line">Query OK, 3 rows affected (0.01 sec)</span><br><span class="line">Records: 3  Deleted: 0  Skipped: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="数据导入">数据导入</h2>
+<ol type="1">
+<li>LOAD DATA INFILE file INTO TABLE table <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; load data infile '~/mysqlBackup/studentbk.txt'</span><br><span class="line">    -&gt; into table student</span><br><span class="line">    -&gt; fields terminated by ','</span><br><span class="line">    -&gt; optionally enclosed by '"'</span><br><span class="line">    -&gt; lines terminated by '?';</span><br><span class="line">Query OK, 3 rows affected (0.01 sec)</span><br><span class="line">Records: 3  Deleted: 0  Skipped: 0  Warnings: 0</span><br></pre></td></tr></table></figure></li>
 </ol>
 <hr>
-<h2 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h2><ol>
-<li><p>mysqldump -u user -p possword –all-database &gt; file</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root --all-databases&gt;./alldata.sql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>mysqldump -u user -p possword –tab=directory database</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root --tab=. book</span><br><span class="line">$ ls</span><br><span class="line">aaa.sql          book_cp.txt      borrow_copy.txt  student.sql      t.txt</span><br><span class="line">aaa.txt          book_view.sql    g.sql            student.txt      test_copy.sql</span><br><span class="line">book.sql         borrow.sql       g.txt            student_copy.sql test_copy.txt</span><br><span class="line">book.txt         borrow.txt       o.sql            student_copy.txt test_create.sql</span><br><span class="line">book_cp.sql      borrow_copy.sql  o.txt            t.sql            test_create.txt</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="数据备份">数据备份</h2>
+<ol type="1">
+<li><p>mysqldump -u user -p possword --all-database &gt; file <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root --all-databases&gt;./alldata.sql</span><br></pre></td></tr></table></figure></p></li>
+<li><p>mysqldump -u user -p possword --tab=directory database <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mysqldump -u root --tab=. book</span><br><span class="line">$ ls</span><br><span class="line">aaa.sql          book_cp.txt      borrow_copy.txt  student.sql      t.txt</span><br><span class="line">aaa.txt          book_view.sql    g.sql            student.txt      test_copy.sql</span><br><span class="line">book.sql         borrow.sql       g.txt            student_copy.sql test_copy.txt</span><br><span class="line">book.txt         borrow.txt       o.sql            student_copy.txt test_create.sql</span><br><span class="line">book_cp.sql      borrow_copy.sql  o.txt            t.sql            test_create.txt</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h2 id="数据恢复"><a href="#数据恢复" class="headerlink" title="数据恢复"></a>数据恢复</h2><ol>
-<li><p>mysql -u user -p password database &lt; file</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root book &lt; ./alldata.sql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>mysqlimport -u user -p password database file        file必须写全路径,用来恢复数据,不能表结构</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqlimport -u root book ~/mysqlBackup/book_cp.txt</span><br><span class="line">book.book_cp: Records: 4  Deleted: 0  Skipped: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="数据恢复">数据恢复</h2>
+<ol type="1">
+<li><p>mysql -u user -p password database &lt; file <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root book &lt; ./alldata.sql</span><br></pre></td></tr></table></figure></p></li>
+<li><p>mysqlimport -u user -p password database file file必须写全路径,用来恢复数据,不能表结构 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mysqlimport -u root book ~/mysqlBackup/book_cp.txt</span><br><span class="line">book.book_cp: Records: 4  Deleted: 0  Skipped: 0  Warnings: 0</span><br></pre></td></tr></table></figure></p></li>
 </ol>
 
       
@@ -591,7 +578,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -613,7 +600,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -696,7 +683,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  425
+                  427
                 </span>
               
 
@@ -414,40 +414,31 @@
       
         <p>本节记录存储过程和函数相关内容</p>
 <img src="/2020/02/11/存储过程相关操作/cover.jpg">
-
 <a id="more"></a>
-
-
-<h2 id="创建存储过程"><a href="#创建存储过程" class="headerlink" title="创建存储过程"></a>创建存储过程</h2><ol>
-<li>CREATE PROCEDURE procedure()<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; delimiter $$</span><br><span class="line">(root@localhost) [book]&gt; create procedure up_major(in id int, in ma char(10))</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; update student set major=ma where stu_id=id;</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; create procedure search(in id int)</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; select * from student where stu_id=id;</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; create procedure ins(in id int, in name char(10), in ma char(10), in sex char(1))</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; insert into student values(id, name, ma, sex);</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; create procedure testadd()         复杂的例子</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; declare id int;</span><br><span class="line">    -&gt; declare e int default 0;</span><br><span class="line">    -&gt; declare datas cursor for select stu_id from student;</span><br><span class="line">    -&gt; declare continue handler for not found set e=1;</span><br><span class="line">    -&gt; open datas;</span><br><span class="line">    -&gt; fetch datas into id;</span><br><span class="line">    -&gt; repeat</span><br><span class="line">    -&gt; update student set stu_id=stu_id+1000 where stu_id=id;</span><br><span class="line">    -&gt; fetch datas into id;</span><br><span class="line">    -&gt; until e</span><br><span class="line">    -&gt; end repeat;</span><br><span class="line">    -&gt; close datas;</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="创建存储过程">创建存储过程</h2>
+<ol type="1">
+<li>CREATE PROCEDURE procedure() <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; delimiter $$</span><br><span class="line">(root@localhost) [book]&gt; create procedure up_major(in id int, in ma char(10))</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; update student set major=ma where stu_id=id;</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; create procedure search(in id int)</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; select * from student where stu_id=id;</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; create procedure ins(in id int, in name char(10), in ma char(10), in sex char(1))</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; insert into student values(id, name, ma, sex);</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; create procedure testadd()         复杂的例子</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; declare id int;</span><br><span class="line">    -&gt; declare e int default 0;</span><br><span class="line">    -&gt; declare datas cursor for select stu_id from student;</span><br><span class="line">    -&gt; declare continue handler for not found set e=1;</span><br><span class="line">    -&gt; open datas;</span><br><span class="line">    -&gt; fetch datas into id;</span><br><span class="line">    -&gt; repeat</span><br><span class="line">    -&gt; update student set stu_id=stu_id+1000 where stu_id=id;</span><br><span class="line">    -&gt; fetch datas into id;</span><br><span class="line">    -&gt; until e</span><br><span class="line">    -&gt; end repeat;</span><br><span class="line">    -&gt; close datas;</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="调用存储过程"><a href="#调用存储过程" class="headerlink" title="调用存储过程"></a>调用存储过程</h2><ol>
-<li>CALL procedure()<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; call up_major(1008, '计算机');</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; call search(1008);</span><br><span class="line">+<span class="comment">--------+----------+-----------+---------+</span></span><br><span class="line">| stu_id | stu_name | major     | stu_sex |</span><br><span class="line">+<span class="comment">--------+----------+-----------+---------+</span></span><br><span class="line">|   1008 | 王虎     | 计算机    | M       |</span><br><span class="line">+<span class="comment">--------+----------+-----------+---------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.01</span> sec)</span><br><span class="line"><span class="keyword">Query</span> OK, <span class="number">0</span> <span class="keyword">rows</span> affected (<span class="number">0.01</span> sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; <span class="keyword">call</span> ins(<span class="number">1001</span>, <span class="string">'大白'</span>, <span class="string">'环境工程'</span>, <span class="string">'F'</span>);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="调用存储过程">调用存储过程</h2>
+<ol type="1">
+<li>CALL procedure() <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; call up_major(1008, '计算机');</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; call search(1008);</span><br><span class="line">+<span class="comment">--------+----------+-----------+---------+</span></span><br><span class="line">| stu_id | stu_name | major     | stu_sex |</span><br><span class="line">+<span class="comment">--------+----------+-----------+---------+</span></span><br><span class="line">|   1008 | 王虎     | 计算机    | M       |</span><br><span class="line">+<span class="comment">--------+----------+-----------+---------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.01</span> sec)</span><br><span class="line"><span class="keyword">Query</span> OK, <span class="number">0</span> <span class="keyword">rows</span> affected (<span class="number">0.01</span> sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; <span class="keyword">call</span> ins(<span class="number">1001</span>, <span class="string">'大白'</span>, <span class="string">'环境工程'</span>, <span class="string">'F'</span>);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="删除存储过程"><a href="#删除存储过程" class="headerlink" title="删除存储过程"></a>删除存储过程</h2><ol>
-<li>DROP PROCEDURE procedure<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop procedure testadd;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="删除存储过程">删除存储过程</h2>
+<ol type="1">
+<li>DROP PROCEDURE procedure <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop procedure testadd;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
 <hr>
-<h2 id="创建存储函数"><a href="#创建存储函数" class="headerlink" title="创建存储函数"></a>创建存储函数</h2><ol>
-<li>CREATE FUNCTIOn function() RETURNS …<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create function name_from_test(id int) returns varchar(20)</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; return(select stu_name from student where stu_id=id);</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="创建存储函数">创建存储函数</h2>
+<ol type="1">
+<li>CREATE FUNCTIOn function() RETURNS ... <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create function name_from_test(id int) returns varchar(20)</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; return(select stu_name from student where stu_id=id);</span><br><span class="line">    -&gt; end$$</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="调用存储函数"><a href="#调用存储函数" class="headerlink" title="调用存储函数"></a>调用存储函数</h2><ol>
-<li>SELECT function*()<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; select name_from_test(2008);</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">| name_from_test(2008) |</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">| 王虎                 |</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="调用存储函数">调用存储函数</h2>
+<ol type="1">
+<li>SELECT function*() <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; select name_from_test(2008);</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">| name_from_test(2008) |</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">| 王虎                 |</span><br><span class="line">+<span class="comment">----------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="删除存储函数"><a href="#删除存储函数" class="headerlink" title="删除存储函数"></a>删除存储函数</h2><ol>
-<li>DROP FUNCTION function<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop function name_from_test;</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="删除存储函数">删除存储函数</h2>
+<ol type="1">
+<li>DROP FUNCTION function <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop function name_from_test;</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -593,7 +584,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -615,7 +606,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -698,7 +689,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

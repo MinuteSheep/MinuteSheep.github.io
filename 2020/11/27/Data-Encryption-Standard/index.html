@@ -83,13 +83,13 @@
 
 
 
-<meta name="description" content="Citation We will continue to introduce the second camp of symmetric ciphers: block  ciphers. Two major events occurred in the computer field in the 1970s, which  marked the entry of cryptography int">
+<meta name="description" content="Citation  We will continue to introduce the second camp of symmetric ciphers: block ciphers. Two major events occurred in the computer field in the 1970s, which marked the entry of cryptography into">
 <meta name="keywords" content="cryptograpy series,block cipher,des">
 <meta property="og:type" content="article">
 <meta property="og:title" content="#02 Data Encryption Standard">
 <meta property="og:url" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/index.html">
 <meta property="og:site_name" content="T N T">
-<meta property="og:description" content="Citation We will continue to introduce the second camp of symmetric ciphers: block  ciphers. Two major events occurred in the computer field in the 1970s, which  marked the entry of cryptography int">
+<meta property="og:description" content="Citation  We will continue to introduce the second camp of symmetric ciphers: block ciphers. Two major events occurred in the computer field in the 1970s, which marked the entry of cryptography into">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/cover.jpeg">
 <meta property="og:image" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/des.png">
@@ -98,10 +98,12 @@
 <meta property="og:image" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/permutation.png">
 <meta property="og:image" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/permutation_table.png">
 <meta property="og:image" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/f_function.png">
-<meta property="og:updated_time" content="2021-01-25T09:30:47.758Z">
+<meta property="og:image" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/e_function1.png">
+<meta property="og:image" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/e_function2.png">
+<meta property="og:updated_time" content="2021-01-26T01:16:55.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="#02 Data Encryption Standard">
-<meta name="twitter:description" content="Citation We will continue to introduce the second camp of symmetric ciphers: block  ciphers. Two major events occurred in the computer field in the 1970s, which  marked the entry of cryptography int">
+<meta name="twitter:description" content="Citation  We will continue to introduce the second camp of symmetric ciphers: block ciphers. Two major events occurred in the computer field in the 1970s, which marked the entry of cryptography into">
 <meta name="twitter:image" content="https://minutesheep.github.io/2020/11/27/Data-Encryption-Standard/cover.jpeg">
 
 
@@ -310,8 +312,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-01-25T17:30:47+08:00">
-                2021-01-25
+              <time title="Post modified" itemprop="dateModified" datetime="2021-01-26T09:16:55+08:00">
+                2021-01-26
               </time>
             
           </span>
@@ -381,7 +383,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  816
+                  892
                 </span>
               
 
@@ -419,93 +421,45 @@
 
       
         <img src="/2020/11/27/Data-Encryption-Standard/cover.jpeg">
-
-<h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h2><blockquote>
-<p>We will continue to introduce the second camp of symmetric ciphers: block 
-ciphers. Two major events occurred in the computer field in the 1970s, which 
-marked the entry of cryptography into the category of modern cryptography.
-One is today’s main content DES(Data Encryption Standard), and the other is the 
-birth of public key cryptography.</p>
+<h2 id="citation">Citation</h2>
+<blockquote>
+<p>We will continue to introduce the second camp of symmetric ciphers: block ciphers. Two major events occurred in the computer field in the 1970s, which marked the entry of cryptography into the category of modern cryptography. One is today's main content DES(Data Encryption Standard), and the other is the birth of public key cryptography.</p>
 </blockquote>
 <a id="more"></a>
-
-<h2 id="DES-Data-Encryption-Standard"><a href="#DES-Data-Encryption-Standard" class="headerlink" title="DES(Data Encryption Standard)"></a>DES(Data Encryption Standard)</h2><blockquote>
-<p><strong>History of DES:</strong>
-In 1972, NBS (now NIST) called for the implementation of standard cryptography 
-in the United States. The US government has always believed that cryptography
-(especially cryptanalysis) is very important to national security. In 1974, NBS
-found the most suitable candidate from a method provided by a cryptographic
-resarch group at IBM. The algorithm submitted by IBM is based on the Lucifer
-cipher, and Lucifer is a cipher family proposed by Horst Feistel in the late
-1960s, and is also the first example of a block cipher applied to digital data.
-Lucifer uses a 128-bit key to encrypt 64-bit block. In order to study the
-security of the submitted password, NBS sought the help of the NSA, so the NSA
-affected the modification of the password (this password was later renamed DES)
-to some extent. One of the modifications is: DES is specifically designed to
-resist differential cryptanalysis.</p>
+<h2 id="desdata-encryption-standard">DES(Data Encryption Standard)</h2>
+<blockquote>
+<p><strong>History of DES:</strong> In 1972, NBS (now NIST) called for the implementation of standard cryptography in the United States. The US government has always believed that cryptography (especially cryptanalysis) is very important to national security. In 1974, NBS found the most suitable candidate from a method provided by a cryptographic resarch group at IBM. The algorithm submitted by IBM is based on the Lucifer cipher, and Lucifer is a cipher family proposed by Horst Feistel in the late 1960s, and is also the first example of a block cipher applied to digital data. Lucifer uses a 128-bit key to encrypt 64-bit block. In order to study the security of the submitted password, NBS sought the help of the NSA, so the NSA affected the modification of the password (this password was later renamed DES) to some extent. One of the modifications is: DES is specifically designed to resist differential cryptanalysis.</p>
 </blockquote>
-<h3 id="Confusion-and-Diffusion"><a href="#Confusion-and-Diffusion" class="headerlink" title="Confusion and Diffusion"></a>Confusion and Diffusion</h3><p>According to the famous information theorist Claude Shannon, strong encryption
-algorithms are based on the following two primitive opearations:</p>
-<ul>
-<li><strong>Confusion:</strong> It is an encryption operation that makes the relationship 
-between the key and the ciphertext as obscure as possible. One element that is 
-commonly used to achieve confusion today is replacement.</li>
-<li><strong>Diffusion:</strong> It is an encryption operation that spreads the influence of one
-plaintext symbol to multiple ciphertext symbols in order to hide the statistical
-properties of the plaintext. The simplest diffusion element is position swap.</li>
-</ul>
-<p>It is worth noting that a cipher that only performs diffusion is insecure.
-Therefore, Shannon proposed that the diffusion operation can be connected in 
-series to form a stronger cipher, such a cipher is also called a Product cipher.
-All current block ciphers are product ciphers because they are composed of
-rounds of repeated operations on data. From the cipher level, this means that
-modifying 1 bit in the plaintext will cause an average of half of the output
-bits to change, that is, the second ciphertext looks completely unrelated to 
-the first ciphertext. What needs to be kept in mind is that this attribute is
-critical to the processing of block ciphers.</p>
-<p><strong>waring: The commonly used block length of modern block ciphers is 64 or 128
-bits, but if an input bit is inverted, the behavior of block ciphers with 
-different block lengths is the same.</strong></p>
-<h3 id="DES-algorithm-overview"><a href="#DES-algorithm-overview" class="headerlink" title="DES algorithm overview"></a>DES algorithm overview</h3><p>DES is a cipher that uses a 56-bit key to encrypt a 64-bit long block.</p>
-<p><img src="des.png" alt></p>
-<p>DES is a symmetric cipher, that is, the encryption process and the decryption
-process use the same key. Like almost all block encryption, DES is also an
-iterative algorithm. The DES encryption process for each packet in the plaintext
-includes 16rounds, and the operation of each round is the same. It is worth 
-noting that a different word key is used in each round, and all word keys $k_i$
-are derived form the master key $k$.</p>
-<p><img src="iterator.png" alt></p>
-<p>The internal structure of DES is called Feistel network. If Feistel network is
-well designed, it will get very strong passwords. Many modern ciphers use
-Feistel network(in fact, AES is not Feistel network). Another advantange of
-Feistel network is that its encryption process is almost identical to the
-decryption process. The decrption of DES only require a reverse key arrangement,
-which is implemented in software and hardware.</p>
-<p><img src="feistel.png" alt></p>
-<p>After the 64-bit plaintext $x$ is initially changed to IP(x) by position, the
-plaintext will be divided into two parts, $L_0$ and $R_0$. Then input the
-obtained 32-bit left and right parts into Feistel network, which includes 16
-operations. The right half $R_i$ is fed into the function f, the output of the f
-function will be XOR with the 32-bit left half $L_i$. Finally, the left and
-right parts are exchanged, and this process is repeated for each subsequent
-round, which can be expressed as:</p>
-<p>$$
+<h3 id="confusion-and-diffusion">Confusion and Diffusion</h3>
+<p>According to the famous information theorist Claude Shannon, strong encryption algorithms are based on the following two primitive opearations: - <strong>Confusion:</strong> It is an encryption operation that makes the relationship between the key and the ciphertext as obscure as possible. One element that is commonly used to achieve confusion today is replacement. - <strong>Diffusion:</strong> It is an encryption operation that spreads the influence of one plaintext symbol to multiple ciphertext symbols in order to hide the statistical properties of the plaintext. The simplest diffusion element is position swap.</p>
+<p>It is worth noting that a cipher that only performs diffusion is insecure. Therefore, Shannon proposed that the diffusion operation can be connected in series to form a stronger cipher, such a cipher is also called a Product cipher. All current block ciphers are product ciphers because they are composed of rounds of repeated operations on data. From the cipher level, this means that modifying 1 bit in the plaintext will cause an average of half of the output bits to change, that is, the second ciphertext looks completely unrelated to the first ciphertext. What needs to be kept in mind is that this attribute is critical to the processing of block ciphers.</p>
+<p><strong>waring: The commonly used block length of modern block ciphers is 64 or 128 bits, but if an input bit is inverted, the behavior of block ciphers with different block lengths is the same.</strong></p>
+<h3 id="des-algorithm-overview">DES algorithm overview</h3>
+<p>DES is a cipher that uses a 56-bit key to encrypt a 64-bit long block.</p>
+<p><img src="des.png"></p>
+<p>DES is a symmetric cipher, that is, the encryption process and the decryption process use the same key. Like almost all block encryption, DES is also an iterative algorithm. The DES encryption process for each packet in the plaintext includes 16rounds, and the operation of each round is the same. It is worth noting that a different word key is used in each round, and all word keys <span class="math inline">\(k_i\)</span> are derived form the master key <span class="math inline">\(k\)</span>.</p>
+<p><img src="iterator.png"></p>
+<p>The internal structure of DES is called Feistel network. If Feistel network is well designed, it will get very strong passwords. Many modern ciphers use Feistel network(in fact, AES is not Feistel network). Another advantange of Feistel network is that its encryption process is almost identical to the decryption process. The decrption of DES only require a reverse key arrangement, which is implemented in software and hardware.</p>
+<p><img src="feistel.png"></p>
+<p>After the 64-bit plaintext <span class="math inline">\(x\)</span> is initially changed to IP(x) by position, the plaintext will be divided into two parts, <span class="math inline">\(L_0\)</span> and <span class="math inline">\(R_0\)</span>. Then input the obtained 32-bit left and right parts into Feistel network, which includes 16 operations. The right half <span class="math inline">\(R_i\)</span> is fed into the function f, the output of the f function will be XOR with the 32-bit left half <span class="math inline">\(L_i\)</span>. Finally, the left and right parts are exchanged, and this process is repeated for each subsequent round, which can be expressed as:</p>
+<p><span class="math display">\[
 L_i = R_{i-1},
-$$</p>
-<p>$$
+\]</span></p>
+<p><span class="math display">\[
 R_i = L_{i-1} \oplus f(R_{i-1}, k_i)
-$$</p>
-<p>The round key k in each round comes from the 56-bit master key. And this process
-is realized through key schedule. In DES, the f function is actually a full
-mapping, which uses a non-linear basic structure grouping, and uses a 48-bit
-round cipher to map a 32-bit input to a 32-bit output.</p>
-<h3 id="DES-internal-structure"><a href="#DES-internal-structure" class="headerlink" title="DES internal structure"></a>DES internal structure</h3><h4 id="Initial-permutation-and-inverse-initial-permutation"><a href="#Initial-permutation-and-inverse-initial-permutation" class="headerlink" title="Initial permutation and inverse initial permutation"></a>Initial permutation and inverse initial permutation</h4><p>It is easy to change by position in hardware, but not easy in software. It is
-worth nothing that neither initial permutation nor inverse initial permutation
-increases the security of DES.</p>
-<p><img src="permutation.png" alt></p>
-<p><img src="permutation_table.png" alt></p>
-<h4 id="f-function"><a href="#f-function" class="headerlink" title="f function"></a>f function</h4><p><img src="f_function.png" alt></p>
-<p>Extension function E:</p>
+\]</span></p>
+<p>The round key k in each round comes from the 56-bit master key. And this process is realized through key schedule. In DES, the f function is actually a full mapping, which uses a non-linear basic structure grouping, and uses a 48-bit round cipher to map a 32-bit input to a 32-bit output.</p>
+<h3 id="des-internal-structure">DES internal structure</h3>
+<h4 id="initial-permutation-and-inverse-initial-permutation">Initial permutation and inverse initial permutation</h4>
+<p>It is easy to change by position in hardware, but not easy in software. It is worth nothing that neither initial permutation nor inverse initial permutation increases the security of DES.</p>
+<p><img src="permutation.png"></p>
+<p><img src="permutation_table.png"></p>
+<h4 id="f-function">f function</h4>
+<p><img src="f_function.png"></p>
+<p>Extension function E: <img src="e_function1.png"> <img src="e_function2.png"></p>
+<p>As can be seen from the table, exactly 16 of the 32 input bits appear twice in the output. But any input bit will not appear twice in the same 6-bit output group.</p>
+<p>S-BOX:</p>
+<p>Then perform XOR operation between the 48-bit result of the expansion and the round key <span class="math inline">\(k_i\)</span>, and send 8 6-bit long packets into 8 different replacement boxes. This replacement box is called S-BOX.</p>
 
       
     </div>
@@ -652,7 +606,7 @@ increases the security of DES.</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -674,7 +628,7 @@ increases the security of DES.</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -723,7 +677,7 @@ increases the security of DES.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Citation"><span class="nav-number">1.</span> <span class="nav-text">Citation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DES-Data-Encryption-Standard"><span class="nav-number">2.</span> <span class="nav-text">DES(Data Encryption Standard)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Confusion-and-Diffusion"><span class="nav-number">2.1.</span> <span class="nav-text">Confusion and Diffusion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DES-algorithm-overview"><span class="nav-number">2.2.</span> <span class="nav-text">DES algorithm overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DES-internal-structure"><span class="nav-number">2.3.</span> <span class="nav-text">DES internal structure</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Initial-permutation-and-inverse-initial-permutation"><span class="nav-number">2.3.1.</span> <span class="nav-text">Initial permutation and inverse initial permutation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f-function"><span class="nav-number">2.3.2.</span> <span class="nav-text">f function</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#citation"><span class="nav-number">1.</span> <span class="nav-text">Citation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#desdata-encryption-standard"><span class="nav-number">2.</span> <span class="nav-text">DES(Data Encryption Standard)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#confusion-and-diffusion"><span class="nav-number">2.1.</span> <span class="nav-text">Confusion and Diffusion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#des-algorithm-overview"><span class="nav-number">2.2.</span> <span class="nav-text">DES algorithm overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#des-internal-structure"><span class="nav-number">2.3.</span> <span class="nav-text">DES internal structure</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#initial-permutation-and-inverse-initial-permutation"><span class="nav-number">2.3.1.</span> <span class="nav-text">Initial permutation and inverse initial permutation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f-function"><span class="nav-number">2.3.2.</span> <span class="nav-text">f function</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -757,7 +711,7 @@ increases the security of DES.</p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

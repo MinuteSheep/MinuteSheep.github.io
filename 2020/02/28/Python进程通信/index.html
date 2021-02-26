@@ -83,19 +83,19 @@
 
 
 
-<meta name="description" content="#9 Python进程通信有时候需求并不是简简单单的产生多个进程即可，而是会对进程提出更高的要求，比如进程1完成进程2才能启动、进程3工作时进程4不可以工作等要求，这就涉及到了进程的通信，尤其体现在进程的同步和互斥，本小节博文将继续深入Python进程，Here we go！">
+<meta name="description" content="#9 Python进程通信 有时候需求并不是简简单单的产生多个进程即可，而是会对进程提出更高的要求，比如进程1完成进程2才能启动、进程3工作时进程4不可以工作等要求，这就涉及到了进程的通信，尤其体现在进程的同步和互斥，本小节博文将继续深入Python进程，Here we go！">
 <meta name="keywords" content="Python,Python学习,Python3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python进程通信">
 <meta property="og:url" content="https://minutesheep.github.io/2020/02/28/Python进程通信/index.html">
 <meta property="og:site_name" content="T N T">
-<meta property="og:description" content="#9 Python进程通信有时候需求并不是简简单单的产生多个进程即可，而是会对进程提出更高的要求，比如进程1完成进程2才能启动、进程3工作时进程4不可以工作等要求，这就涉及到了进程的通信，尤其体现在进程的同步和互斥，本小节博文将继续深入Python进程，Here we go！">
+<meta property="og:description" content="#9 Python进程通信 有时候需求并不是简简单单的产生多个进程即可，而是会对进程提出更高的要求，比如进程1完成进程2才能启动、进程3工作时进程4不可以工作等要求，这就涉及到了进程的通信，尤其体现在进程的同步和互斥，本小节博文将继续深入Python进程，Here we go！">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://minutesheep.github.io/2020/02/28/Python进程通信/demo1.gif">
 <meta property="og:updated_time" content="2020-11-26T14:22:23.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python进程通信">
-<meta name="twitter:description" content="#9 Python进程通信有时候需求并不是简简单单的产生多个进程即可，而是会对进程提出更高的要求，比如进程1完成进程2才能启动、进程3工作时进程4不可以工作等要求，这就涉及到了进程的通信，尤其体现在进程的同步和互斥，本小节博文将继续深入Python进程，Here we go！">
+<meta name="twitter:description" content="#9 Python进程通信 有时候需求并不是简简单单的产生多个进程即可，而是会对进程提出更高的要求，比如进程1完成进程2才能启动、进程3工作时进程4不可以工作等要求，这就涉及到了进程的通信，尤其体现在进程的同步和互斥，本小节博文将继续深入Python进程，Here we go！">
 <meta name="twitter:image" content="https://minutesheep.github.io/2020/02/28/Python进程通信/demo1.gif">
 
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  873
+                  876
                 </span>
               
 
@@ -412,39 +412,84 @@
       
 
       
-        <h2 id="9-Python进程通信"><a href="#9-Python进程通信" class="headerlink" title="#9 Python进程通信"></a>#9 Python进程通信</h2><p>有时候需求并不是简简单单的产生多个进程即可，而是会对进程提出更高的要求，比如进程1完成进程2才能启动、进程3工作时进程4不可以工作等要求，这就涉及到了进程的通信，尤其体现在进程的同步和互斥，本小节博文将继续深入Python进程，Here we go！</p>
+        <h2 id="python进程通信">#9 Python进程通信</h2>
+<p>有时候需求并不是简简单单的产生多个进程即可，而是会对进程提出更高的要求，比如进程1完成进程2才能启动、进程3工作时进程4不可以工作等要求，这就涉及到了进程的通信，尤其体现在进程的同步和互斥，本小节博文将继续深入Python进程，Here we go！</p>
 <a id="more"></a>
-
-<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>进程之间无法直接通信，必须通过“中间人”传递消息，从而间接的达到通信目的。能作为“中间人”身份的有两种：队列和管道。</p>
-<p>队列是一种数据结构，特点是“先进先出（FIFO）”，与栈刚好相反，队列就是一种排队模型，谁先来谁先享受服务。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">--------------------------------     ______________</span><br><span class="line">--------------------------------    &lt; 卖老婆咯 &gt;</span><br><span class="line">mmmmm     mm   mmmm   mmmm  mmm      --------------</span><br><span class="line">#        m&quot;#  &quot;   &quot;# &quot;   &quot;#   #             \   ^__^</span><br><span class="line">&quot;&quot;&quot;&quot;mm  #&quot; #    mmm&quot;     m&quot;   #              \  (oo)\_______</span><br><span class="line">     # #mmm#m     &quot;#   m&quot;     #                 (__)\       )\/\</span><br><span class="line">&quot;mmm#&quot;     #  &quot;mmm#&quot; m#mmmm mm#mm                     ||----w |</span><br><span class="line">--------------------------------                      ||     ||</span><br><span class="line">--------------------------------</span><br></pre></td></tr></table></figure>
-
-<h4 id="队列multiprecessing-Queue"><a href="#队列multiprecessing-Queue" class="headerlink" title="队列multiprecessing.Queue"></a>队列multiprecessing.Queue</h4><p><font color="red">注意这里的队列模块是multiprocessing里的Queue，只有这个才能用于进程的通信，自带的系统模块Queue不能实现进程的通信。</font></p>
+<h3 id="队列">队列</h3>
+<p>进程之间无法直接通信，必须通过“中间人”传递消息，从而间接的达到通信目的。能作为“中间人”身份的有两种：队列和管道。</p>
+<p>队列是一种数据结构，特点是“先进先出（FIFO）”，与栈刚好相反，队列就是一种排队模型，谁先来谁先享受服务。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">--------------------------------     ______________</span><br><span class="line">--------------------------------    &lt; 卖老婆咯 &gt;</span><br><span class="line">mmmmm     mm   mmmm   mmmm  mmm      --------------</span><br><span class="line">#        m&quot;#  &quot;   &quot;# &quot;   &quot;#   #             \   ^__^</span><br><span class="line">&quot;&quot;&quot;&quot;mm  #&quot; #    mmm&quot;     m&quot;   #              \  (oo)\_______</span><br><span class="line">     # #mmm#m     &quot;#   m&quot;     #                 (__)\       )\/\</span><br><span class="line">&quot;mmm#&quot;     #  &quot;mmm#&quot; m#mmmm mm#mm                     ||----w |</span><br><span class="line">--------------------------------                      ||     ||</span><br><span class="line">--------------------------------</span><br></pre></td></tr></table></figure></p>
+<h4 id="队列multiprecessing.queue">队列multiprecessing.Queue</h4>
+<p><font color="red">注意这里的队列模块是multiprocessing里的Queue，只有这个才能用于进程的通信，自带的系统模块Queue不能实现进程的通信。</font></p>
 <p>multiprocessing.Queue类常用的方法有：</p>
-<p>| 方法     | 解释             |
-|———-|——————|
-| put(obj) | 将obj放入队列    |
-| get(obj) | 将obj从队列取出  |
-| empty()  | 判断队列是否为空 |</p>
+<table>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>put(obj)</td>
+<td>将obj放入队列</td>
+</tr>
+<tr class="even">
+<td>get(obj)</td>
+<td>将obj从队列取出</td>
+</tr>
+<tr class="odd">
+<td>empty()</td>
+<td>判断队列是否为空</td>
+</tr>
+</tbody>
+</table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Queue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    queue = Queue()     <span class="comment"># 创建一个队列</span></span><br><span class="line"></span><br><span class="line">    queue.put(<span class="string">'馒头'</span>)   <span class="comment"># 先放入馒头</span></span><br><span class="line">    queue.put(<span class="string">'包子'</span>)   <span class="comment"># 再放入包子</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">'第一次取出：'</span>, queue.get())</span><br><span class="line">    print(<span class="string">'第二次取出：'</span>, queue.get())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">运行结果：</span><br><span class="line">第一次取出： 馒头</span><br><span class="line">第二次取出： 包子</span><br></pre></td></tr></table></figure>
-
-<h4 id="进程通过Queue通信"><a href="#进程通过Queue通信" class="headerlink" title="进程通过Queue通信"></a>进程通过Queue通信</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:UTF-8 -*-</span></span><br><span class="line"><span class="comment"># 简单的生产者消费者模型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Queue</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">produce</span><span class="params">(queue, name)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):     <span class="comment"># 生产10个产品</span></span><br><span class="line">        queue.put(name)</span><br><span class="line">        print(multiprocessing.current_process(), <span class="string">'生产了一个'</span>, name, <span class="string">'，成功放入队列'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consume</span><span class="params">(queue)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            name = queue.get(timeout=<span class="number">2</span>)     <span class="comment"># 从队列中取出产品，如果超过2秒没有取到产品，则抛出队列空异常</span></span><br><span class="line">            print(multiprocessing.current_process(), <span class="string">'消费了一个'</span>, name, <span class="string">'，成功从队列取出'</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">'队列为空，无法消费'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    queue = Queue()     <span class="comment"># 创建一个队列</span></span><br><span class="line"></span><br><span class="line">    p1 = Process(target=produce, args=(queue, <span class="string">'包子'</span>))      <span class="comment"># 包子生产商</span></span><br><span class="line">    p2 = Process(target=produce, args=(queue, <span class="string">'馒头'</span>))      <span class="comment"># 馒头生产商</span></span><br><span class="line"></span><br><span class="line">    p3 = Process(target=consume, args=(queue,))             <span class="comment"># 消费者</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    p1.start()</span><br><span class="line">    p2.start()</span><br><span class="line">    p3.start()</span><br></pre></td></tr></table></figure>
-
-<p><img src="demo1.gif" alt></p>
-<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><p>管道Pipe是另一种进程通信中介，管道拥有两个口，通常情况下2个进程分别位于管道的两端，管道默认为全双工工作，也就是进程既可以发送数据也可以接受数据。</p>
-<h4 id="管道multiprocessing-Pipe"><a href="#管道multiprocessing-Pipe" class="headerlink" title="管道multiprocessing.Pipe"></a>管道multiprocessing.Pipe</h4><p>multiprocessing.Pipe类常用的方法有：</p>
-<p>| 方法                    | 解释                           |
-|————————-|——————————–|
-| send(obj)               | 向管道另一端发送一个obj        |
-| recv()                  | 接受从管道另一端发过来的数据   |
-| close()                 | 关闭连接                       |
-| poll()                  | 返回连接中是否还有数据可以读取 |
-| send_bytes(buffer)      | 发送字节数据                   |
-| recv_bytes()            | 接受字节数据                   |
-| recv_bytes_into(buffer) | 接受字节数据到buffer中         |</p>
+<h4 id="进程通过queue通信">进程通过Queue通信</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:UTF-8 -*-</span></span><br><span class="line"><span class="comment"># 简单的生产者消费者模型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> multiprocessing</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, Queue</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">produce</span><span class="params">(queue, name)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):     <span class="comment"># 生产10个产品</span></span><br><span class="line">        queue.put(name)</span><br><span class="line">        print(multiprocessing.current_process(), <span class="string">'生产了一个'</span>, name, <span class="string">'，成功放入队列'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">consume</span><span class="params">(queue)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            name = queue.get(timeout=<span class="number">2</span>)     <span class="comment"># 从队列中取出产品，如果超过2秒没有取到产品，则抛出队列空异常</span></span><br><span class="line">            print(multiprocessing.current_process(), <span class="string">'消费了一个'</span>, name, <span class="string">'，成功从队列取出'</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">'队列为空，无法消费'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    queue = Queue()     <span class="comment"># 创建一个队列</span></span><br><span class="line"></span><br><span class="line">    p1 = Process(target=produce, args=(queue, <span class="string">'包子'</span>))      <span class="comment"># 包子生产商</span></span><br><span class="line">    p2 = Process(target=produce, args=(queue, <span class="string">'馒头'</span>))      <span class="comment"># 馒头生产商</span></span><br><span class="line"></span><br><span class="line">    p3 = Process(target=consume, args=(queue,))             <span class="comment"># 消费者</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    p1.start()</span><br><span class="line">    p2.start()</span><br><span class="line">    p3.start()</span><br></pre></td></tr></table></figure>
+<p><img src="demo1.gif"></p>
+<h3 id="管道">管道</h3>
+<p>管道Pipe是另一种进程通信中介，管道拥有两个口，通常情况下2个进程分别位于管道的两端，管道默认为全双工工作，也就是进程既可以发送数据也可以接受数据。 #### 管道multiprocessing.Pipe multiprocessing.Pipe类常用的方法有：</p>
+<table>
+<thead>
+<tr class="header">
+<th>方法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>send(obj)</td>
+<td>向管道另一端发送一个obj</td>
+</tr>
+<tr class="even">
+<td>recv()</td>
+<td>接受从管道另一端发过来的数据</td>
+</tr>
+<tr class="odd">
+<td>close()</td>
+<td>关闭连接</td>
+</tr>
+<tr class="even">
+<td>poll()</td>
+<td>返回连接中是否还有数据可以读取</td>
+</tr>
+<tr class="odd">
+<td>send_bytes(buffer)</td>
+<td>发送字节数据</td>
+</tr>
+<tr class="even">
+<td>recv_bytes()</td>
+<td>接受字节数据</td>
+</tr>
+<tr class="odd">
+<td>recv_bytes_into(buffer)</td>
+<td>接受字节数据到buffer中</td>
+</tr>
+</tbody>
+</table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment">#-*- coding:UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pipe</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__  == <span class="string">'__main__'</span>:</span><br><span class="line">    conn1, conn2 = Pipe()</span><br><span class="line"></span><br><span class="line">    conn1.send(<span class="string">'Hello~'</span>)        <span class="comment"># conn1向管道发送数据Hello～</span></span><br><span class="line">    print(conn2.recv())         <span class="comment"># conn2从管道接受数据Hello～</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">'分割线'</span>.center(<span class="number">20</span>, <span class="string">'-'</span>))</span><br><span class="line"></span><br><span class="line">    conn2.send(<span class="string">'Hi~~'</span>)          <span class="comment"># conn2向管道发送数据Hi～～</span></span><br><span class="line">    print(conn1.recv())         <span class="comment"># conn1从管道接受数据Hi～～</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">运行结果：</span><br><span class="line">Hello~</span><br><span class="line">--------分割线---------</span><br><span class="line">Hi~~</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Python进程通信涉及到很多编程思想，利用Queue实现生产者消费者模型，平衡了生产者和消费着的处理能力。</p>
+<h2 id="小结">小结</h2>
+<p>Python进程通信涉及到很多编程思想，利用Queue实现生产者消费者模型，平衡了生产者和消费着的处理能力。</p>
 
       
     </div>
@@ -591,7 +636,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -613,7 +658,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -662,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Python进程通信"><span class="nav-number">1.</span> <span class="nav-text">#9 Python进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#队列"><span class="nav-number">1.1.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#队列multiprecessing-Queue"><span class="nav-number">1.1.1.</span> <span class="nav-text">队列multiprecessing.Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程通过Queue通信"><span class="nav-number">1.1.2.</span> <span class="nav-text">进程通过Queue通信</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道"><span class="nav-number">1.2.</span> <span class="nav-text">管道</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#管道multiprocessing-Pipe"><span class="nav-number">1.2.1.</span> <span class="nav-text">管道multiprocessing.Pipe</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python进程通信"><span class="nav-number">1.</span> <span class="nav-text">#9 Python进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#队列"><span class="nav-number">1.1.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#队列multiprecessing.queue"><span class="nav-number">1.1.1.</span> <span class="nav-text">队列multiprecessing.Queue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程通过queue通信"><span class="nav-number">1.1.2.</span> <span class="nav-text">进程通过Queue通信</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道"><span class="nav-number">1.2.</span> <span class="nav-text">管道</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
@@ -696,7 +741,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

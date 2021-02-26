@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  299
+                  300
                 </span>
               
 
@@ -414,38 +414,24 @@
       
         <p>本节记录事件相关操作</p>
 <img src="/2020/02/10/事件相关操作/cover.jpg">
-
 <a id="more"></a>
-
-
-
-<h2 id="查看事件"><a href="#查看事件" class="headerlink" title="查看事件"></a>查看事件</h2><ol>
-<li>SELECT @@EVENT_SCHEDULER     查看事件是否开启<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; select @@event_scheduler;</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">| @@event_scheduler |</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">| ON                |</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="查看事件">查看事件</h2>
+<ol type="1">
+<li>SELECT @<span class="citation" data-cites="EVENT_SCHEDULER">@EVENT_SCHEDULER</span> 查看事件是否开启 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; select @@event_scheduler;</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">| @@event_scheduler |</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">| ON                |</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="创建事件"><a href="#创建事件" class="headerlink" title="创建事件"></a>创建事件</h2><ol>
-<li><p>SET GLOBAL EVENT_SCHEDULER=1     开启事件</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; set global event_scheduler=1;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CREATE EVENT event…</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create table aaa(</span><br><span class="line">    -&gt; timeline timestamp default current_timestamp);</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; desc aaa;</span><br><span class="line">+<span class="comment">----------+-----------+------+-----+-------------------+-------------------+</span></span><br><span class="line">| Field    | Type      | Null | Key | Default           | Extra             |</span><br><span class="line">+<span class="comment">----------+-----------+------+-----+-------------------+-------------------+</span></span><br><span class="line">| timeline | timestamp | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |</span><br><span class="line">+<span class="comment">----------+-----------+------+-----+-------------------+-------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; <span class="keyword">insert</span> <span class="keyword">into</span> aaa <span class="keyword">values</span>();</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; select * from aaa;</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| timeline            |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| 2020-02-10 15:54:52 |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; <span class="keyword">create</span> <span class="keyword">event</span> e_test_insert         创建事件</span><br><span class="line">    -&gt; <span class="keyword">on</span> schedule every <span class="number">2</span> <span class="keyword">second</span></span><br><span class="line">    -&gt; <span class="keyword">do</span></span><br><span class="line">    -&gt; <span class="keyword">insert</span> <span class="keyword">into</span> aaa <span class="keyword">values</span>();</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; select * from aaa;</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| timeline            |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| 2020-02-10 15:54:52 |</span><br><span class="line">| 2020-02-10 15:55:57 |</span><br><span class="line">| 2020-02-10 15:55:59 |</span><br><span class="line">| 2020-02-10 15:56:01 |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">4 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="创建事件">创建事件</h2>
+<ol type="1">
+<li><p>SET GLOBAL EVENT_SCHEDULER=1 开启事件 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; set global event_scheduler=1;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>CREATE EVENT event... <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create table aaa(</span><br><span class="line">    -&gt; timeline timestamp default current_timestamp);</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; desc aaa;</span><br><span class="line">+<span class="comment">----------+-----------+------+-----+-------------------+-------------------+</span></span><br><span class="line">| Field    | Type      | Null | Key | Default           | Extra             |</span><br><span class="line">+<span class="comment">----------+-----------+------+-----+-------------------+-------------------+</span></span><br><span class="line">| timeline | timestamp | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |</span><br><span class="line">+<span class="comment">----------+-----------+------+-----+-------------------+-------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; <span class="keyword">insert</span> <span class="keyword">into</span> aaa <span class="keyword">values</span>();</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; select * from aaa;</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| timeline            |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| 2020-02-10 15:54:52 |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; <span class="keyword">create</span> <span class="keyword">event</span> e_test_insert         创建事件</span><br><span class="line">    -&gt; <span class="keyword">on</span> schedule every <span class="number">2</span> <span class="keyword">second</span></span><br><span class="line">    -&gt; <span class="keyword">do</span></span><br><span class="line">    -&gt; <span class="keyword">insert</span> <span class="keyword">into</span> aaa <span class="keyword">values</span>();</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; select * from aaa;</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| timeline            |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| 2020-02-10 15:54:52 |</span><br><span class="line">| 2020-02-10 15:55:57 |</span><br><span class="line">| 2020-02-10 15:55:59 |</span><br><span class="line">| 2020-02-10 15:56:01 |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">4 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h2 id="修改事件"><a href="#修改事件" class="headerlink" title="修改事件"></a>修改事件</h2><ol>
-<li><p>ALTER EVENT event DISABLE        停用事件</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter event e_test_delete disable;     </span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ALTER EVENT event ENABLE         事件</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter event e_test_delete enable;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="修改事件">修改事件</h2>
+<ol type="1">
+<li><p>ALTER EVENT event DISABLE 停用事件 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter event e_test_delete disable;     </span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>ALTER EVENT event ENABLE 事件 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter event e_test_delete enable;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h2 id="删除事件"><a href="#删除事件" class="headerlink" title="删除事件"></a>删除事件</h2><ol>
-<li>DROP EVENT event<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop event e_test_delete;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="删除事件">删除事件</h2>
+<ol type="1">
+<li>DROP EVENT event <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop event e_test_delete;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -591,7 +577,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -613,7 +599,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -696,7 +682,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

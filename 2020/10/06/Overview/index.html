@@ -83,13 +83,13 @@
 
 
 
-<meta name="description" content="Citation In “The Fall of a Giant”, Ethel and his brother Billy add a word every two words as the encrypted ciphertext. TangBohu has a poem titled “I Love QiuXiang” in “The Collection of TangYin Poem">
+<meta name="description" content="Citation  In &quot;The Fall of a Giant&quot;, Ethel and his brother Billy add a word every two words as the encrypted ciphertext. TangBohu has a poem titled &quot;I Love QiuXiang&quot; in &quot;The Collection of TangYin Poem">
 <meta name="keywords" content="cryptography series,overview">
 <meta property="og:type" content="article">
 <meta property="og:title" content="#00 Cryptography Overview">
 <meta property="og:url" content="https://minutesheep.github.io/2020/10/06/Overview/index.html">
 <meta property="og:site_name" content="T N T">
-<meta property="og:description" content="Citation In “The Fall of a Giant”, Ethel and his brother Billy add a word every two words as the encrypted ciphertext. TangBohu has a poem titled “I Love QiuXiang” in “The Collection of TangYin Poem">
+<meta property="og:description" content="Citation  In &quot;The Fall of a Giant&quot;, Ethel and his brother Billy add a word every two words as the encrypted ciphertext. TangBohu has a poem titled &quot;I Love QiuXiang&quot; in &quot;The Collection of TangYin Poem">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://minutesheep.github.io/2020/10/06/Overview/cover.jpeg">
 <meta property="og:image" content="https://minutesheep.github.io/2020/10/06/Overview/WhatIsCryptography.jpg">
@@ -103,7 +103,7 @@
 <meta property="og:updated_time" content="2020-11-26T14:22:23.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="#00 Cryptography Overview">
-<meta name="twitter:description" content="Citation In “The Fall of a Giant”, Ethel and his brother Billy add a word every two words as the encrypted ciphertext. TangBohu has a poem titled “I Love QiuXiang” in “The Collection of TangYin Poem">
+<meta name="twitter:description" content="Citation  In &quot;The Fall of a Giant&quot;, Ethel and his brother Billy add a word every two words as the encrypted ciphertext. TangBohu has a poem titled &quot;I Love QiuXiang&quot; in &quot;The Collection of TangYin Poem">
 <meta name="twitter:image" content="https://minutesheep.github.io/2020/10/06/Overview/cover.jpeg">
 
 
@@ -421,158 +421,74 @@
 
       
         <img src="/2020/10/06/Overview/cover.jpeg">
-
-<h2 id="Citation"><a href="#Citation" class="headerlink" title="Citation"></a>Citation</h2><blockquote>
-<p>In “The Fall of a Giant”, Ethel and his brother Billy add a word every two
-words as the encrypted ciphertext. TangBohu has a poem titled “I Love QiuXiang”
-in “The Collection of TangYin Poems”. The method used in the above two examples
-is called steganography. Steganography belongs to a branch of cryptography
-development, it has evolved into digital watermarking technology tody.
-Cryptography is the technical science that studies the preparation and 
-deciphering of codes.</p>
+<h2 id="citation">Citation</h2>
+<blockquote>
+<p>In "The Fall of a Giant", Ethel and his brother Billy add a word every two words as the encrypted ciphertext. TangBohu has a poem titled "I Love QiuXiang" in "The Collection of TangYin Poems". The method used in the above two examples is called steganography. Steganography belongs to a branch of cryptography development, it has evolved into digital watermarking technology tody. Cryptography is the technical science that studies the preparation and deciphering of codes.</p>
 </blockquote>
 <a id="more"></a>
-
-<h2 id="What-is-cryptography"><a href="#What-is-cryptography" class="headerlink" title="What is cryptography"></a>What is cryptography</h2><p>The first thing to note is that the passwords people often to say are not
-cryptography, password or pin is just used to confirm the identity of a user,
-but cryptography is about constructing and analyzing protocols that prevent
-third parties or the public from reading private messages. Another thing that
-is easily misunderstood as cryptography is code, code is a system of rules to
-convert information into another form.</p>
-<p><img src="WhatIsCryptography.jpg" alt></p>
+<h2 id="what-is-cryptography">What is cryptography</h2>
+<p>The first thing to note is that the passwords people often to say are not cryptography, password or pin is just used to confirm the identity of a user, but cryptography is about constructing and analyzing protocols that prevent third parties or the public from reading private messages. Another thing that is easily misunderstood as cryptography is code, code is a system of rules to convert information into another form.</p>
+<p><img src="WhatIsCryptography.jpg"></p>
 <blockquote>
-<p><strong>code         :</strong> is a system of rules to convert information into another form.<br><strong>password/pin :</strong> is usually used to confirm the identity of a user.<br><strong>cryptography :</strong> is about constructing and analyzing protocols that prevent
-third parties or the public from reading private messages.</p>
+<p><strong>code :</strong> is a system of rules to convert information into another form.<br>
+<strong>password/pin :</strong> is usually used to confirm the identity of a user.<br>
+<strong>cryptography :</strong> is about constructing and analyzing protocols that prevent third parties or the public from reading private messages.</p>
 </blockquote>
-<h2 id="History-of-Cryptography"><a href="#History-of-Cryptography" class="headerlink" title="History of Cryptography"></a>History of Cryptography</h2><h3 id="Classical-Cryptography"><a href="#Classical-Cryptography" class="headerlink" title="Classical Cryptography"></a>Classical Cryptography</h3><h4 id="1-Caesar-cipher"><a href="#1-Caesar-cipher" class="headerlink" title="1. Caesar cipher"></a>1. Caesar cipher</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plaintext   : a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">chiphertext : x y z a b c d e f g h i j k l m n o p q r s t u v w</span><br></pre></td></tr></table></figure>
-
-<p>It can be seen from the above encryption rules that this encryption method is
-very simple. This is precisely the earliest and simplest encryption and
-decryption method in classical cryptography, and is called the shift cipher.</p>
-<p>When the leeter is shifted by three digits, it is called the Caesar cipher at
-this time. The Caesar Cipher was created by Julius Caesar during the expansion
-of Rome and was used to encrypt combat commands transmitted through messengers.</p>
-<p>Let’s look at an example.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plaintext   : Cross the river tomorrow at <span class="number">2</span> clock.</span><br><span class="line">chiphertext : Zolpp qeb ofsbo qljloolt xq <span class="number">2</span> zilzh.</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-Single-table-Substitution-cipher"><a href="#2-Single-table-Substitution-cipher" class="headerlink" title="2. Single-table Substitution cipher"></a>2. Single-table Substitution cipher</h4><p>The replacement rules of the Caesar cipher are orderly, which is very insecure.
-Its upgraded version is a single-table substitution cipher, which means that 
-the correspondence between letters is disorderly. Such as:</p>
+<h2 id="history-of-cryptography">History of Cryptography</h2>
+<h3 id="classical-cryptography">Classical Cryptography</h3>
+<h4 id="caesar-cipher">1. Caesar cipher</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plaintext   : a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">chiphertext : x y z a b c d e f g h i j k l m n o p q r s t u v w</span><br></pre></td></tr></table></figure>
+<p>It can be seen from the above encryption rules that this encryption method is very simple. This is precisely the earliest and simplest encryption and decryption method in classical cryptography, and is called the shift cipher.</p>
+<p>When the leeter is shifted by three digits, it is called the Caesar cipher at this time. The Caesar Cipher was created by Julius Caesar during the expansion of Rome and was used to encrypt combat commands transmitted through messengers.</p>
+<p>Let's look at an example. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plaintext   : Cross the river tomorrow at <span class="number">2</span> clock.</span><br><span class="line">chiphertext : Zolpp qeb ofsbo qljloolt xq <span class="number">2</span> zilzh.</span><br></pre></td></tr></table></figure></p>
+<h4 id="single-table-substitution-cipher">2. Single-table Substitution cipher</h4>
+<p>The replacement rules of the Caesar cipher are orderly, which is very insecure. Its upgraded version is a single-table substitution cipher, which means that the correspondence between letters is disorderly. Such as:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plaintext   : a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">chiphertext : e h n v o t w p q g r y c j z u m b d i l s a x f k</span><br></pre></td></tr></table></figure>
-
-<p>In this corresponding rule, each letter may have 26 situation corresponding to 
-it, that is to say, the complexity of the password is 26!.</p>
-<h4 id="3-Vigenere-Cipher"><a href="#3-Vigenere-Cipher" class="headerlink" title="3. Vigenère Cipher"></a>3. Vigenère Cipher</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">  | a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">--+----------------------------------------------------</span><br><span class="line">a | a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">b | b c d e f g h i j k l m n o p q r s t u v w x y z a</span><br><span class="line">c | c d e f g h i j k l m n o p q r s t u v w x y z a b</span><br><span class="line">d | d e f g h i j k l m n o p q r s t u v w x y z a b c</span><br><span class="line">e | e f g h i j k l m n o p q r s t u v w x y z a b c d</span><br><span class="line">f | f g h i j k l m n o p q r s t u v w x y z a b c d e</span><br><span class="line">g | g h i j k l m n o p q r s t u v w x y z a b c d e f</span><br><span class="line">h | h i j k l m n o p q r s t u v w x y z a b c d e f g</span><br><span class="line">i | i j k l m n o p q r s t u v w x y z a b c d e f g h</span><br><span class="line">j | j k l m n o p q r s t u v w x y z a b c d e f g h i</span><br><span class="line">k | k l m n o p q r s t u v w x y z a b c d e f g h i j</span><br><span class="line">l | l m n o p q r s t u v w x y z a b c d e f g h i j k</span><br><span class="line">m | m n o p q r s t u v w x y z a b c d e f g h i j k l</span><br><span class="line">n | n o p q r s t u v w x y z a b c d e f g h i j k l m</span><br><span class="line">o | o p q r s t u v w x y z a b c d e f g h i j k l m n</span><br><span class="line">p | p q r s t u v w x y z a b c d e f g h i j k l m n o</span><br><span class="line">q | q r s t u v w x y z a b c d e f g h i j k l m n o p</span><br><span class="line">r | r s t u v w x y z a b c d e f g h i j k l m n o p q</span><br><span class="line">s | s t u v w x y z a b c d e f g h i j k l m n o p q r</span><br><span class="line">t | t u v w x y z a b c d e f g h i j k l m n o p q r s</span><br><span class="line">u | u v w x y z a b c d e f g h i j k l m n o p q r s t</span><br><span class="line">v | v w x y z a b c d e f g h i j k l m n o p q r s t u</span><br><span class="line">w | w x y z a b c d e f g h i j k l m n o p q r s t u v</span><br><span class="line">x | x y z a b c d e f g h i j k l m n o p q r s t u v w</span><br><span class="line">y | y z a b c d e f g h i j k l m n o p q r s t u v w x</span><br><span class="line">z | z a b c d e f g h i j k l m n o p q r s t u v w x y</span><br></pre></td></tr></table></figure>
-
-<p>The Vigenère cipher (French pronunciation: [viʒnɛːʁ]) is a method of encrypting 
-alphabetic text by using a series of interwoven Caesar ciphers, based on the 
-letters of a keyword. It employs a form of polyalphabetic substitution.</p>
+<p>In this corresponding rule, each letter may have 26 situation corresponding to it, that is to say, the complexity of the password is 26!.</p>
+<h4 id="vigenère-cipher">3. Vigenère Cipher</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">  | a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">--+----------------------------------------------------</span><br><span class="line">a | a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="line">b | b c d e f g h i j k l m n o p q r s t u v w x y z a</span><br><span class="line">c | c d e f g h i j k l m n o p q r s t u v w x y z a b</span><br><span class="line">d | d e f g h i j k l m n o p q r s t u v w x y z a b c</span><br><span class="line">e | e f g h i j k l m n o p q r s t u v w x y z a b c d</span><br><span class="line">f | f g h i j k l m n o p q r s t u v w x y z a b c d e</span><br><span class="line">g | g h i j k l m n o p q r s t u v w x y z a b c d e f</span><br><span class="line">h | h i j k l m n o p q r s t u v w x y z a b c d e f g</span><br><span class="line">i | i j k l m n o p q r s t u v w x y z a b c d e f g h</span><br><span class="line">j | j k l m n o p q r s t u v w x y z a b c d e f g h i</span><br><span class="line">k | k l m n o p q r s t u v w x y z a b c d e f g h i j</span><br><span class="line">l | l m n o p q r s t u v w x y z a b c d e f g h i j k</span><br><span class="line">m | m n o p q r s t u v w x y z a b c d e f g h i j k l</span><br><span class="line">n | n o p q r s t u v w x y z a b c d e f g h i j k l m</span><br><span class="line">o | o p q r s t u v w x y z a b c d e f g h i j k l m n</span><br><span class="line">p | p q r s t u v w x y z a b c d e f g h i j k l m n o</span><br><span class="line">q | q r s t u v w x y z a b c d e f g h i j k l m n o p</span><br><span class="line">r | r s t u v w x y z a b c d e f g h i j k l m n o p q</span><br><span class="line">s | s t u v w x y z a b c d e f g h i j k l m n o p q r</span><br><span class="line">t | t u v w x y z a b c d e f g h i j k l m n o p q r s</span><br><span class="line">u | u v w x y z a b c d e f g h i j k l m n o p q r s t</span><br><span class="line">v | v w x y z a b c d e f g h i j k l m n o p q r s t u</span><br><span class="line">w | w x y z a b c d e f g h i j k l m n o p q r s t u v</span><br><span class="line">x | x y z a b c d e f g h i j k l m n o p q r s t u v w</span><br><span class="line">y | y z a b c d e f g h i j k l m n o p q r s t u v w x</span><br><span class="line">z | z a b c d e f g h i j k l m n o p q r s t u v w x y</span><br></pre></td></tr></table></figure>
+<p>The Vigenère cipher (French pronunciation: [viʒnɛːʁ]) is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It employs a form of polyalphabetic substitution.</p>
 <blockquote>
-<p><strong>polyalphabetic cipher :</strong> 
-A polyalphabetic cipher is any cipher based on substitution, using multiple 
-substitution alphabets. The Vigenère cipher is probably the best-known example 
-of a polyalphabetic cipher, though it is a simplified special case. The Enigma 
-machine is more complex but is still fundamentally a polyalphabetic 
-substitution cipher.</p>
+<p><strong>polyalphabetic cipher :</strong> A polyalphabetic cipher is any cipher based on substitution, using multiple substitution alphabets. The Vigenère cipher is probably the best-known example of a polyalphabetic cipher, though it is a simplified special case. The Enigma machine is more complex but is still fundamentally a polyalphabetic substitution cipher.</p>
 </blockquote>
-<p>The Vigenère cipher is a two-demensional encryption, and the concept of a key
-is introduced for the first time. The great thing about the Vigenère cipher is
-that the replacement rules are public, you only need to hide the key to ensure
-the security of the information. It is worth noting that the key can be long
-or short. If the key length is less than the plaintext length, the key will be
-recycled, if the key length is greater than the plaintext length, the excess
-part will be discarded.</p>
-<p>Let’s look at some examples, we assume that the key is <code>coffee</code>. Now we use this
-key to encrypt different plaintext.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">No.1</span><br><span class="line">plaintext  : apple</span><br><span class="line">key        : coffe</span><br><span class="line">ciphertext : cduqi</span><br><span class="line"></span><br><span class="line">No.2 </span><br><span class="line">plaintext  : youareagoodman</span><br><span class="line">key        : coffeecoffeeco</span><br><span class="line">ciphertext : aczfvicutthqcb</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-Enigma-Rotor-Machine"><a href="#4-Enigma-Rotor-Machine" class="headerlink" title="4. Enigma(Rotor Machine)"></a>4. Enigma(Rotor Machine)</h4><p>The three encryption method described above all need to be implemented manually,
-which is inefficient. After that, an efficient way to use machine encryption
-appeared—-Rotor Machine</p>
+<p>The Vigenère cipher is a two-demensional encryption, and the concept of a key is introduced for the first time. The great thing about the Vigenère cipher is that the replacement rules are public, you only need to hide the key to ensure the security of the information. It is worth noting that the key can be long or short. If the key length is less than the plaintext length, the key will be recycled, if the key length is greater than the plaintext length, the excess part will be discarded.</p>
+<p>Let's look at some examples, we assume that the key is <code>coffee</code>. Now we use this key to encrypt different plaintext. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">No.1</span><br><span class="line">plaintext  : apple</span><br><span class="line">key        : coffe</span><br><span class="line">ciphertext : cduqi</span><br><span class="line"></span><br><span class="line">No.2 </span><br><span class="line">plaintext  : youareagoodman</span><br><span class="line">key        : coffeecoffeeco</span><br><span class="line">ciphertext : aczfvicutthqcb</span><br></pre></td></tr></table></figure></p>
+<h4 id="enigmarotor-machine">4. Enigma(Rotor Machine)</h4>
+<p>The three encryption method described above all need to be implemented manually, which is inefficient. After that, an efficient way to use machine encryption appeared----Rotor Machine</p>
 <blockquote>
-<p><strong>Rotor Machine :</strong>
-A rotor machine is an electro-mechanical stream cipher device used for 
-encrypting and decrypting messages. Rotor machines were the cryptographic 
-state-of-the-art for a prominent period of history; they were in widespread
-use in the 1920s–1970s. The most famous example is the German Enigma machine, 
-the output of which was deciphered by the Allies during World War II, 
-producing intelligence code-named Ultra.
-<img src="enigma.jpg" alt="Enigma"></p>
+<p><strong>Rotor Machine :</strong> A rotor machine is an electro-mechanical stream cipher device used for encrypting and decrypting messages. Rotor machines were the cryptographic state-of-the-art for a prominent period of history; they were in widespread use in the 1920s–1970s. The most famous example is the German Enigma machine, the output of which was deciphered by the Allies during World War II, producing intelligence code-named Ultra. <img src="enigma.jpg" alt="Enigma"></p>
 </blockquote>
-<p>The working principle of the Enigma is not as difficult as you think. If you 
-have some knowledge of electronic circuits, it will be very easy to understand
-its principle. When you press a letter, the current passes through the three
-rotors and it encrypted three times, and then the result is lit by the wire,
-and vice versa. It is worth noting that the rotation periods of the three rotors
-are different. The actual operation situation is that each time the key is 
-pressed, rotor 1 rotates 1/4 turn, rotor 2 rotates 1/4 turn when rotor 1
-rotates 1 turn, and rotor 3 rotates 1/4 turn when rotor 2 retates 1 turn.
-<img src="flow.png" alt></p>
-<h3 id="Modern-Cryptography"><a href="#Modern-Cryptography" class="headerlink" title="Modern Cryptography"></a>Modern Cryptography</h3><p>With the development of the times, cryptography is also advancing rapidly.
-The emergence of some iconic events indicates that cryptography has entered
-the modern field.</p>
+<p>The working principle of the Enigma is not as difficult as you think. If you have some knowledge of electronic circuits, it will be very easy to understand its principle. When you press a letter, the current passes through the three rotors and it encrypted three times, and then the result is lit by the wire, and vice versa. It is worth noting that the rotation periods of the three rotors are different. The actual operation situation is that each time the key is pressed, rotor 1 rotates 1/4 turn, rotor 2 rotates 1/4 turn when rotor 1 rotates 1 turn, and rotor 3 rotates 1/4 turn when rotor 2 retates 1 turn. <img src="flow.png"></p>
+<h3 id="modern-cryptography">Modern Cryptography</h3>
+<p>With the development of the times, cryptography is also advancing rapidly. The emergence of some iconic events indicates that cryptography has entered the modern field.</p>
 <blockquote>
-<p>1976 : Diffie and Hellman proposed the idea of a public key cryptography
-system in “New Directions in Cryptography”<br>1977 : The American National Bureau of Standards promulgated the data
-encryption standard DES(Data Encryption Standard)<br>1978 : The first public key algorithm RSA algorithm(consisting of the initials
-of Ron Rivest, Adi Shamir and Leonard Adleman)</p>
+<p>1976 : Diffie and Hellman proposed the idea of a public key cryptography system in "New Directions in Cryptography"<br>
+1977 : The American National Bureau of Standards promulgated the data encryption standard DES(Data Encryption Standard)<br>
+1978 : The first public key algorithm RSA algorithm(consisting of the initials of Ron Rivest, Adi Shamir and Leonard Adleman)</p>
 </blockquote>
-<p>Classical cryptography only solves the problem of confidentiality, while modern
-cryptography must solve not only confidentiality, but also completeness, 
-authentication and non-repudiation. In the process of message transmission,
-there are mainly problems such as <strong>eavesdropp, tamper, camouflage and deny
-afterwards</strong>. As the Chinese idiom goes, virtue is one foot tail, the devil
-ten foot, the corresponding solutions are <strong>symmetric/asymmetric cipher, hash
-function, authentication code and digital signature</strong>.</p>
-<p><img src="cryptotools.jpg" alt="cryptotools"></p>
-<h4 id="1-Symmetric-Cipher"><a href="#1-Symmetric-Cipher" class="headerlink" title="1. Symmetric Cipher"></a>1. Symmetric Cipher</h4><p>Symmetric cipher refers to use of the same key for encryption and decryption.
-<img src="symmetric.jpg" alt></p>
-<p>In symmetric encryption, the length of the key is fixed, and using a shorter 
-key to encrypt long messages is a common method of symmetric encryption. As
-can be seen from the above figure, the key to symmetric encryption lies in
-the management of the key. Once the key is lost, the entire cryptographic 
-system is self-destructive, and a loophole in symmetric encryption is the first
-distribution of the key. The first distribution of the key can be by whispering
-or writing letters, but these methods are very unrealistic. It was not until
-the emergence of asymmetric encryption technology that the key distribution
-problem was truly solved.</p>
-<p>Representative symmetric cryptographic algorithm: <em>DES(Data Encryption Standard),
-AES(Advanced Encryption Standard), Blowfish, Twofish</em>…</p>
-<p>In practice, the encryption of the message will be done in groups, and the size
-of the group is usually the length of the key. The simplest block cipher is as
-you think. The advantage of this method is fast speed and low overhead, but the
-disadvantage is also obvious, that is, it is not safe enough. When the key is
-unchanged, the same plaintext must correspond to the same ciphertext, as long as
-the malicious third party collects enough the ciphertext, then the ciphertext of
-the sender can be replaced to achieve the purpose of modification.
-<img src="simpleblockcipher.jpg" alt></p>
-<p>In order to solve problems, the concept of initialization vector is introduced,
-and the previous ciphertext block is used as the input of the next ciphertext
-block to encrypt the message, and the block cipher is gradually improving.
-Usually the initialization vector is located in the first few bytes of the
-ciphertext. This method is called CBC(Cihper Block Chaining)
-<img src="blockcipher.jpg" alt></p>
-<h4 id="2-Asymmetric-Cipher"><a href="#2-Asymmetric-Cipher" class="headerlink" title="2. Asymmetric Cipher"></a>2. Asymmetric Cipher</h4><p>Asymmetric cipher is just lisk tis name, refers that encryption and decryption 
-use different keys. Using asymmetric encryption will generate a pair of keys,
-which are public key and private key. You can think of the public key as a lock
-and the private key as the key to the lock. All you have to do is to give the
-lock to other people, and other people use this specific lock to lock the
-plaintext. The locked plaintext can only be opened by the person who has the
-private key, that is, the key, enen the publisher of the plaintext cannot open
-it without the key.</p>
-<p>Because the key pair is long and complex, the asymmetric encryption algorithm
-is slow in actual use, so it is often used to encrypt short plaintext, such as
-a symmetric encryption key. This also perfectly solves the core problem of key
-distribution in symmetric cryptography.
-<img src="asymmetric-cipher.png" alt></p>
-<p>Representative asymmetric cryptography algorithm: <em>RSA, DH, DSA, ECDSA</em>…<br>Mathematical principles : <em>Factorization, Discrete logarithm, Elliptic curve</em><br>Common attack methed : <em>Man in the middle attack</em></p>
-<h3 id="Quantum-Cryptography"><a href="#Quantum-Cryptography" class="headerlink" title="Quantum Cryptography"></a>Quantum Cryptography</h3><ul>
+<p>Classical cryptography only solves the problem of confidentiality, while modern cryptography must solve not only confidentiality, but also completeness, authentication and non-repudiation. In the process of message transmission, there are mainly problems such as <strong>eavesdropp, tamper, camouflage and deny afterwards</strong>. As the Chinese idiom goes, virtue is one foot tail, the devil ten foot, the corresponding solutions are <strong>symmetric/asymmetric cipher, hash function, authentication code and digital signature</strong>.</p>
+<figure>
+<img src="cryptotools.jpg" alt="cryptotools"><figcaption aria-hidden="true">cryptotools</figcaption>
+</figure>
+<h4 id="symmetric-cipher">1. Symmetric Cipher</h4>
+<p>Symmetric cipher refers to use of the same key for encryption and decryption. <img src="symmetric.jpg"></p>
+<p>In symmetric encryption, the length of the key is fixed, and using a shorter key to encrypt long messages is a common method of symmetric encryption. As can be seen from the above figure, the key to symmetric encryption lies in the management of the key. Once the key is lost, the entire cryptographic system is self-destructive, and a loophole in symmetric encryption is the first distribution of the key. The first distribution of the key can be by whispering or writing letters, but these methods are very unrealistic. It was not until the emergence of asymmetric encryption technology that the key distribution problem was truly solved.</p>
+<p>Representative symmetric cryptographic algorithm: <em>DES(Data Encryption Standard), AES(Advanced Encryption Standard), Blowfish, Twofish</em>...</p>
+<p>In practice, the encryption of the message will be done in groups, and the size of the group is usually the length of the key. The simplest block cipher is as you think. The advantage of this method is fast speed and low overhead, but the disadvantage is also obvious, that is, it is not safe enough. When the key is unchanged, the same plaintext must correspond to the same ciphertext, as long as the malicious third party collects enough the ciphertext, then the ciphertext of the sender can be replaced to achieve the purpose of modification. <img src="simpleblockcipher.jpg"></p>
+<p>In order to solve problems, the concept of initialization vector is introduced, and the previous ciphertext block is used as the input of the next ciphertext block to encrypt the message, and the block cipher is gradually improving. Usually the initialization vector is located in the first few bytes of the ciphertext. This method is called CBC(Cihper Block Chaining) <img src="blockcipher.jpg"></p>
+<h4 id="asymmetric-cipher">2. Asymmetric Cipher</h4>
+<p>Asymmetric cipher is just lisk tis name, refers that encryption and decryption use different keys. Using asymmetric encryption will generate a pair of keys, which are public key and private key. You can think of the public key as a lock and the private key as the key to the lock. All you have to do is to give the lock to other people, and other people use this specific lock to lock the plaintext. The locked plaintext can only be opened by the person who has the private key, that is, the key, enen the publisher of the plaintext cannot open it without the key.</p>
+<p>Because the key pair is long and complex, the asymmetric encryption algorithm is slow in actual use, so it is often used to encrypt short plaintext, such as a symmetric encryption key. This also perfectly solves the core problem of key distribution in symmetric cryptography. <img src="asymmetric-cipher.png"></p>
+<p>Representative asymmetric cryptography algorithm: <em>RSA, DH, DSA, ECDSA</em>...<br>
+Mathematical principles : <em>Factorization, Discrete logarithm, Elliptic curve</em><br>
+Common attack methed : <em>Man in the middle attack</em></p>
+<h3 id="quantum-cryptography">Quantum Cryptography</h3>
+<ul>
 <li>Realized OTP(One Time Pad), theoretically undecipherable</li>
 <li>Low bit rate in reality, there are still a lot of problems</li>
 </ul>
-<h3 id="Post-quantum-Cryptography"><a href="#Post-quantum-Cryptography" class="headerlink" title="Post-quantum Cryptography"></a>Post-quantum Cryptography</h3><p>Post-quantum cryptography is a new generation of cryptographic algorithms that
-can resist quantum computers’attacks on existing cryptographic algorithms. 
-There’s still a long way to go.</p>
+<h3 id="post-quantum-cryptography">Post-quantum Cryptography</h3>
+<p>Post-quantum cryptography is a new generation of cryptographic algorithms that can resist quantum computers'attacks on existing cryptographic algorithms. There's still a long way to go.</p>
 
       
     </div>
@@ -717,7 +633,7 @@ There’s still a long way to go.</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -739,7 +655,7 @@ There’s still a long way to go.</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -788,7 +704,7 @@ There’s still a long way to go.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Citation"><span class="nav-number">1.</span> <span class="nav-text">Citation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-cryptography"><span class="nav-number">2.</span> <span class="nav-text">What is cryptography</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#History-of-Cryptography"><span class="nav-number">3.</span> <span class="nav-text">History of Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Classical-Cryptography"><span class="nav-number">3.1.</span> <span class="nav-text">Classical Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Caesar-cipher"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. Caesar cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Single-table-Substitution-cipher"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. Single-table Substitution cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Vigenere-Cipher"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. Vigenère Cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Enigma-Rotor-Machine"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. Enigma(Rotor Machine)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modern-Cryptography"><span class="nav-number">3.2.</span> <span class="nav-text">Modern Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Symmetric-Cipher"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. Symmetric Cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Asymmetric-Cipher"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. Asymmetric Cipher</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Quantum-Cryptography"><span class="nav-number">3.3.</span> <span class="nav-text">Quantum Cryptography</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Post-quantum-Cryptography"><span class="nav-number">3.4.</span> <span class="nav-text">Post-quantum Cryptography</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#citation"><span class="nav-number">1.</span> <span class="nav-text">Citation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-cryptography"><span class="nav-number">2.</span> <span class="nav-text">What is cryptography</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history-of-cryptography"><span class="nav-number">3.</span> <span class="nav-text">History of Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#classical-cryptography"><span class="nav-number">3.1.</span> <span class="nav-text">Classical Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#caesar-cipher"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. Caesar cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#single-table-substitution-cipher"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. Single-table Substitution cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vigenère-cipher"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. Vigenère Cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enigmarotor-machine"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. Enigma(Rotor Machine)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#modern-cryptography"><span class="nav-number">3.2.</span> <span class="nav-text">Modern Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#symmetric-cipher"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. Symmetric Cipher</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#asymmetric-cipher"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. Asymmetric Cipher</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#quantum-cryptography"><span class="nav-number">3.3.</span> <span class="nav-text">Quantum Cryptography</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-quantum-cryptography"><span class="nav-number">3.4.</span> <span class="nav-text">Post-quantum Cryptography</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -822,7 +738,7 @@ There’s still a long way to go.</p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

@@ -413,26 +413,15 @@
         <p>问题描述</p>
 <blockquote>
 <p>macOS默认对ntfs格式设备只有读权限没有写权限</p>
-<p>MacOS: macOS Catalina
-Version: 10.15.3</p>
+<p>MacOS: macOS Catalina Version: 10.15.3</p>
 </blockquote>
 <a id="more"></a>
-
 <p>解决方案：</p>
-<ol>
-<li><p>查看ntfs格式设备地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">minutesheep @ MS-MacBook-Pro $ diskutil list</span><br><span class="line">/dev/disk0 (internal, physical):</span><br><span class="line">   #:                       TYPE NAME                    SIZE       IDENTIFIER</span><br><span class="line">   0:      GUID_partition_scheme                        *251.0 GB   disk0</span><br><span class="line">   1:                        EFI EFI                     314.6 MB   disk0s1</span><br><span class="line">   2:                 Apple_APFS Container disk1         250.7 GB   disk0s2</span><br><span class="line"></span><br><span class="line">/dev/disk1 (synthesized):</span><br><span class="line">   #:                       TYPE NAME                    SIZE       IDENTIFIER</span><br><span class="line">   0:      APFS Container Scheme -                      +250.7 GB   disk1</span><br><span class="line">                                 Physical Store disk0s2</span><br><span class="line">   1:                APFS Volume Macintosh HD - Data     106.0 GB   disk1s1</span><br><span class="line">   2:                APFS Volume Preboot                 80.6 MB    disk1s2</span><br><span class="line">   3:                APFS Volume Recovery                526.6 MB   disk1s3</span><br><span class="line">   4:                APFS Volume VM                      4.3 GB     disk1s4</span><br><span class="line">   5:                APFS Volume Macintosh HD            11.0 GB    disk1s5</span><br><span class="line"></span><br><span class="line">/dev/disk3 (external, physical):</span><br><span class="line">   #:                       TYPE NAME                    SIZE       IDENTIFIER</span><br><span class="line">   0:     FDisk_partition_scheme                        *1.0 TB     disk3</span><br><span class="line">   1:               Windows_NTFS Seagate Expansion Drive 1.0 TB     disk3s1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">得到ntfs格式设备的地址为：/dev/disk3s1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>卸载ntfs格式设备</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minutesheep @ MS-MacBook-Pro $ sudo umount /dev/disk3s1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重新挂载ntfs格式设备，分配其读写权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">minutesheep @ MS-MacBook-Pro $ sudo mount_ntfs -o rw,nobrowse /dev/disk3s1 ~/mnt/usb</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">挂载点为：～/mnt/usb， 用户可以自行设定，空目录即可</span><br><span class="line">之后通过Finder打开即可，此时已经有写权限了</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用完毕后卸载即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minutesheep @ MS-MacBook-Pro $ sudo umount ~/mnt/usb</span><br></pre></td></tr></table></figure>
-
-</li>
+<ol type="1">
+<li><p>查看ntfs格式设备地址 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">minutesheep @ MS-MacBook-Pro $ diskutil list</span><br><span class="line">/dev/disk0 (internal, physical):</span><br><span class="line">   #:                       TYPE NAME                    SIZE       IDENTIFIER</span><br><span class="line">   0:      GUID_partition_scheme                        *251.0 GB   disk0</span><br><span class="line">   1:                        EFI EFI                     314.6 MB   disk0s1</span><br><span class="line">   2:                 Apple_APFS Container disk1         250.7 GB   disk0s2</span><br><span class="line"></span><br><span class="line">/dev/disk1 (synthesized):</span><br><span class="line">   #:                       TYPE NAME                    SIZE       IDENTIFIER</span><br><span class="line">   0:      APFS Container Scheme -                      +250.7 GB   disk1</span><br><span class="line">                                 Physical Store disk0s2</span><br><span class="line">   1:                APFS Volume Macintosh HD - Data     106.0 GB   disk1s1</span><br><span class="line">   2:                APFS Volume Preboot                 80.6 MB    disk1s2</span><br><span class="line">   3:                APFS Volume Recovery                526.6 MB   disk1s3</span><br><span class="line">   4:                APFS Volume VM                      4.3 GB     disk1s4</span><br><span class="line">   5:                APFS Volume Macintosh HD            11.0 GB    disk1s5</span><br><span class="line"></span><br><span class="line">/dev/disk3 (external, physical):</span><br><span class="line">   #:                       TYPE NAME                    SIZE       IDENTIFIER</span><br><span class="line">   0:     FDisk_partition_scheme                        *1.0 TB     disk3</span><br><span class="line">   1:               Windows_NTFS Seagate Expansion Drive 1.0 TB     disk3s1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">得到ntfs格式设备的地址为：/dev/disk3s1</span><br></pre></td></tr></table></figure></p></li>
+<li><p>卸载ntfs格式设备 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minutesheep @ MS-MacBook-Pro $ sudo umount /dev/disk3s1</span><br></pre></td></tr></table></figure></p></li>
+<li><p>重新挂载ntfs格式设备，分配其读写权限 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">minutesheep @ MS-MacBook-Pro $ sudo mount_ntfs -o rw,nobrowse /dev/disk3s1 ~/mnt/usb</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">挂载点为：～/mnt/usb， 用户可以自行设定，空目录即可</span><br><span class="line">之后通过Finder打开即可，此时已经有写权限了</span><br></pre></td></tr></table></figure></p></li>
+<li><p>使用完毕后卸载即可 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minutesheep @ MS-MacBook-Pro $ sudo umount ~/mnt/usb</span><br></pre></td></tr></table></figure></p></li>
 </ol>
 
       
@@ -571,7 +560,7 @@ Version: 10.15.3</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -593,7 +582,7 @@ Version: 10.15.3</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -660,7 +649,7 @@ Version: 10.15.3</p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

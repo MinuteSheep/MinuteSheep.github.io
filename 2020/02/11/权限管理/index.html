@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  470
+                  341
                 </span>
               
 
@@ -391,7 +391,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  1
                 </span>
               
             </div>
@@ -414,53 +414,37 @@
       
         <p>本节记录数据库用户和权限管理</p>
 <img src="/2020/02/11/权限管理/cover.jpg">
-
 <a id="more"></a>
-
-
-<h2 id="查看用户"><a href="#查看用户" class="headerlink" title="查看用户"></a>查看用户</h2><ol>
-<li>SELECT user FROM mysql.user<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">root@localhost) [book]&gt; select user from mysql.user;</span><br><span class="line">+<span class="comment">------------------+</span></span><br><span class="line">| user             |</span><br><span class="line">+<span class="comment">------------------+</span></span><br><span class="line">| minutesheep      |</span><br><span class="line">| minutesheep      |</span><br><span class="line">| mysql.infoschema |</span><br><span class="line">| mysql.session    |</span><br><span class="line">| mysql.sys        |</span><br><span class="line">| root             |</span><br><span class="line">| zhangsan         |</span><br><span class="line">+<span class="comment">------------------+</span></span><br><span class="line">7 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="查看用户">查看用户</h2>
+<ol type="1">
+<li>SELECT user FROM mysql.user <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">root@localhost) [book]&gt; select user from mysql.user;</span><br><span class="line">+<span class="comment">------------------+</span></span><br><span class="line">| user             |</span><br><span class="line">+<span class="comment">------------------+</span></span><br><span class="line">| minutesheep      |</span><br><span class="line">| minutesheep      |</span><br><span class="line">| mysql.infoschema |</span><br><span class="line">| mysql.session    |</span><br><span class="line">| mysql.sys        |</span><br><span class="line">| root             |</span><br><span class="line">| zhangsan         |</span><br><span class="line">+<span class="comment">------------------+</span></span><br><span class="line">7 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h2><ol>
-<li><p>GRANT authority ON database.table TO user@host IDENTIFIED BY password    新版本创建用户和赋予权限的方式分开了,不能使用本条语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@localhost) [book]&gt; grant select, update on book.book</span><br><span class="line">   -&gt; to wangming@'localhost' identified by '123';</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CREATE USER user@host IDENTIFIED BY password</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create user wangming@localhost identified by '123';</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="新建用户">新建用户</h2>
+<ol type="1">
+<li><p>GRANT authority ON database.table TO user@host IDENTIFIED BY password 新版本创建用户和赋予权限的方式分开了,不能使用本条语句 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@localhost) [book]&gt; grant select, update on book.book</span><br><span class="line">   -&gt; to wangming@'localhost' identified by '123';</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>CREATE USER user@host IDENTIFIED BY password <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create user wangming@localhost identified by '123';</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h2 id="修改口令"><a href="#修改口令" class="headerlink" title="修改口令"></a>修改口令</h2><ol>
-<li><p>SET PASSWOED FOR user@host=PASSWORD(‘password’)      新版本password熟悉已经取消,不能使用本条语句</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; set password for wangming@localhost=password('hello');</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ALTER USER user@host IDENTIFIED BY password</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter user wangming@localhost identified by 'hello';</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="修改口令">修改口令</h2>
+<ol type="1">
+<li><p>SET PASSWOED FOR user@host=PASSWORD('password') 新版本password熟悉已经取消,不能使用本条语句 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; set password for wangming@localhost=password('hello');</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>ALTER USER user@host IDENTIFIED BY password <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter user wangming@localhost identified by 'hello';</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><ol>
-<li>DROP USER user@host<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop user wangming@localhost;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="删除用户">删除用户</h2>
+<ol type="1">
+<li>DROP USER user@host <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop user wangming@localhost;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
 <hr>
-<h2 id="赋予权限"><a href="#赋予权限" class="headerlink" title="赋予权限"></a>赋予权限</h2><ol>
-<li>GRANT authority ON database.table TO user@host<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; grant select, update on book.book</span><br><span class="line">    -&gt; to wangming@localhost with grant option;             WITH GRANT OPTION允许这个用户将权限赋予他人</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="赋予权限">赋予权限</h2>
+<ol type="1">
+<li>GRANT authority ON database.table TO user@host <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; grant select, update on book.book</span><br><span class="line">    -&gt; to wangming@localhost with grant option;             WITH GRANT OPTION允许这个用户将权限赋予他人</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="收回权限"><a href="#收回权限" class="headerlink" title="收回权限"></a>收回权限</h2><ol>
-<li>REVOKE authority ON database.table FROM user@host<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; revoke update on book.book</span><br><span class="line">    -&gt; from wangming@localhost;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="收回权限">收回权限</h2>
+<ol type="1">
+<li>REVOKE authority ON database.table FROM user@host <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; revoke update on book.book</span><br><span class="line">    -&gt; from wangming@localhost;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="查看权限"><a href="#查看权限" class="headerlink" title="查看权限"></a>查看权限</h2><ol>
-<li>SELECT * FROM mysql.user\G<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; select * from mysql.user where user='wangming'\G</span><br><span class="line">*************************** 1. row ***************************</span><br><span class="line">                    Host: localhost</span><br><span class="line">                    User: wangming</span><br><span class="line">             Select_priv: N</span><br><span class="line">             Insert_priv: N</span><br><span class="line">             Update_priv: N</span><br><span class="line">             Delete_priv: N</span><br><span class="line">             Create_priv: N</span><br><span class="line">               Drop_priv: N</span><br><span class="line">             Reload_priv: N</span><br><span class="line">           Shutdown_priv: N</span><br><span class="line">            Process_priv: N</span><br><span class="line">               File_priv: N</span><br><span class="line">              Grant_priv: N</span><br><span class="line">         References_priv: N</span><br><span class="line">              Index_priv: N</span><br><span class="line">              Alter_priv: N</span><br><span class="line">            Show_db_priv: N</span><br><span class="line">              Super_priv: N</span><br><span class="line">   Create_tmp_table_priv: N</span><br><span class="line">        Lock_tables_priv: N</span><br><span class="line">            Execute_priv: N</span><br><span class="line">         Repl_slave_priv: N</span><br><span class="line">        Repl_client_priv: N</span><br><span class="line">        Create_view_priv: N</span><br><span class="line">          Show_view_priv: N</span><br><span class="line">     Create_routine_priv: N</span><br><span class="line">      Alter_routine_priv: N</span><br><span class="line">        Create_user_priv: N</span><br><span class="line">              Event_priv: N</span><br><span class="line">            Trigger_priv: N</span><br><span class="line">  Create_tablespace_priv: N</span><br><span class="line">                ssl_type:</span><br><span class="line">              ssl_cipher: 0x</span><br><span class="line">             x509_issuer: 0x</span><br><span class="line">            x509_subject: 0x</span><br><span class="line">           max_questions: 0</span><br><span class="line">             max_updates: 0</span><br><span class="line">         max_connections: 0</span><br><span class="line">    max_user_connections: 0</span><br><span class="line">                  plugin: caching_sha2_password</span><br><span class="line">   authentication_string: $A$005$+^Ny~@!x-</span><br><span class="line">                                          b*ml@\&gt;gOaD57Sci23.gbx8cttUwjm0ixmIepN.C59n16XIwAwp8</span><br><span class="line">        password_expired: N</span><br><span class="line">   password_last_changed: 2020-02-11 16:00:58</span><br><span class="line">       password_lifetime: NULL</span><br><span class="line">          account_locked: N</span><br><span class="line">        Create_role_priv: N</span><br><span class="line">          Drop_role_priv: N</span><br><span class="line">  Password_reuse_history: NULL</span><br><span class="line">     Password_reuse_time: NULL</span><br><span class="line">Password_require_current: NULL</span><br><span class="line">         User_attributes: NULL</span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="查看权限">查看权限</h2>
+<ol type="1">
+<li>SELECT * FROM mysql.user!--￼8--&gt;</li>
 </ol>
 
       
@@ -606,7 +590,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -628,7 +612,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -711,7 +695,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

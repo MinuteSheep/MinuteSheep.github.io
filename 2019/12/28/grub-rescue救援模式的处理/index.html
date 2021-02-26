@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="grub rescue救援模式的处理转载自guanggY 的 grub rescue救援模式的处理">
+<meta name="description" content="grub rescue救援模式的处理 转载自guanggY 的 grub rescue救援模式的处理">
 <meta name="keywords" content="Linux,repair,bug,grub rescue,多系统,Linux error">
 <meta property="og:type" content="article">
 <meta property="og:title" content="grub rescue救援模式的处理">
 <meta property="og:url" content="https://minutesheep.github.io/2019/12/28/grub-rescue救援模式的处理/index.html">
 <meta property="og:site_name" content="T N T">
-<meta property="og:description" content="grub rescue救援模式的处理转载自guanggY 的 grub rescue救援模式的处理">
+<meta property="og:description" content="grub rescue救援模式的处理 转载自guanggY 的 grub rescue救援模式的处理">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2020-11-26T14:22:23.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="grub rescue救援模式的处理">
-<meta name="twitter:description" content="grub rescue救援模式的处理转载自guanggY 的 grub rescue救援模式的处理">
+<meta name="twitter:description" content="grub rescue救援模式的处理 转载自guanggY 的 grub rescue救援模式的处理">
 
 
 
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  634
+                  635
                 </span>
               
 
@@ -410,10 +410,11 @@
       
 
       
-        <h2 id="grub-rescue救援模式的处理"><a href="#grub-rescue救援模式的处理" class="headerlink" title="grub rescue救援模式的处理"></a>grub rescue救援模式的处理</h2><p>转载自<a href="https://me.csdn.net/guanggy" target="_blank" rel="noopener">guanggY</a> 的 <a href="https://blog.csdn.net/guanggy/article/details/6210774" target="_blank" rel="noopener">grub rescue救援模式的处理</a></p>
+        <h2 id="grub-rescue救援模式的处理">grub rescue救援模式的处理</h2>
+<p>转载自<a href="https://me.csdn.net/guanggy" target="_blank" rel="noopener">guanggY</a> 的 <a href="https://blog.csdn.net/guanggy/article/details/6210774" target="_blank" rel="noopener">grub rescue救援模式的处理</a></p>
 <a id="more"></a>
-
-<h3 id="①查看分区"><a href="#①查看分区" class="headerlink" title="①查看分区"></a>①查看分区</h3><p>因为每个人的分区不一样，所以我们要查看分区, 用ls 指令</p>
+<h3 id="查看分区">①查看分区</h3>
+<p>因为每个人的分区不一样，所以我们要查看分区, 用ls 指令</p>
 <p>grub rescue&gt;ls</p>
 <p>回车后，就会出现</p>
 <p>(hd0) (hd0,msdos9) (hd0,msdos8) (hd0,msdos7) (hd0,msdos6) (hd0,msdos5) (hd0,msdos1)</p>
@@ -425,7 +426,8 @@
 <p>root=hd0,msdos9</p>
 <p>从上面可以看出来现在我的系统是从(hd0,msdos9) 里启动的。</p>
 <p>那么怎么知道ubuntu 在哪个分区呢？进入第二步</p>
-<h3 id="②寻找-ubuntu-所在分区"><a href="#②寻找-ubuntu-所在分区" class="headerlink" title="②寻找 ubuntu 所在分区"></a>②寻找 ubuntu 所在分区</h3><p>这一步我们要一个一个的试，</p>
+<h3 id="寻找-ubuntu-所在分区">②寻找 ubuntu 所在分区</h3>
+<p>这一步我们要一个一个的试，</p>
 <p>还是用ls 指令</p>
 <p>先试下在不在（hd0,msdos8 ）里边</p>
 <p>grub rescue&gt;ls (hd0,msdos8)/</p>
@@ -434,31 +436,28 @@
 <p>。。。。。。。。。</p>
 <p>当我试到</p>
 <p>(hd0,msdos7) 的时候，可以看到一下子多了很多字，这些就是我ubuntu 主文件夹下的文件夹和文件的名字。OK ，找到分区了！</p>
-<h3 id="③修改启动分区"><a href="#③修改启动分区" class="headerlink" title="③修改启动分区"></a>③修改启动分区</h3><p>grub rescue&gt;root=(hd0,msdos7)
-grub rescue&gt;prefix=/boot/grub //grub 路径设置 
-grub rescue&gt;set root=(hd0,msdos7)
-grub rescue&gt;set prefix=(hd0,msdos7)/boot/grub
-grub rescue&gt;insmod normal // 启动 normal 启动</p>
+<h3 id="修改启动分区">③修改启动分区</h3>
+<p>grub rescue&gt;root=(hd0,msdos7) grub rescue&gt;prefix=/boot/grub //grub 路径设置 grub rescue&gt;set root=(hd0,msdos7) grub rescue&gt;set prefix=(hd0,msdos7)/boot/grub grub rescue&gt;insmod normal // 启动 normal 启动</p>
 <p>grub rescue&gt;normal</p>
 <p>依次敲入上面的指令，是不是看到熟悉的启动菜单了？选 win7 后，一键 Ghost 就开始备份系统了。别高兴太早，一切还都没开始呢。如果你不是因为一键 Ghost 问题进入 grub rescue, 可以直接跳到第⑤步</p>
-<h3 id="④再来一遍"><a href="#④再来一遍" class="headerlink" title="④再来一遍"></a>④再来一遍</h3><p>当你等着一键Ghost 备份完系统，重启后，你发现还是</p>
+<h3 id="再来一遍">④再来一遍</h3>
+<p>当你等着一键Ghost 备份完系统，重启后，你发现还是</p>
 <p>error:unknown filesystem</p>
 <p>grub rescue&gt;</p>
 <p>别着急，再把前三步进行一遍就可以了</p>
-<h3 id="⑤进入命令行-启动-Ubuntu"><a href="#⑤进入命令行-启动-Ubuntu" class="headerlink" title="⑤进入命令行 启动 Ubuntu"></a>⑤进入命令行 启动 Ubuntu</h3><p>进入系统启动选项界面后，你发现，无论点那个还是进不去，这是因为你还没有真正的修改grub, 这个要到ubuntu 里修改</p>
+<h3 id="进入命令行-启动-ubuntu">⑤进入命令行 启动 Ubuntu</h3>
+<p>进入系统启动选项界面后，你发现，无论点那个还是进不去，这是因为你还没有真正的修改grub, 这个要到ubuntu 里修改</p>
 <p>进入系统启动项界面后，按C 进入命令行模式</p>
 <p>grub &gt;set root=hd0,msdos7</p>
 <p>grub &gt;set prefix=(hd0,msdos7)/boot/grub</p>
-<p>grub &gt;linux /vmlinuz-xxx-xxx root=/dev/sda7 // 里边的 xxxx 可以按 Tab 键，如果有 acpi 问题 , 在最后加一句 acpi=off
-grub &gt;initrd /initrd.img-xxx-xxx
-grub &gt;boot</p>
+<p>grub &gt;linux /vmlinuz-xxx-xxx root=/dev/sda7 // 里边的 xxxx 可以按 Tab 键，如果有 acpi 问题 , 在最后加一句 acpi=off grub &gt;initrd /initrd.img-xxx-xxx grub &gt;boot</p>
 <p>Ubuntu 正常启动了吧？</p>
-<h3 id="⑥进入-ubuntu-修复-grub"><a href="#⑥进入-ubuntu-修复-grub" class="headerlink" title="⑥进入 ubuntu 修复 grub"></a>⑥进入 ubuntu 修复 grub</h3><p>大功就要高成了</p>
+<h3 id="进入-ubuntu-修复-grub">⑥进入 ubuntu 修复 grub</h3>
+<p>大功就要高成了</p>
 <p>进入Ubuntu 后, 修复grub</p>
 <p>在终端里运行</p>
 <p>sudo update-grub</p>
-<p>重建 grub 到第一硬盘 mbr
-sudo grub-install /dev/sda</p>
+<p>重建 grub 到第一硬盘 mbr sudo grub-install /dev/sda</p>
 <p>好啦，重启，一切搞定！</p>
 <p>感谢guanggY的解决方案。</p>
 
@@ -613,7 +612,7 @@ sudo grub-install /dev/sda</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -635,7 +634,7 @@ sudo grub-install /dev/sda</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -684,7 +683,7 @@ sudo grub-install /dev/sda</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#grub-rescue救援模式的处理"><span class="nav-number">1.</span> <span class="nav-text">grub rescue救援模式的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#①查看分区"><span class="nav-number">1.1.</span> <span class="nav-text">①查看分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#②寻找-ubuntu-所在分区"><span class="nav-number">1.2.</span> <span class="nav-text">②寻找 ubuntu 所在分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#③修改启动分区"><span class="nav-number">1.3.</span> <span class="nav-text">③修改启动分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#④再来一遍"><span class="nav-number">1.4.</span> <span class="nav-text">④再来一遍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⑤进入命令行-启动-Ubuntu"><span class="nav-number">1.5.</span> <span class="nav-text">⑤进入命令行 启动 Ubuntu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⑥进入-ubuntu-修复-grub"><span class="nav-number">1.6.</span> <span class="nav-text">⑥进入 ubuntu 修复 grub</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#grub-rescue救援模式的处理"><span class="nav-number">1.</span> <span class="nav-text">grub rescue救援模式的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看分区"><span class="nav-number">1.1.</span> <span class="nav-text">①查看分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找-ubuntu-所在分区"><span class="nav-number">1.2.</span> <span class="nav-text">②寻找 ubuntu 所在分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改启动分区"><span class="nav-number">1.3.</span> <span class="nav-text">③修改启动分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再来一遍"><span class="nav-number">1.4.</span> <span class="nav-text">④再来一遍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入命令行-启动-ubuntu"><span class="nav-number">1.5.</span> <span class="nav-text">⑤进入命令行 启动 Ubuntu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入-ubuntu-修复-grub"><span class="nav-number">1.6.</span> <span class="nav-text">⑥进入 ubuntu 修复 grub</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -718,7 +717,7 @@ sudo grub-install /dev/sda</p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

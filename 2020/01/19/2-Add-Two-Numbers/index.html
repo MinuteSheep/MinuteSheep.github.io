@@ -414,16 +414,13 @@
 <p>Description</p>
 <p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
 <p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-</blockquote>
 <p>Example:</p>
+</blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">Output: 7 -&gt; 0 -&gt; 8</span><br><span class="line">Explanation: 342 + 465 = 807.</span><br></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
-
-<h2 id="解法-进位链表法"><a href="#解法-进位链表法" class="headerlink" title="解法 进位链表法"></a>解法 进位链表法</h2><p>从两个链表头结点开始依次相加，记录进位，供下一次相加使用，直到其中一个链表结束，将另一个链表的内容加进位输出到结果高位即可，对链表的要求高</p>
+<h2 id="解法-进位链表法">解法 进位链表法</h2>
+<p>从两个链表头结点开始依次相加，记录进位，供下一次相加使用，直到其中一个链表结束，将另一个链表的内容加进位输出到结果高位即可，对链表的要求高</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode *p=l1,*q=l2; <span class="comment">// 工作指针</span></span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>; <span class="comment">// 进位</span></span><br><span class="line">        ListNode *l3=<span class="keyword">new</span> ListNode(<span class="number">-1</span>); <span class="comment">// 头结点</span></span><br><span class="line">        ListNode *r=l3; <span class="comment">// l3的工作指针</span></span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (p||q)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p&amp;&amp;q)&#123;</span><br><span class="line">                temp = p-&gt;val + q-&gt;val + carry;</span><br><span class="line">                carry = temp/<span class="number">10</span>;</span><br><span class="line">                ListNode *node=<span class="keyword">new</span> ListNode(temp%<span class="number">10</span>);</span><br><span class="line">                r-&gt;next = node;</span><br><span class="line">                r = node;</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">if</span>(p&amp;&amp;!q)&#123;</span><br><span class="line">                temp = p-&gt;val + carry;</span><br><span class="line">                carry = temp/<span class="number">10</span>;</span><br><span class="line">                ListNode *node=<span class="keyword">new</span> ListNode(temp%<span class="number">10</span>);</span><br><span class="line">                r-&gt;next = node;</span><br><span class="line">                r = node;</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(!p&amp;&amp;q)&#123;</span><br><span class="line">                temp = q-&gt;val + carry;</span><br><span class="line">                carry = temp/<span class="number">10</span>;</span><br><span class="line">                ListNode *node=<span class="keyword">new</span> ListNode(temp%<span class="number">10</span>);</span><br><span class="line">                r-&gt;next = node;</span><br><span class="line">                r = node;</span><br><span class="line">                q = q-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(carry&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            ListNode *node=<span class="keyword">new</span> ListNode(carry);</span><br><span class="line">            r-&gt;next = node;</span><br><span class="line">            r = node;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -568,7 +565,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -590,7 +587,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -673,7 +670,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

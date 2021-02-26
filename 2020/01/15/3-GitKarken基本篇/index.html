@@ -435,115 +435,163 @@
       
         <p>终则有始 Git 旅，将其事式，问如何初始化、加，提交，如何回退，请起！</p>
 <a id="more"></a>
-
-<h1 id="为什么要用Git"><a href="#为什么要用Git" class="headerlink" title="为什么要用Git"></a>为什么要用Git</h1><p>现在才说为什么要用Git似乎有些晚了，但一切都在我的规划之中</p>
-<h2 id="没用Git之前的苦恼"><a href="#没用Git之前的苦恼" class="headerlink" title="没用Git之前的苦恼"></a>没用Git之前的苦恼</h2><p>相信文字工作者经常遇到这样的问题，一篇文章中，某几个段落或者句子需要来回更改，但是呢，最后可能决定还是之前的好，于是疯狂的撤销，有时候撤销到极限也找不回来；于是，聪明的你想到了另存为这个伟大的功能，每改一次，就用一次另存为，你可真是个小机灵鬼～～，最终出现了以下局面：</p>
-<p><img src="3-1.JPG" alt></p>
+<h1 id="为什么要用git">为什么要用Git</h1>
+<p>现在才说为什么要用Git似乎有些晚了，但一切都在我的规划之中 ## 没用Git之前的苦恼 相信文字工作者经常遇到这样的问题，一篇文章中，某几个段落或者句子需要来回更改，但是呢，最后可能决定还是之前的好，于是疯狂的撤销，有时候撤销到极限也找不回来；于是，聪明的你想到了另存为这个伟大的功能，每改一次，就用一次另存为，你可真是个小机灵鬼～～，最终出现了以下局面：</p>
+<p><img src="3-1.JPG"></p>
 <p>👆🏿满脸嫌弃👆，好好的一个文件夹，硬生生的变成了杂物间，完全不符合极简主义者的生活理念。</p>
-<p>更加要命的是，一份文档可能是多个人同时编写，比如：同事让你把现在写完的发给他一份，他要改改，然后就形成了这么个局面—-同事修改稿子，你继续写稿子，过了三天，同事发给你修改完的，这三天你已经修改了8次稿子了，这时候你就非常头疼怎么合并同事的稿子和现在的稿子。</p>
-<p><img src="3-2.jpg" alt></p>
-<h2 id="有了Git之后"><a href="#有了Git之后" class="headerlink" title="有了Git之后"></a>有了Git之后</h2><p>这时你急需要一个自动管理改动的软件：不用每次另存为，只需要在一个文件里改动，想回退到多久都行，不同的人改动之后可以清晰的对比改动内容：</p>
-<p>|版本|文件名|用户|说明|日期|
-|–|—|–|–|–|
-|5|程序设计方案.docx|XcYu|合并修改后的用户需求|2025-1-8|
-|4|程序设计方案.docx|XcYu|修改了用户需求|2025-1-4|
-|3|程序设计方案.docx|MinuteSheep|修改了用户需求|2025-1-4|
-|2|程序设计方案.docx|XcYu|增加了用户需求|2025-1-3|
-|1|程序设计方案.docx|XcYu|第一次提交|2025-1-1|</p>
+<p>更加要命的是，一份文档可能是多个人同时编写，比如：同事让你把现在写完的发给他一份，他要改改，然后就形成了这么个局面----同事修改稿子，你继续写稿子，过了三天，同事发给你修改完的，这三天你已经修改了8次稿子了，这时候你就非常头疼怎么合并同事的稿子和现在的稿子。</p>
+<p><img src="3-2.jpg"></p>
+<h2 id="有了git之后">有了Git之后</h2>
+<p>这时你急需要一个自动管理改动的软件：不用每次另存为，只需要在一个文件里改动，想回退到多久都行，不同的人改动之后可以清晰的对比改动内容：</p>
+<table>
+<thead>
+<tr class="header">
+<th>版本</th>
+<th>文件名</th>
+<th>用户</th>
+<th>说明</th>
+<th>日期</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5</td>
+<td>程序设计方案.docx</td>
+<td>XcYu</td>
+<td>合并修改后的用户需求</td>
+<td>2025-1-8</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>程序设计方案.docx</td>
+<td>XcYu</td>
+<td>修改了用户需求</td>
+<td>2025-1-4</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>程序设计方案.docx</td>
+<td>MinuteSheep</td>
+<td>修改了用户需求</td>
+<td>2025-1-4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>程序设计方案.docx</td>
+<td>XcYu</td>
+<td>增加了用户需求</td>
+<td>2025-1-3</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>程序设计方案.docx</td>
+<td>XcYu</td>
+<td>第一次提交</td>
+<td>2025-1-1</td>
+</tr>
+</tbody>
+</table>
 <p>如上所示，你的文件夹里永远只有<code>程序设计方案.docx</code>一个文件，干干净净的，舒服～～，想要看看之前的内容也是轻而易举，完美～～</p>
-<p><img src="3-3.jpg" alt></p>
-<h1 id="Git工作模式"><a href="#Git工作模式" class="headerlink" title="Git工作模式"></a>Git工作模式</h1><p>相信你已经迫不及待的想要玩弄git了，首先需要了解git的工作模式。</p>
+<p><img src="3-3.jpg"></p>
+<h1 id="git工作模式">Git工作模式</h1>
+<p>相信你已经迫不及待的想要玩弄git了，首先需要了解git的工作模式。</p>
 <p>必须明白三个区：工作区、暂存区、仓库</p>
 <p>工作区：当前文件夹就是工作区，这是你工作（编辑文件）的区域</p>
 <p>仓库：上述表格就是仓库的目录，表格内的东西全部规规矩矩的存在仓库中</p>
 <p>暂存区：从名字上分析，大概也懂了吧。将工作区的文件放到仓库（形成一个版本）必须经过暂存区。</p>
-<p><img src="3-4.jpg" alt></p>
-<h1 id="开始吧"><a href="#开始吧" class="headerlink" title="开始吧"></a>开始吧</h1><p>了解了工作模式后，就让我们开始吧，接下来的操作全部都是以Git的图形界面软件<code>GitKarken</code>操作</p>
+<p><img src="3-4.jpg"></p>
+<h1 id="开始吧">开始吧</h1>
+<p>了解了工作模式后，就让我们开始吧，接下来的操作全部都是以Git的图形界面软件<code>GitKarken</code>操作</p>
 <p>开一个新项目：寻找幸福。</p>
 <p>建立<code>git_test</code>文件夹，并写了一个txt文档<code>幸福的秘密.txt</code></p>
-<p><img src="3-5.png" alt></p>
+<p><img src="3-5.png"></p>
 <blockquote>
 <p>幸福的秘密.txt</p>
 <p>Once there lived a king of great strength and wealth.Yet he was not happy.</p>
 <p>从前有一位国王，很有权力和财富，然而他并不快乐。</p>
 <p>He told his servants to find him things to make him happy,but each came back saying</p>
 <p>他告诉仆人去找可以使他快乐的东西，但是每个回来的人都说：</p>
-<p>“Noting in the world can match the wonderful things you have already.”</p>
+<p>"Noting in the world can match the wonderful things you have already."</p>
 <p>“世界上没有什么比得上你已经拥有的极好的东西。”</p>
 <p>Then in that land,there lived a poor man with a patch over one eye and a crutch to help him walk.Although he had little,he was always happy.</p>
 <p>当时那个国家住着一个穷人，他一个眼睛戴着眼罩并靠拐杖走路。虽然他拥有的很少，但是他总是很快乐。</p>
-<p>When the king heard of this,he asked the man to teach him his secret. “I never push.” the man replied,”and I never rush.</p>
+<p>When the king heard of this,he asked the man to teach him his secret. "I never push." the man replied,"and I never rush.</p>
 <p>当国王听说这件事的时候，他要求这个人教他快乐的秘决。 “我从来不强迫，”这个人答道，“而且我从不匆忙。</p>
-<p>Most of all,I never wish for too much.”Then he smiled and was gone.</p>
+<p>Most of all,I never wish for too much."Then he smiled and was gone.</p>
 <p>最重要的是，我从不希望得到太多。”然后，他笑着离开了。</p>
 <p>If you would make a man happy,do not add to his possessions but subtract from his desires.</p>
-<p>如果你想使一个人快乐，不要增加他的财产，而是要减少他的欲望。
-nce there lived a king of great strength and wealth.Yet he was not happy.</p>
+<p>如果你想使一个人快乐，不要增加他的财产，而是要减少他的欲望。 nce there lived a king of great strength and wealth.Yet he was not happy.</p>
 <p>从前有一位国王，很有权力和财富，然而他并不快乐。</p>
 <p>He told his servants to find him things to make him happy,but each came back saying</p>
 <p>他告诉仆人去找可以使他快乐的东西，但是每个回来的人都说：</p>
-<p>“Noting in the world can match the wonderful things you have already.”</p>
+<p>"Noting in the world can match the wonderful things you have already."</p>
 <p>“世界上没有什么比得上你已经拥有的极好的东西。”</p>
 <p>Then in that land,there lived a poor man with a patch over one eye and a crutch to help him walk.Although he had little,he was always happy.</p>
 <p>当时那个国家住着一个穷人，他一个眼睛戴着眼罩并靠拐杖走路。虽然他拥有的很少，但是他总是很快乐。</p>
-<p>When the king heard of this,he asked the man to teach him his secret. “I never push.” the man replied,”and I never rush.</p>
+<p>When the king heard of this,he asked the man to teach him his secret. "I never push." the man replied,"and I never rush.</p>
 <p>当国王听说这件事的时候，他要求这个人教他快乐的秘决。 “我从来不强迫，”这个人答道，“而且我从不匆忙。</p>
-<p>Most of all,I never wish for too much.”Then he smiled and was gone.</p>
+<p>Most of all,I never wish for too much."Then he smiled and was gone.</p>
 <p>最重要的是，我从不希望得到太多。”然后，他笑着离开了。</p>
 <p>If you would make a man happy,do not add to his possessions but subtract from his desires.</p>
 <p>如果你想使一个人快乐，不要增加他的财产，而是要减少他的欲望。</p>
 </blockquote>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>打开<code>GitKarken</code>软件，点击<code>Start a local repo</code></p>
-<p><img src="3-6.png" alt></p>
-<p><img src="3-7.png" alt></p>
+<h2 id="初始化">初始化</h2>
+<p>打开<code>GitKarken</code>软件，点击<code>Start a local repo</code></p>
+<p><img src="3-6.png"></p>
+<p><img src="3-7.png"></p>
 <p>Name处输入寻找幸福，初始化位置选择刚刚创建的<code>git_test</code>文件夹</p>
-<p><img src="3-8.png" alt></p>
+<p><img src="3-8.png"></p>
 <p>点击<code>Create Repository</code>，初始化成功</p>
-<p><img src="3-9.png" alt></p>
+<p><img src="3-9.png"></p>
 <p>可以看到<code>git_test</code>文件夹下多了一个新的文件夹<code>寻找幸福</code>，里面有一个<code>README.md</code>文件</p>
-<p><img src="3-10.png" alt></p>
+<p><img src="3-10.png"></p>
 <p>这就是初始化后的内容，为什么要初始化？为了明确这是一个git仓库，让git认识这个文件夹，可以使用git进行管理，<font color="red">一个项目只需要初始化一次</font></p>
-<h2 id="添加文件到暂存区"><a href="#添加文件到暂存区" class="headerlink" title="添加文件到暂存区"></a>添加文件到暂存区</h2><p>现在将<code>幸福的秘密.txt</code>移动到刚刚初始化的<code>寻找幸福</code>文件夹下，你会惊奇的发现，软件的界面发生了变化：</p>
-<p><img src="3-11.png" alt></p>
+<h2 id="添加文件到暂存区">添加文件到暂存区</h2>
+<p>现在将<code>幸福的秘密.txt</code>移动到刚刚初始化的<code>寻找幸福</code>文件夹下，你会惊奇的发现，软件的界面发生了变化：</p>
+<p><img src="3-11.png"></p>
 <p>点击新新的变化，右侧会有详细的说明</p>
-<p><img src="3-12.png" alt></p>
+<p><img src="3-12.png"></p>
 <p>现在将新的文件<code>幸福的秘密.txt</code>放入暂存区，点击<code>Stage all changes</code>:</p>
-<p><img src="3-13.png" alt></p>
-<h2 id="提交到仓库"><a href="#提交到仓库" class="headerlink" title="提交到仓库"></a>提交到仓库</h2><p>再将暂存区的文件提交到仓库，提交的时候必须写清楚描述（作了哪些改动）：</p>
-<p><img src="3-14.png" alt></p>
-<p><img src="3-15.png" alt></p>
+<p><img src="3-13.png"></p>
+<h2 id="提交到仓库">提交到仓库</h2>
+<p>再将暂存区的文件提交到仓库，提交的时候必须写清楚描述（作了哪些改动）：</p>
+<p><img src="3-14.png"></p>
+<p><img src="3-15.png"></p>
 <p>右侧的<code>View all files</code>可以看到这个项目目前提交的所有文件</p>
-<h2 id="练习一下下"><a href="#练习一下下" class="headerlink" title="练习一下下"></a>练习一下下</h2><p>修改<code>幸福的秘密.txt</code>，文档末尾加入一行<code>幸福是花朵，绽放出光明与希望；幸福是果实，回报以芳香与甘甜；幸福是落叶，奉献出余热化香泥。</code></p>
+<h2 id="练习一下下">练习一下下</h2>
+<p>修改<code>幸福的秘密.txt</code>，文档末尾加入一行<code>幸福是花朵，绽放出光明与希望；幸福是果实，回报以芳香与甘甜；幸福是落叶，奉献出余热化香泥。</code></p>
 <p>然后重复上述过程：先添加文件到暂存区，再提交到仓库。</p>
-<p><img src="3-16.png" alt></p>
+<p><img src="3-16.png"></p>
 <p>点击右侧修改的文件，可以看到详细的改动</p>
-<p><img src="3-17.png" alt></p>
-<h1 id="后悔药"><a href="#后悔药" class="headerlink" title="后悔药"></a>后悔药</h1><h2 id="工作区后悔"><a href="#工作区后悔" class="headerlink" title="工作区后悔"></a>工作区后悔</h2><p>现在你在<code>幸福的秘密.txt</code>写了一行<code>啦啦啦啦啦啦啦</code></p>
-<p><img src="3-18.png" alt></p>
-<p>机智的你立刻发现了这个错误，想要删除这一行，两种方法：</p>
-<ul>
-<li>手动去文件里删除这一行</li>
-<li>或者在<code>GitKarken</code>里点<code>Discard Hunk</code></li>
-</ul>
-<p><img src="3-19.png" alt></p>
+<p><img src="3-17.png"></p>
+<h1 id="后悔药">后悔药</h1>
+<h2 id="工作区后悔">工作区后悔</h2>
+<p>现在你在<code>幸福的秘密.txt</code>写了一行<code>啦啦啦啦啦啦啦</code></p>
+<p><img src="3-18.png"></p>
+<p>机智的你立刻发现了这个错误，想要删除这一行，两种方法： - 手动去文件里删除这一行 - 或者在<code>GitKarken</code>里点<code>Discard Hunk</code></p>
+<p><img src="3-19.png"></p>
 <p>工作区就恢复到之前的状态啦</p>
-<h2 id="暂存区后悔"><a href="#暂存区后悔" class="headerlink" title="暂存区后悔"></a>暂存区后悔</h2><p>但如果你不小心已经将这个含有<code>啦啦啦啦啦啦啦</code>的文件添加到暂存区了，也可以后悔的，这时候只能使用<code>GitKarken</code>了，点击暂存区的<code>Unstage file</code>将暂存区文件退回到工作区</p>
-<p><img src="3-20.png" alt></p>
+<h2 id="暂存区后悔">暂存区后悔</h2>
+<p>但如果你不小心已经将这个含有<code>啦啦啦啦啦啦啦</code>的文件添加到暂存区了，也可以后悔的，这时候只能使用<code>GitKarken</code>了，点击暂存区的<code>Unstage file</code>将暂存区文件退回到工作区</p>
+<p><img src="3-20.png"></p>
 <p>然后参考上步从工作区后悔即可</p>
-<h2 id="仓库后悔"><a href="#仓库后悔" class="headerlink" title="仓库后悔"></a>仓库后悔</h2><p>但如果不幸的是，你已经提交到仓库了，想要后悔该怎么办呢？有办法！那就是版本回退</p>
+<h2 id="仓库后悔">仓库后悔</h2>
+<p>但如果不幸的是，你已经提交到仓库了，想要后悔该怎么办呢？有办法！那就是版本回退</p>
 <p>在想要回退的版本上面鼠标右键，可以看到<code>Reset master to this commit</code>，后面有三个选项</p>
-<p><img src="3-21.png" alt></p>
+<p><img src="3-21.png"></p>
 <ul>
 <li>soft：将这个版本以后的所有改动退回到暂存区</li>
 <li>mixed：将这个版本以后的所有改动退回到工作区</li>
 <li>hard：将这个版本以后的所有改动删除，直接回到这个版本，改动将丢失，慎用！</li>
 </ul>
 <p>版本回退后，我胡汉三又回来啦：</p>
-<p><img src="3-22.png" alt></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>对于XcYu来说，这些基本够用了，加油，为了更高效率而学习</p>
+<p><img src="3-22.png"></p>
+<h1 id="总结">总结</h1>
+<p>对于XcYu来说，这些基本够用了，加油，为了更高效率而学习</p>
 <blockquote>
 <p>参考资料</p>
-<p>[1] <a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">Git简介，廖雪峰博客</a><br>[2] <a href="https://wellwind.idv.tw/blog/2018/04/03/git-using-gitkraken-1-basic/" target="_blank" rel="noopener">GitKraken 強大的剛剛好的Git GUI神器(1)基本篇，博客</a></p>
+<p>[1] <a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">Git简介，廖雪峰博客</a><br>
+[2] <a href="https://wellwind.idv.tw/blog/2018/04/03/git-using-gitkraken-1-basic/" target="_blank" rel="noopener">GitKraken 強大的剛剛好的Git GUI神器(1)基本篇，博客</a></p>
 </blockquote>
 
       
@@ -691,7 +739,7 @@ nce there lived a king of great strength and wealth.Yet he was not happy.</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -713,7 +761,7 @@ nce there lived a king of great strength and wealth.Yet he was not happy.</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -762,7 +810,7 @@ nce there lived a king of great strength and wealth.Yet he was not happy.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要用Git"><span class="nav-number">1.</span> <span class="nav-text">为什么要用Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#没用Git之前的苦恼"><span class="nav-number">1.1.</span> <span class="nav-text">没用Git之前的苦恼</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有了Git之后"><span class="nav-number">1.2.</span> <span class="nav-text">有了Git之后</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git工作模式"><span class="nav-number">2.</span> <span class="nav-text">Git工作模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始吧"><span class="nav-number">3.</span> <span class="nav-text">开始吧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">3.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文件到暂存区"><span class="nav-number">3.2.</span> <span class="nav-text">添加文件到暂存区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交到仓库"><span class="nav-number">3.3.</span> <span class="nav-text">提交到仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习一下下"><span class="nav-number">3.4.</span> <span class="nav-text">练习一下下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后悔药"><span class="nav-number">4.</span> <span class="nav-text">后悔药</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作区后悔"><span class="nav-number">4.1.</span> <span class="nav-text">工作区后悔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暂存区后悔"><span class="nav-number">4.2.</span> <span class="nav-text">暂存区后悔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库后悔"><span class="nav-number">4.3.</span> <span class="nav-text">仓库后悔</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要用git"><span class="nav-number">1.</span> <span class="nav-text">为什么要用Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有了git之后"><span class="nav-number">1.1.</span> <span class="nav-text">有了Git之后</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git工作模式"><span class="nav-number">2.</span> <span class="nav-text">Git工作模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始吧"><span class="nav-number">3.</span> <span class="nav-text">开始吧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">3.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加文件到暂存区"><span class="nav-number">3.2.</span> <span class="nav-text">添加文件到暂存区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交到仓库"><span class="nav-number">3.3.</span> <span class="nav-text">提交到仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习一下下"><span class="nav-number">3.4.</span> <span class="nav-text">练习一下下</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后悔药"><span class="nav-number">4.</span> <span class="nav-text">后悔药</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作区后悔"><span class="nav-number">4.1.</span> <span class="nav-text">工作区后悔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暂存区后悔"><span class="nav-number">4.2.</span> <span class="nav-text">暂存区后悔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库后悔"><span class="nav-number">4.3.</span> <span class="nav-text">仓库后悔</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -796,7 +844,7 @@ nce there lived a king of great strength and wealth.Yet he was not happy.</p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

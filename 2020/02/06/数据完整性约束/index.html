@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  293
+                  294
                 </span>
               
 
@@ -414,27 +414,16 @@
       
         <p>本节记录数据完整性约束</p>
 <img src="/2020/02/06/数据完整性约束/cover.jpg">
-
 <a id="more"></a>
-
-
-
-<h2 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h2><ol>
-<li>FORIGN KEY<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create table borrow(</span><br><span class="line">    -&gt; borrow_id int not null auto_increment,</span><br><span class="line">    -&gt; stu_id int not null,</span><br><span class="line">    -&gt; b_id int not null,</span><br><span class="line">    -&gt; t_time datetime not null,</span><br><span class="line">    -&gt; b_time datetime,</span><br><span class="line">    -&gt; primary key(borrow_id),</span><br><span class="line">    -&gt; foreign key(stu_id) references student(stu_id) on delete cascade on update cascade,</span><br><span class="line">    -&gt; foreign key(b_id) references book(b_id) on delete restrict on update restrict);</span><br><span class="line">Query OK, 0 rows affected (0.15 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RESTIRICT : 限制策略，违反即拒绝，默认</span><br><span class="line">CASCADE   : 级联策略，根据参照表自动更新本表</span><br><span class="line"><span class="keyword">SET</span> <span class="literal">NULL</span>  : 置空策略</span><br><span class="line"><span class="keyword">NO</span> <span class="keyword">ACTION</span> : 不采取实施策略</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="外键">外键</h2>
+<ol type="1">
+<li>FORIGN KEY <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create table borrow(</span><br><span class="line">    -&gt; borrow_id int not null auto_increment,</span><br><span class="line">    -&gt; stu_id int not null,</span><br><span class="line">    -&gt; b_id int not null,</span><br><span class="line">    -&gt; t_time datetime not null,</span><br><span class="line">    -&gt; b_time datetime,</span><br><span class="line">    -&gt; primary key(borrow_id),</span><br><span class="line">    -&gt; foreign key(stu_id) references student(stu_id) on delete cascade on update cascade,</span><br><span class="line">    -&gt; foreign key(b_id) references book(b_id) on delete restrict on update restrict);</span><br><span class="line">Query OK, 0 rows affected (0.15 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RESTIRICT : 限制策略，违反即拒绝，默认</span><br><span class="line">CASCADE   : 级联策略，根据参照表自动更新本表</span><br><span class="line"><span class="keyword">SET</span> <span class="literal">NULL</span>  : 置空策略</span><br><span class="line"><span class="keyword">NO</span> <span class="keyword">ACTION</span> : 不采取实施策略</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><ol>
-<li><p>CHECK约束</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create table test_create(</span><br><span class="line">    -&gt; id int not null auto_increment primary key,</span><br><span class="line">        -&gt; name char(10),</span><br><span class="line">            -&gt; sex char(1) check(sex='男' or sex='女'));</span><br><span class="line">Query OK, 0 rows affected (0.29 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; insert into test_create values</span><br><span class="line">    -&gt; (null, 'name', '中');</span><br><span class="line">    ERROR 3819 (HY000): <span class="keyword">Check</span> <span class="keyword">constraint</span> <span class="string">'test_create_chk_1'</span> <span class="keyword">is</span> violated.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ENUM枚举约束</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create table test_copy(</span><br><span class="line">    -&gt; id int not null auto_increment primary key,</span><br><span class="line">    -&gt; name char(10),</span><br><span class="line">    -&gt; sex enum('男', '女'));</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; insert into test_copy values</span><br><span class="line">    -&gt; (null, 'test', '中');</span><br><span class="line">ERROR 1265 (01000): Data truncated for column 'sex' at row 1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ALTER TABLE table ADD CONSTRAINT constraint  增加约束</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter table test_create</span><br><span class="line">    -&gt; add constraint c_sex check(sex='男' or sex='女');</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="约束">约束</h2>
+<ol type="1">
+<li><p>CHECK约束 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create table test_create(</span><br><span class="line">    -&gt; id int not null auto_increment primary key,</span><br><span class="line">        -&gt; name char(10),</span><br><span class="line">            -&gt; sex char(1) check(sex='男' or sex='女'));</span><br><span class="line">Query OK, 0 rows affected (0.29 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; insert into test_create values</span><br><span class="line">    -&gt; (null, 'name', '中');</span><br><span class="line">    ERROR 3819 (HY000): <span class="keyword">Check</span> <span class="keyword">constraint</span> <span class="string">'test_create_chk_1'</span> <span class="keyword">is</span> violated.</span><br></pre></td></tr></table></figure></p></li>
+<li><p>ENUM枚举约束 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create table test_copy(</span><br><span class="line">    -&gt; id int not null auto_increment primary key,</span><br><span class="line">    -&gt; name char(10),</span><br><span class="line">    -&gt; sex enum('男', '女'));</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br><span class="line"></span><br><span class="line">(root@localhost) [book]&gt; insert into test_copy values</span><br><span class="line">    -&gt; (null, 'test', '中');</span><br><span class="line">ERROR 1265 (01000): Data truncated for column 'sex' at row 1</span><br></pre></td></tr></table></figure></p></li>
+<li><p>ALTER TABLE table ADD CONSTRAINT constraint 增加约束 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter table test_create</span><br><span class="line">    -&gt; add constraint c_sex check(sex='男' or sex='女');</span><br><span class="line">Query OK, 0 rows affected (0.11 sec)</span><br><span class="line">Records: 0  Duplicates: 0  Warnings: 0</span><br></pre></td></tr></table></figure></p></li>
 </ol>
 
       
@@ -580,7 +569,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -602,7 +591,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -685,7 +674,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

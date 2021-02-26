@@ -414,31 +414,35 @@
       
         <p>当罢矣，行百里者半九十，肝！Git 系列虽罢，而 GIt 任重道远索之，已在其中之华实</p>
 <img src="/2020/01/27/6-Git程序员终极篇/cover.jpg">
-
 <a id="more"></a>
-
-<h2 id="团队协作"><a href="#团队协作" class="headerlink" title="团队协作"></a>团队协作</h2><h4 id="查看远程仓库"><a href="#查看远程仓库" class="headerlink" title="查看远程仓库"></a>查看远程仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
-
+<h2 id="团队协作">团队协作</h2>
+<h4 id="查看远程仓库">查看远程仓库</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git remote -v		更加详细</span><br><span class="line">输出：</span><br><span class="line">origin git@github.com:user/project.git (fetch)</span><br><span class="line">origin git@github.com:user/project.git (push)</span><br><span class="line">fetch:抓取地址</span><br><span class="line">push:推送地址，如果没有推送权限，就看不到push 地址</span><br></pre></td></tr></table></figure>
-
-<h4 id="本地分支与远程分支对接"><a href="#本地分支与远程分支对接" class="headerlink" title="本地分支与远程分支对接"></a>本地分支与远程分支对接</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to dev origin/dev</span><br></pre></td></tr></table></figure>
-
-<h4 id="团队协作流程"><a href="#团队协作流程" class="headerlink" title="团队协作流程"></a>团队协作流程</h4><ul>
+<h4 id="本地分支与远程分支对接">本地分支与远程分支对接</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to dev origin/dev</span><br></pre></td></tr></table></figure>
+<h4 id="团队协作流程">团队协作流程</h4>
+<ul>
 <li>试图推送自己的修改 <code>git push origin dev</code></li>
 <li>如果推送失败，则因为远程分支比本地分支新，需要合并分支 <code>git pull</code></li>
 <li>如果提示<code>no tracking information</code>,则说明本地分支与远程分支没有对接，使用对接命令对接 <code>git branch --set-upstream-to dev origin/dev</code></li>
 <li>进行分支合并，如何有冲突就解决冲突，之后提交再推送</li>
 </ul>
-<h2 id="变基"><a href="#变基" class="headerlink" title="变基"></a>变基</h2><p>将本地未push 的分支提交历史整理成直线，仅仅是为了方便查看</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase</span><br></pre></td></tr></table></figure>
-
+<h2 id="变基">变基</h2>
+<p>将本地未push 的分支提交历史整理成直线，仅仅是为了方便查看 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase</span><br></pre></td></tr></table></figure></p>
 <p>这是一个危险命令，会改变提交历史，部分版本号发生变化，谨慎使用</p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>感谢廖雪峰老师，本系列博文参考了很多廖雪峰老师的博客，同时感谢其他博主，及时解除了我对git 的困惑。</p>
+<h2 id="结语">结语</h2>
+<p>感谢廖雪峰老师，本系列博文参考了很多廖雪峰老师的博客，同时感谢其他博主，及时解除了我对git 的困惑。</p>
 <p>本系列博文的出发点就如目录名称一样，是为XcYu写的，最终拐到自己的需求上来，是一次双赢</p>
-<p><strong><center> =============== 路漫漫其修远兮，吾将上下而求索=============== </center></strong></p>
+**
+<center>
+=============== 路漫漫其修远兮，吾将上下而求索===============
+</center>
+<p>**</p>
 <blockquote>
 <p>参考资料</p>
-<p>[1] <a href="https://www.liaoxuefeng.com/wiki/896043488029600/900375748016320" target="_blank" rel="noopener">多人协作，廖雪峰博客</a><br>[2] <a href="http://jartto.wang/2018/12/11/git-rebase/" target="_blank" rel="noopener">彻底搞懂 Git-Rebase，个人博客</a>  </p>
+<p>[1] <a href="https://www.liaoxuefeng.com/wiki/896043488029600/900375748016320" target="_blank" rel="noopener">多人协作，廖雪峰博客</a><br>
+[2] <a href="http://jartto.wang/2018/12/11/git-rebase/" target="_blank" rel="noopener">彻底搞懂 Git-Rebase，个人博客</a></p>
 </blockquote>
 
       
@@ -586,7 +590,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -608,7 +612,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -691,7 +695,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

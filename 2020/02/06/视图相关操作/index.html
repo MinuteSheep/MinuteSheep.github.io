@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  272
+                  273
                 </span>
               
 
@@ -414,33 +414,25 @@
       
         <p>本节记录视图的增删改查</p>
 <img src="/2020/02/06/视图相关操作/cover.jpg">
-
 <a id="more"></a>
-
-<h2 id="查看视图"><a href="#查看视图" class="headerlink" title="查看视图"></a>查看视图</h2><ol>
+<h2 id="查看视图">查看视图</h2>
+<ol type="1">
 <li>与查看表内容操作一模一样</li>
 </ol>
-<h2 id="创建视图"><a href="#创建视图" class="headerlink" title="创建视图"></a>创建视图</h2><ol>
-<li>CREATE VIEW view AS SELECT … FROM table WHERE …<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create or replace view book_view</span><br><span class="line">    -&gt; as select * from book where b_author='郭敬明'</span><br><span class="line">    -&gt; with check option;       WITCH CHECK OPTION对于今后视图的修改都要检查</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="创建视图">创建视图</h2>
+<ol type="1">
+<li>CREATE VIEW view AS SELECT ... FROM table WHERE ... <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; create or replace view book_view</span><br><span class="line">    -&gt; as select * from book where b_author='郭敬明'</span><br><span class="line">    -&gt; with check option;       WITCH CHECK OPTION对于今后视图的修改都要检查</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h2><ol>
-<li>DROP VIEW view<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop view book_view;</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="删除视图">删除视图</h2>
+<ol type="1">
+<li>DROP VIEW view <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; drop view book_view;</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="修改视图"><a href="#修改视图" class="headerlink" title="修改视图"></a>修改视图</h2><ol>
-<li><p>插入数据与插入表内容一模一样, 写入视图的同时写入真实表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; insert into book_view values</span><br><span class="line">    -&gt; (null, '梦里花落知多少', '郭敬明', 39.2);        作者必须为郭敬明,否则插入失败</span><br><span class="line">Query OK, 1 row affected (0.05 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ALTER VIEW view AS SELECT … FROM table WHERE …</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter view book_view</span><br><span class="line">    -&gt; as select * from book where b_author='余华'</span><br><span class="line">    -&gt; with check option;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改数据与修改表内容一模一样, 写入视图的同时写入真实表</p>
-</li>
-<li><p>删除数据与修改表内容一模一样, 写入视图的同时写入真实表</p>
-</li>
+<h2 id="修改视图">修改视图</h2>
+<ol type="1">
+<li><p>插入数据与插入表内容一模一样, 写入视图的同时写入真实表 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; insert into book_view values</span><br><span class="line">    -&gt; (null, '梦里花落知多少', '郭敬明', 39.2);        作者必须为郭敬明,否则插入失败</span><br><span class="line">Query OK, 1 row affected (0.05 sec)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>ALTER VIEW view AS SELECT ... FROM table WHERE ... <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(root@localhost) [book]&gt; alter view book_view</span><br><span class="line">    -&gt; as select * from book where b_author='余华'</span><br><span class="line">    -&gt; with check option;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p></li>
+<li><p>修改数据与修改表内容一模一样, 写入视图的同时写入真实表</p></li>
+<li><p>删除数据与修改表内容一模一样, 写入视图的同时写入真实表</p></li>
 </ol>
 
       
@@ -586,7 +578,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -608,7 +600,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -691,7 +683,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 

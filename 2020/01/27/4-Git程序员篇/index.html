@@ -414,45 +414,44 @@
       
         <p>是日，手痒痒，制作之事与程序员 Git ，竟命行乃真好，言无多，盘也</p>
 <img src="/2020/01/27/4-Git程序员篇/cover.jpg">
-
 <a id="more"></a>
-
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-<h4 id="添加文件到暂存区"><a href="#添加文件到暂存区" class="headerlink" title="添加文件到暂存区"></a>添加文件到暂存区</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">.:全部文件</span><br></pre></td></tr></table></figure>
-
+<h2 id="基本操作">基本操作</h2>
+<h4 id="初始化">初始化</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h4 id="添加文件到暂存区">添加文件到暂存区</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">.:全部文件</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file0&gt; &lt;file1&gt; ...</span><br><span class="line">单独添加文件</span><br></pre></td></tr></table></figure>
-
-<h4 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h4><p>在工作区新建<code>.gitignore</code> 文件，写法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#忽略文件集	注释</span><br><span class="line">*.log		log结尾的所有文件</span><br><span class="line">test.py		test.py这一个文件</span><br><span class="line">vendor/		vendor目录</span><br></pre></td></tr></table></figure>
-
-<h4 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Untracked:</span><br><span class="line">未跟踪, 此文件在文件夹中, 但并没有加入到git库, 不参与版本控制. 通过git add 状态变为Staged.</span><br><span class="line"> </span><br><span class="line">Unmodify:</span><br><span class="line">文件已经入库, 未修改, 即版本库中的文件快照内容与文件夹中完全一致. 这种类型的文件有两种去处, 如果它被修改,</span><br><span class="line">而变为Modified. 如果使用git rm移出版本库, 则成为Untracked文件</span><br><span class="line"> </span><br><span class="line">Modified:</span><br><span class="line">文件已修改, 仅仅是修改, 并没有进行其他的操作. 这个文件也有两个去处, 通过git add可进入暂存staged状态,</span><br><span class="line">使用git checkout 则丢弃修改过, 返回到unmodify状态, 这个git checkout即从库中取出文件, 覆盖当前修改</span><br><span class="line"> </span><br><span class="line">Staged:</span><br><span class="line">暂存状态. 执行git commit则将修改同步到库中, 这时库中的文件和本地文件又变为一致, 文件为Unmodify状态.</span><br><span class="line">执行git reset HEAD filename取消暂存, 文件状态为Modified</span><br><span class="line"> </span><br><span class="line">Git 状态 untracked 和 not staged的区别</span><br><span class="line">1）untrack     表示是新文件，没有被add过，是为跟踪的意思。</span><br><span class="line">2）not staged  表示add过的文件，即跟踪文件，再次修改没有add，就是没有暂存的意思</span><br></pre></td></tr></table></figure>
-
-<h4 id="提交暂存区文件到本地仓库"><a href="#提交暂存区文件到本地仓库" class="headerlink" title="提交暂存区文件到本地仓库"></a>提交暂存区文件到本地仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &apos;备注&apos;</span><br></pre></td></tr></table></figure>
-
-<h4 id="提交本地仓库文件到远程仓库"><a href="#提交本地仓库文件到远程仓库" class="headerlink" title="提交本地仓库文件到远程仓库"></a>提交本地仓库文件到远程仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git romote add origin git@github.com:user/project.git</span><br><span class="line"></span><br><span class="line">git push -u origin master</span><br><span class="line">-u:第一次推送时加上，将本地master分支和远程master分支关联起来</span><br><span class="line"></span><br><span class="line">git push origin master		除第一次外的简化命令</span><br></pre></td></tr></table></figure>
-
-<h4 id="将远程仓库克隆到本地"><a href="#将远程仓库克隆到本地" class="headerlink" title="将远程仓库克隆到本地"></a>将远程仓库克隆到本地</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:user/project.git</span><br></pre></td></tr></table></figure>
-
-<h4 id="从远程仓库更新本地仓库"><a href="#从远程仓库更新本地仓库" class="headerlink" title="从远程仓库更新本地仓库"></a>从远程仓库更新本地仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master:master</span><br><span class="line">master:master：第一个master是远程仓库分支，第二个master是本地仓库分支</span><br></pre></td></tr></table></figure>
-
-<h2 id="进阶操作"><a href="#进阶操作" class="headerlink" title="进阶操作"></a>进阶操作</h2><h4 id="查看文件具体更改"><a href="#查看文件具体更改" class="headerlink" title="查看文件具体更改"></a>查看文件具体更改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git diff README.md			工作区的文件和暂存区的此文件对比</span><br><span class="line"></span><br><span class="line">git diff –cached README.md		暂存区的文件和本地仓库的此文件对比</span><br><span class="line"></span><br><span class="line">git diff HEAD -- README.md		工作区的嗯键和本地仓库的此文件对比</span><br><span class="line">显示格式为标准的Unix通用diff格式</span><br></pre></td></tr></table></figure>
-
-<h4 id="提交历史记录"><a href="#提交历史记录" class="headerlink" title="提交历史记录"></a>提交历史记录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log --graph</span><br><span class="line">--graph:图形化树状分支，更加直观</span><br></pre></td></tr></table></figure>
-
-<h4 id="命令历史记录"><a href="#命令历史记录" class="headerlink" title="命令历史记录"></a>命令历史记录</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-
-<h4 id="丢弃工作区修改"><a href="#丢弃工作区修改" class="headerlink" title="丢弃工作区修改"></a>丢弃工作区修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git restore README.md</span><br></pre></td></tr></table></figure>
-
-<h4 id="丢弃暂存区添加"><a href="#丢弃暂存区添加" class="headerlink" title="丢弃暂存区添加"></a>丢弃暂存区添加</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git restore --staged README.md</span><br></pre></td></tr></table></figure>
-
-<h4 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^		回退到上一个版本</span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^^		回退到上两个版本</span><br><span class="line"></span><br><span class="line">git reset --hard HEAD~100	回退到上100个版本</span><br><span class="line"></span><br><span class="line">git reset --hard commit_id	回到到版本号为commit_id的版本</span><br></pre></td></tr></table></figure>
-
+<h4 id="忽略文件">忽略文件</h4>
+<p>在工作区新建<code>.gitignore</code> 文件，写法如下： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#忽略文件集	注释</span><br><span class="line">*.log		log结尾的所有文件</span><br><span class="line">test.py		test.py这一个文件</span><br><span class="line">vendor/		vendor目录</span><br></pre></td></tr></table></figure></p>
+<h4 id="文件状态">文件状态</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Untracked:</span><br><span class="line">未跟踪, 此文件在文件夹中, 但并没有加入到git库, 不参与版本控制. 通过git add 状态变为Staged.</span><br><span class="line"> </span><br><span class="line">Unmodify:</span><br><span class="line">文件已经入库, 未修改, 即版本库中的文件快照内容与文件夹中完全一致. 这种类型的文件有两种去处, 如果它被修改,</span><br><span class="line">而变为Modified. 如果使用git rm移出版本库, 则成为Untracked文件</span><br><span class="line"> </span><br><span class="line">Modified:</span><br><span class="line">文件已修改, 仅仅是修改, 并没有进行其他的操作. 这个文件也有两个去处, 通过git add可进入暂存staged状态,</span><br><span class="line">使用git checkout 则丢弃修改过, 返回到unmodify状态, 这个git checkout即从库中取出文件, 覆盖当前修改</span><br><span class="line"> </span><br><span class="line">Staged:</span><br><span class="line">暂存状态. 执行git commit则将修改同步到库中, 这时库中的文件和本地文件又变为一致, 文件为Unmodify状态.</span><br><span class="line">执行git reset HEAD filename取消暂存, 文件状态为Modified</span><br><span class="line"> </span><br><span class="line">Git 状态 untracked 和 not staged的区别</span><br><span class="line">1）untrack     表示是新文件，没有被add过，是为跟踪的意思。</span><br><span class="line">2）not staged  表示add过的文件，即跟踪文件，再次修改没有add，就是没有暂存的意思</span><br></pre></td></tr></table></figure>
+<h4 id="提交暂存区文件到本地仓库">提交暂存区文件到本地仓库</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &apos;备注&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="提交本地仓库文件到远程仓库">提交本地仓库文件到远程仓库</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git romote add origin git@github.com:user/project.git</span><br><span class="line"></span><br><span class="line">git push -u origin master</span><br><span class="line">-u:第一次推送时加上，将本地master分支和远程master分支关联起来</span><br><span class="line"></span><br><span class="line">git push origin master		除第一次外的简化命令</span><br></pre></td></tr></table></figure>
+<h4 id="将远程仓库克隆到本地">将远程仓库克隆到本地</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:user/project.git</span><br></pre></td></tr></table></figure>
+<h4 id="从远程仓库更新本地仓库">从远程仓库更新本地仓库</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master:master</span><br><span class="line">master:master：第一个master是远程仓库分支，第二个master是本地仓库分支</span><br></pre></td></tr></table></figure>
+<h2 id="进阶操作">进阶操作</h2>
+<h4 id="查看文件具体更改">查看文件具体更改</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git diff README.md			工作区的文件和暂存区的此文件对比</span><br><span class="line"></span><br><span class="line">git diff –cached README.md		暂存区的文件和本地仓库的此文件对比</span><br><span class="line"></span><br><span class="line">git diff HEAD -- README.md		工作区的嗯键和本地仓库的此文件对比</span><br><span class="line">显示格式为标准的Unix通用diff格式</span><br></pre></td></tr></table></figure>
+<h4 id="提交历史记录">提交历史记录</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log --graph</span><br><span class="line">--graph:图形化树状分支，更加直观</span><br></pre></td></tr></table></figure>
+<h4 id="命令历史记录">命令历史记录</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h4 id="丢弃工作区修改">丢弃工作区修改</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git restore README.md</span><br></pre></td></tr></table></figure>
+<h4 id="丢弃暂存区添加">丢弃暂存区添加</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git restore --staged README.md</span><br></pre></td></tr></table></figure>
+<h4 id="版本回退">版本回退</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^		回退到上一个版本</span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^^		回退到上两个版本</span><br><span class="line"></span><br><span class="line">git reset --hard HEAD~100	回退到上100个版本</span><br><span class="line"></span><br><span class="line">git reset --hard commit_id	回到到版本号为commit_id的版本</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">┌────┐							┌────┐</span><br><span class="line">│HEAD│			-----------&gt;			│HEAD│</span><br><span class="line">└────┘							└────┘</span><br><span class="line">   │					  		   │	</span><br><span class="line">   └──&gt; ○ append GPL					   │    ○ append GPL</span><br><span class="line">        │						   │	│								</span><br><span class="line">        ○ add distributed				   └──&gt; ○ add distributed</span><br><span class="line">        │							│</span><br><span class="line">        ○ wrote a readme file					○ wrote a readme file</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>参考资料</p>
-<p>[1] <a href="https://www.cnblogs.com/kevingrace/p/5690241.html" target="_blank" rel="noopener">Git忽略提交规则 - .gitignore配置运维总结，博客园</a><br>[2] <a href="https://blog.csdn.net/tsq292978891/article/details/78966461" target="_blank" rel="noopener">git diff 与 git diff –cached与git diff HEAD – file，博客园</a><br>[3] <a href="https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192" target="_blank" rel="noopener">版本回退，廖雪峰博客</a>  </p>
+<p>[1] <a href="https://www.cnblogs.com/kevingrace/p/5690241.html" target="_blank" rel="noopener">Git忽略提交规则 - .gitignore配置运维总结，博客园</a><br>
+[2] <a href="https://blog.csdn.net/tsq292978891/article/details/78966461" target="_blank" rel="noopener">git diff 与 git diff --cached与git diff HEAD -- file，博客园</a><br>
+[3] <a href="https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192" target="_blank" rel="noopener">版本回退，廖雪峰博客</a></p>
 </blockquote>
 
       
@@ -600,7 +599,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -622,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -705,7 +704,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">126.2k</span>
+    <span title="Site words total count">160.1k</span>
   
 </div>
 
