@@ -256,6 +256,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2021/07/29/可恶的自动注释补全/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Minute Sheep">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T N T">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/07/29/可恶的自动注释补全/" itemprop="url">VIM可恶的自动注释补全</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-29T23:40:04+08:00">
+                2021-07-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2021-07-30T00:00:24+08:00">
+                2021-07-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NIP/" itemprop="url" rel="index">
+                    <span itemprop="name">NIP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/07/29/可恶的自动注释补全/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/07/29/可恶的自动注释补全/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/07/29/可恶的自动注释补全/" class="leancloud_visitors" data-flag-title="VIM可恶的自动注释补全">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  406
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>马飞，使用VIM时是否有这样的烦恼： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#                    _ooOoo_</span><br><span class="line">#                   o8888888o</span><br><span class="line">#                   88&quot; . &quot;88</span><br><span class="line">#                   (| -_- |)</span><br><span class="line">#                    O\ = /O</span><br><span class="line">#                ____/`---&apos;\____</span><br><span class="line">#              .   &apos; \\| |// `.</span><br><span class="line">#               / \\||| : |||// \</span><br><span class="line">#             / _||||| -:- |||||- \</span><br><span class="line">#               | | \\\ - /// | |</span><br><span class="line">#             | \_| &apos;&apos;\---/&apos;&apos; | |</span><br><span class="line">#              \ .-\__ `-` ___/-. /</span><br><span class="line">#           ___`. .&apos; /--.--\ `. . __</span><br><span class="line">#        .&quot;&quot; &apos;&lt; `.___\_&lt;|&gt;_/___.&apos; &gt;&apos;&quot;&quot;.</span><br><span class="line">#       | | : `- \`.;`\ _ /`;.`/ - ` : | |</span><br><span class="line">#         \ \ `-. \_ __\ /__ _/ .-` / /</span><br><span class="line"># ======`-.____`-.___\_____/___.-`____.-&apos;======</span><br><span class="line">#                    `=---=&apos;</span><br><span class="line">#</span><br><span class="line"># .............................................</span><br><span class="line">#          佛祖保佑             永无BUG</span><br></pre></td></tr></table></figure></p>
+<p>然后，当你愉快的按下回车时，你会发现： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#                    _ooOoo_</span><br><span class="line">#                   o8888888o</span><br><span class="line">#                   88&quot; . &quot;88</span><br><span class="line">#                   (| -_- |)</span><br><span class="line">#                    O\ = /O</span><br><span class="line">#                ____/`---&apos;\____</span><br><span class="line">#              .   &apos; \\| |// `.</span><br><span class="line">#               / \\||| : |||// \</span><br><span class="line">#             / _||||| -:- |||||- \</span><br><span class="line">#               | | \\\ - /// | |</span><br><span class="line">#             | \_| &apos;&apos;\---/&apos;&apos; | |</span><br><span class="line">#              \ .-\__ `-` ___/-. /</span><br><span class="line">#           ___`. .&apos; /--.--\ `. . __</span><br><span class="line">#        .&quot;&quot; &apos;&lt; `.___\_&lt;|&gt;_/___.&apos; &gt;&apos;&quot;&quot;.</span><br><span class="line">#       | | : `- \`.;`\ _ /`;.`/ - ` : | |</span><br><span class="line">#         \ \ `-. \_ __\ /__ _/ .-` / /</span><br><span class="line"># ======`-.____`-.___\_____/___.-`____.-&apos;======</span><br><span class="line">#                    `=---=&apos;</span><br><span class="line">#</span><br><span class="line"># .............................................</span><br><span class="line">#          佛祖保佑             永无BUG</span><br><span class="line">#</span><br></pre></td></tr></table></figure></p>
+<p>VIM竟然会自动注释补全，wdnmd.</p>
+<p>查阅无数资料，功夫不负有心人，终于： <a href="https://vi.stackexchange.com/questions/1983/how-can-i-get-vim-to-stop-putting-comments-in-front-of-new-lines/1985" class="uri" target="_blank" rel="noopener">https://vi.stackexchange.com/questions/1983/how-can-i-get-vim-to-stop-putting-comments-in-front-of-new-lines/1985</a></p>
+<p>学成归来，总之就是：</p>
+<p>VIM的自动注释补全归<code>formatoptions</code>管，有三个值： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">r       Automatically insert the current comment leader after hitting</span><br><span class="line">        &lt;Enter&gt; in Insert mode.</span><br><span class="line"></span><br><span class="line">c       Auto-wrap comments using textwidth, inserting the current comment</span><br><span class="line">        leader automatically.</span><br><span class="line"></span><br><span class="line">o       Automatically insert the current comment leader after hitting &apos;o&apos; or</span><br><span class="line">        &apos;O&apos; in Normal mode.</span><br></pre></td></tr></table></figure></p>
+<p>取消VIM的自动只是补全也很简单，只需要将下面的一条命令写入<code>.vimrc</code>文件中： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">au FileType * set fo-=c fo-=r fo-=o</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">set fo=</span><br></pre></td></tr></table></figure></p>
+<p>但是，上面的两条命令不管用，原因是在启动过程中，vim首先加载<code>.vimrc</code>文件，然后加载各种插件，坑就坑在有些插件设置了<code>formatoptions</code>的值，也就是说，你的更改被插件覆盖了，为了避开这个问题，将命令改为下面的样子写入<code>.vimrc</code>文件中即可： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">au BufEnter * set fo-=c fo-=r fo-=o</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2021/04/30/JavaScript-Crash-Note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,7 +587,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  721
+                  724
                 </span>
               
 
@@ -412,7 +625,8 @@
 
       
         
-          <h2 id="什么是js"><a href="#什么是js" class="headerlink" title="什么是js"></a>什么是js</h2><ul>
+          <h2 id="什么是js">什么是js</h2>
+<ul>
 <li>编程语言，在网页上实现功能、交互</li>
 <li>解释性语言</li>
 <li>运行在客户端</li>
@@ -2228,214 +2442,6 @@ A \le (1/e) \cdot 2^{h(P_{geom})} +1
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://minutesheep.github.io/2020/09/28/Vim-Markdown的concealcursor特性不起作用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Minute Sheep">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="T N T">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/28/Vim-Markdown的concealcursor特性不起作用/" itemprop="url">Vim-Markdown的concealcursor特性不起作用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-28T20:01:45+08:00">
-                2020-09-28
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-11-26T22:22:23+08:00">
-                2020-11-26
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Repair-Linux-Error/" itemprop="url" rel="index">
-                    <span itemprop="name">Repair Linux Error</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/09/28/Vim-Markdown的concealcursor特性不起作用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/09/28/Vim-Markdown的concealcursor特性不起作用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2020/09/28/Vim-Markdown的concealcursor特性不起作用/" class="leancloud_visitors" data-flag-title="Vim-Markdown的concealcursor特性不起作用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  153
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>conceal可以将某些标记隐藏，隐藏并不是指将字符完全隐藏，而是在需要的隐藏的时候 隐藏，concealcursor的特性是当鼠标或光标移至被隐藏的语法块时，将显示所有的内容。</p>
-<p>例如在Markdown中，加粗字体的语法为<code>**HELLO**</code>，当光标不再这个文本块上时，将 显示加粗的<code>HELLO</code>，当光标移至这个文本块时，将显示<code>**HELLO**</code>。</p>
-<p>如果安装了vim插件<code>indentLine</code>，会导致与concealcursor冲突，只需要在vim配置文件 中加入下述语句即可解决： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let g:indentLine_concealcursor = &apos;&apos;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2488,7 +2494,7 @@ A \le (1/e) \cdot 2^{h(P_{geom})} +1
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2577,7 +2583,7 @@ A \le (1/e) \cdot 2^{h(P_{geom})} +1
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">161.4k</span>
+    <span title="Site words total count">161.8k</span>
   
 </div>
 
